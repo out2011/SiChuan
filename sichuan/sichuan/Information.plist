@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>GovAffairs</key>
+	<array>
+		<string>人事任免</string>
+		<string>公示公告</string>
+		<string>招考信息</string>
+		<string>机构职能</string>
+		<string>四川统计</string>
+		<string>计划报告</string>
+	</array>
+	<key>ProfileTitles</key>
+	<array>
+		<string>概况介绍</string>
+		<string>地理位置和自然状况</string>
+		<string>人口</string>
+		<string>社会生活</string>
+		<string>经济</string>
+		<string>交通</string>
+		<string>最新省情</string>
+		<string>统计公报</string>
+	</array>
+	<key>MenuTitles</key>
+	<array>
+		<string>聚焦四川</string>
+		<string>四川概况</string>
+		<string>政府文件</string>
+		<string>政务信息</string>
+		<string>政府领导</string>
+		<string>图说四川</string>
+		<string>办事服务</string>
+		<string>其他功能</string>
+	</array>
+</dict>
+</plist>
