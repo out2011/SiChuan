@@ -111,10 +111,8 @@
     }
     
     viewController.view.frame = self.view.frame;
-//    NSLog(@"size: %@", [NSValue valueWithCGSize:self.view.bounds.size]);
     [self.view addSubview:viewController.view];
     [self addChildViewController:viewController];
-//    NSLog(@"size: %@", [NSValue valueWithCGSize:self.view.bounds.size]);
 }
 
 - (void)didReceiveMemoryWarning {

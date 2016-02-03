@@ -39,7 +39,6 @@
         _data = responseObject[0];
         
         [self initializeInterface];
-        NSLog(@"%@", _data);
     }];
 }
 

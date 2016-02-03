@@ -29,20 +29,12 @@ typedef void(^SCSituationDidCompleteBlock)(NSArray *responseObject, NSError *err
 static NSString *API_Position = @"situation/detail";
 typedef void(^SCPositionDidCompleteBlock)(NSArray *responseObject, NSError *error);
 
-/// 人口
-
-/// 社会生活
-
-/// 经济
-
-/// 交通
-
 /// 最新省情
 static NSString *API_News = @"situation/news?type=1&";
-typedef void(^SCNewsDidCompleteBlock)(NSArray *responseObject, NSError *error);
+typedef void(^SCNewsDidCompleteBlock)(NSDictionary *responseObject, NSError *error);
 /// 统计公报
 static NSString *API_StaNotice = @"situation/news?type=2&";
-typedef void(^SCStaNoticeDidCompleteBlock)(NSArray *responseObject, NSError *error);
+typedef void(^SCStaNoticeDidCompleteBlock)(NSDictionary *responseObject, NSError *error);
 
 // --------------- 政府文件 --------------- //
 static NSString *API_GovFile = @"docs?";

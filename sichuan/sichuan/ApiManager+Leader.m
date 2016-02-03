@@ -18,7 +18,6 @@
         
         if (!error) {
             
-            //            NSLog(@"result: %@", responseObject);
             completeBlock(responseObject, nil);
             
         }
@@ -38,7 +37,6 @@
         
         if (!error) {
             
-//            NSLog(@"result: %@", responseObject);
             completeBlock(responseObject, nil);
             
         }
@@ -58,7 +56,6 @@
         
         if (!error) {
             
-//            NSLog(@"result: %@", responseObject);
             completeBlock(responseObject, nil);
             
         }

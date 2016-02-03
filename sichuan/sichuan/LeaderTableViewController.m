@@ -150,7 +150,7 @@
         _data = [responseObject  mutableCopy];
         
         [_defaults setObject:_data forKey:@"leader"];
-        //        NSLog(@"dic12321: %@", _data);
+        
         [weakSelf.tableView reloadData];
     }];
 }

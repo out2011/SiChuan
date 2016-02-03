@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *information;
+@property (nonatomic, strong) NSNumber *nId;
 @property (nonatomic, getter=isFold) BOOL isFold;
 
 + (NSArray *)fillFoldInformation:(NSArray *)array;

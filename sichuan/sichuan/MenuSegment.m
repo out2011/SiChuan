@@ -22,11 +22,7 @@
     
     [super layoutSubviews];
     
-//    NSLog(@"123");
-    
     if (!_isLoad) {
-    
-//        NSLog(@"%@", _titles);
         
         [self segmentSetting];
         _isLoad = YES;
@@ -80,7 +76,6 @@
     
     _selectedIndex = sender.tag - kBaseTag;
     [self.menuDelegate selectedAtIndex:_selectedIndex];
-//    NSLog(@"button tag is: %ld", sender.tag);
 }
 
 

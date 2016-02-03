@@ -40,7 +40,6 @@
             
             _data = [responseObject copy];
             [self initializeInterface];
-            NSLog(@"result: %@", responseObject);
         }];
     }
 }
@@ -77,8 +76,6 @@
     
     _webViewHeight.constant = _contentView.scrollView.contentSize.height - 300;
     _backgroundView.contentOffset = CGPointMake(0, 0);
-    
-    NSLog(@"height: %f", _contentView.scrollView.contentSize.height);
 }
 
 @end

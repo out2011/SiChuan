@@ -30,10 +30,8 @@
     
     if (indexPath.row == [tableView indexPathForCell:self.versionDetectionCell].row) {
         
-        NSLog(@"123321123321");
+        
     }
-    
-    
 }
 
 //#pragma mark - Table view data source

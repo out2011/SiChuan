@@ -29,42 +29,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"line to preserve sline to preserve sline to preserve sline to preserve sline to preserve sline to preserve sline to preserve sline to preserve sline to preserve sline to preservesline to preserve sline to preserve sline to preservesline to preserve sline to preserve sline to preserve sline to preserve s", @"message", @"123", @"title", nil];
-    
-    
-    
-    
-    
-//    NSArray *array = [NSArray arrayWithObjects:dic, dic, dic, dic, dic, nil];
-//    _info = [FoldInfo fillFoldInformation:array];
-    
     //让cell自适应高度
     self.tableView.rowHeight = UITableViewAutomaticDimension;
 
-    [self refresh];
     [self initializeDataSource];
 }
-
-#pragma mark - refresh
-- (void)refresh {
-    
-    __unsafe_unretained UITableView *tableView = self.tableView;
-    
-    // 下拉刷新
-    tableView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        // 模拟延迟加载数据，因此2秒后才调用（真实开发中，可以移除这段gcd代码）
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            // 结束刷新
-            [tableView.mj_header endRefreshing];
-        });
-    }];
-    
-    // 设置自动切换透明度(在导航栏下面自动隐藏)
-    tableView.mj_header.automaticallyChangeAlpha = YES;
-    
-    tableView.mj_header.backgroundColor = [UIColor colorWithRGB:0xF0F0F0];
-}
-
 
 #pragma mark - Table view data source
 
@@ -90,8 +59,6 @@
     FoldInfo *info = _info[indexPath.section];
     
     cell.contentLable.attributedText = [NSAttributedString attributedStringWithHTML:info.information];;
-    cell.contentLable.font = [UIFont systemFontOfSize:16];
-    // Configure the cell...
     
     return cell;
 }
@@ -131,12 +98,7 @@
     NSInteger index = head.tag - kBaseViewTag;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:index];
     
-    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
-    
-    if (indexPath.section != 0) {
-        
-        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    }
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (void)initializeDataSource {
@@ -145,7 +107,6 @@
         
         _info = [FoldInfo fillFoldInformation:responseObject];
         [self.tableView reloadData];
-        NSLog(@"position: %@", responseObject);
     }];
 }
 

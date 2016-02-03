@@ -163,7 +163,7 @@
             
             [_defaults setObject:_data forKey:@"govFile"];
         }
-        //        NSLog(@"dic12321: %@", _data);
+
         [weakSelf.tableView reloadData];
     }];
 }

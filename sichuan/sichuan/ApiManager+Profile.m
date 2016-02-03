@@ -14,15 +14,15 @@
     
     NSDictionary *parameters;
     
-    NSURLSessionDataTask *task = [self post:API_Situation parameters:parameters completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
-        
-        if (!error) {
-            
-            //            NSLog(@"result: %@", responseObject);
-            completeBlock(responseObject, nil);
-            
-        }
-    } ];
+    NSURLSessionDataTask *task = [self post:API_Situation
+                                 parameters:parameters
+                              completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+                                  
+                                  if (!error) {
+
+                                      completeBlock(responseObject, nil);
+                                  }
+                              } ];
     
     return task;
 }
@@ -32,16 +32,49 @@
     
     NSDictionary *parameters = @{@"pname": pname};
     
-    NSURLSessionDataTask *task = [self post:API_Position parameters:parameters completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
-        
-        if (!error) {
-            
-            //            NSLog(@"result: %@", responseObject);
-            completeBlock(responseObject, nil);
-            
-        }
-    } ];
+    NSURLSessionDataTask *task = [self post:API_Position
+                                 parameters:parameters
+                              completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+                                  
+                                  if (!error) {
+                                      
+                                      completeBlock(responseObject, nil);
+                                  }
+                              } ];
     
     return task;
+}
+
+- (NSURLSessionDataTask *)requestNewsWithPages:(NSNumber *)pages
+                                          size:(NSNumber *)size
+                                 completeBlock:(SCNewsDidCompleteBlock)completeBlock {
+    
+    NSDictionary *parameters = @{@"pno": pages, @"psize": size};
+    
+    NSURLSessionDataTask *task = [self post:API_News
+                                 parameters:parameters
+                              completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+                                  
+                                  completeBlock(responseObject, nil);
+                              }];
+    
+    return task;
+}
+
+- (NSURLSessionDataTask *)requestSatNoticeWithPages:(NSNumber *)pages
+                                               size:(NSNumber *)size
+                                      completeBlock:(SCStaNoticeDidCompleteBlock)completeBlock {
+    
+    NSDictionary *parameters = @{@"pno": pages, @"psize": size};
+    
+    NSURLSessionDataTask *task = [self post:API_StaNotice
+                                 parameters:parameters
+                              completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+                                  
+                                  completeBlock(responseObject, nil);
+                              }];
+    
+    return task;
+    
 }
 @end

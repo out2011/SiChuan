@@ -20,7 +20,6 @@
         
         if (!error) {
             
-            //            NSLog(@"result: %@", responseObject);
             completeBlock(responseObject, nil);
             
         }
@@ -39,7 +38,6 @@
         
         if (!error) {
             
-            //            NSLog(@"result: %@", responseObject);
             completeBlock(responseObject, nil);
             
         }
@@ -58,7 +56,6 @@
         
         if (!error) {
             
-            //            NSLog(@"result: %@", responseObject);
             completeBlock(responseObject, nil);
             
         }
@@ -77,7 +74,6 @@
         
         if (!error) {
             
-            //            NSLog(@"result: %@", responseObject);
             completeBlock(responseObject, nil);
             
         }
@@ -96,13 +92,30 @@
         
         if (!error) {
             
-            //            NSLog(@"result: %@", responseObject);
             completeBlock(responseObject, nil);
             
         }
     } ];
     
     return task;
+}
+
+- (NSURLSessionDataTask *)requestOrganizationWithCompleteBlock:(SCOrganizationDidCompleteBlock)completeBlock {
+    
+    NSDictionary *parameters;
+    
+    NSURLSessionDataTask *task = [self post:API_Organization
+                                 parameters:parameters
+                              completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+                                  
+                                  if (!error) {
+                                      
+                                      completeBlock(responseObject, nil);
+                                  }
+                              } ];
+    
+    return task;
+
 }
 
 @end

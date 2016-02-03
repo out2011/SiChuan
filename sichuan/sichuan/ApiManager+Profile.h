@@ -13,7 +13,7 @@
 /**
  *  概况介绍
  *
- *  @param 
+ *  @param
  *  @param completeBlock 結果
  *
  *  @return task
@@ -30,4 +30,29 @@
  */
 - (NSURLSessionDataTask *)requestPositionWithPname:(NSString *)pname
                                      completeBlock:(SCPositionDidCompleteBlock)completeBlock;
+
+/**
+ *  最新省情
+ *
+ *  @param pno 页数 psize 容量
+ *  @param completeBlock 結果
+ *
+ *  @return task
+ */
+- (NSURLSessionDataTask *)requestNewsWithPages:(NSNumber *)pages
+                                          size:(NSNumber *)size
+                                 completeBlock:(SCNewsDidCompleteBlock)completeBlock;
+
+/**
+ *  统计公报
+ *
+ *  @param pno 页数 psize 容量
+ *  @param completeBlock 結果
+ *
+ *  @return task
+ */
+- (NSURLSessionDataTask *)requestSatNoticeWithPages:(NSNumber *)pages
+                                               size:(NSNumber *)size
+                                      completeBlock:(SCStaNoticeDidCompleteBlock)completeBlock;
+
 @end

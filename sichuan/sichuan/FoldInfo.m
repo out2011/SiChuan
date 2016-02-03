@@ -21,8 +21,16 @@
         
         NSDictionary *dic = array[i];
         
-        info.title = dic[@"title"];
+        if (dic[@"title"]) {
+            
+            info.title = dic[@"title"];
+        }
+        else if (dic[@"pName"]) {
+            
+            info.title = dic[@"pName"];
+        }
         info.information = dic[@"content"];
+        info.nId = dic[@"nid"];
         info.isFold = YES;
         
         if (i == 0) {

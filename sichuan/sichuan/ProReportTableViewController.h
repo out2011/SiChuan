@@ -10,4 +10,6 @@
 
 @interface ProReportTableViewController : UITableViewController
 
+@property (nonatomic, assign) BOOL isNews;
+
 @end

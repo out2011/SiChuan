@@ -203,7 +203,7 @@
         NSString *key = [NSString stringWithFormat:@"%@%@", identifier, self.nId];
         [_defaults setObject:_data forKey:key];
     }
-    //        NSLog(@"dic12321: %@", _data);
+
     [self.tableView reloadData];
 }
 

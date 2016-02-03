@@ -18,13 +18,15 @@
     NSArray *localData = [[NSUserDefaults standardUserDefaults] objectForKey:identifier];
     NSDictionary *localDic = localData[0];
     NSNumber *localNId;
+    NSString *key = @"nID";
     
-    nId = dic[@"nID"];
-    localNId = localDic[@"nID"];
+    if ([identifier isEqualToString:@"news"]) {
+        
+        key = @"nId";
+    }
     
-    
-    
-    
+    nId = dic[key];
+    localNId = localDic[key];
     
     return [nId isEqualToNumber:localNId];
 }

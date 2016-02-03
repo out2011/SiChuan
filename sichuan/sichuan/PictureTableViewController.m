@@ -192,7 +192,7 @@
             
             [_defaults setObject:_data forKey:@"photo"];
         }
-        //        NSLog(@"dic12321: %@", _data);
+
         [weakSelf.tableView reloadData];
     }];
 }

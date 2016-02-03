@@ -70,4 +70,14 @@
                                           size:(NSNumber *)size
                                  completeBlock:(SCPlanDidCompleteBlock)completeBlock;
 
+/**
+ *  机构职能
+ *
+ *  @param
+ *  @param completeBlock 結果
+ *
+ *  @return task
+ */
+- (NSURLSessionDataTask *)requestOrganizationWithCompleteBlock:(SCOrganizationDidCompleteBlock)completeBlock;
+
 @end

@@ -7,6 +7,9 @@
 //
 
 #import "TitleView.h"
+#import "UIColor+SCColor.h"
+
+#define kScreenW [UIScreen mainScreen].bounds.size.width
 
 @interface TitleView()
 
@@ -33,6 +36,10 @@
     
     if (self) {
         
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(8, 49, kScreenW - 8, 1)];
+        view.backgroundColor = [UIColor colorWithRGB:0x111111];
+        [self addSubview:view];
+        
         // 添加button
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
         //设置背景图片
@@ -42,6 +49,7 @@
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         // 设置按钮的内容左对齐
         button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        button.titleLabel.font = [UIFont systemFontOfSize:16];
         // 设置button的内边距
         button.titleEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
         button.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);

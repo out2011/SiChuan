@@ -35,11 +35,6 @@
     NSArray *titles = dic[@"ProfileTitles"];
     
     switch (index) {
-        case 0: { ///概况介绍
-            ProfileViewController *profileVC = [segue destinationViewController];
-            
-        }
-            break;
         case 1: { ///地理位置和自然状况
             ProFoldTableViewController *positionVC = [segue destinationViewController];
             positionVC.title = titles[index];
@@ -48,11 +43,13 @@
         case 2: { ///最新省情
             ProReportTableViewController *newVC = [segue destinationViewController];
             newVC.title = titles[index];
+            newVC.isNews = YES;
         }
             break;
         case 3: { ///统计公报
             ProReportTableViewController *bulletinVC = [segue destinationViewController];
             bulletinVC.title = titles[index];
+            bulletinVC.isNews = NO;
         }
             break;
         default:

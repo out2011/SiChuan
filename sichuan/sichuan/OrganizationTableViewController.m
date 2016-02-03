@@ -12,6 +12,7 @@
 #import "TitleView.h"
 #import "MJRefresh.h"
 #import "UIColor+SCColor.h"
+#import "ApiManager+GovAffairs.h"
 
 #define kBaseViewTag 100
 
@@ -29,17 +30,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"line to preserve sline to preserve sline to preserve sline to preserve sline to preserve sline to preserve sline to preserve sline to preserve sline to preserve sline to preservesline to preserve sline to preserve sline to preservesline to preserve sline to preserve sline to preserve sline to preserve s", @"message", @"123", @"title", nil];
-    
-    NSArray *array = [NSArray arrayWithObjects:dic, dic, dic, dic, dic, nil];
-    _info = [FoldInfo fillFoldInformation:array];
-    
     //让cell自适应高度
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    //设置估算高度
-//    self.tableView.estimatedRowHeight = 44;
     
     [self refresh];
+    [self initializeDataSource];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -133,6 +128,29 @@
     NSInteger index = head.tag - kBaseViewTag;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:index];
     
-    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
+    [self.tableView reloadSections:@[@"index"] withRowAnimation:UITableViewRowAnimationMiddle];
 }
+
+#pragma mark - data source
+- (void)initializeDataSource {
+    
+    [[ApiManager sharedInstance] requestOrganizationWithCompleteBlock:^(NSArray *responseObject, NSError *error) {
+        
+        _info = [FoldInfo fillFoldInformation:responseObject];
+        [self.tableView reloadData];
+    }];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 @end
