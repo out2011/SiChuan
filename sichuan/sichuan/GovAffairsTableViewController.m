@@ -10,6 +10,7 @@
 #import "MJRefresh.h"
 #import "GovInfoTableViewController.h"
 #import "OrganizationTableViewController.h"
+#import "ApiManager.h"
 
 @interface GovAffairsTableViewController ()
 
@@ -34,19 +35,62 @@
     NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:path];
     NSArray *titles = dic[@"GovAffairs"];
     
-    GovInfoTableViewController *infoVC;
+    GovInfoTableViewController *infoVC = [segue destinationViewController];
     
-    if (index != 3) {
-        
-        infoVC = [segue destinationViewController];
-        infoVC.title = titles[index];
+    switch (index) {
+        case 0:{
+            
+            infoVC.title = titles[index];
+            infoVC.api = API_Personnel;
+        }
+            break;
+        case 1:{
+            
+            infoVC.title = titles[index];
+            infoVC.api = API_Bulletin;
+        }
+            break;
+        case 2:{
+            
+            infoVC.title = titles[index];
+            infoVC.api = API_Examination;
+        }
+            break;
+        case 4:{
+            
+            infoVC.title = titles[index];
+            infoVC.api = API_Statistics;
+        }
+            break;
+        case 5:{
+            
+            infoVC.title = titles[index];
+            infoVC.api = API_Plan;
+        }
+            break;
+        default:
+            break;
     }
 }
-
 
 #pragma mark - table view delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return 50;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Information" ofType:@"plist"];
+    NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:path];
+    NSArray *titles = dic[@"GovAffairs"];
+    
+    GovInfoTableViewController *infoVC;
+    infoVC.title = titles[indexPath.row];
+    
+    
+    
+    
 }
 @end

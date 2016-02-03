@@ -10,85 +10,14 @@
 
 @implementation ApiManager (GovAffairs)
 
-- (NSURLSessionDataTask *)requestPersonnelWithPages:(NSNumber *)pages
-                                               size:(NSNumber *)size
-                                      completeBlock:(SCPersonnelDidCompleteBlock)completeBlock {
+- (NSURLSessionDataTask *)requestNormalWithPages:(NSNumber *)pages
+                                            size:(NSNumber *)size
+                                             api:(NSString *)api
+                                   completeBlock:(SCNormalDidCompleteBlock)completeBlock {
     
     NSDictionary *parameters = @{@"pno": pages, @"psize": size};
     
-    NSURLSessionDataTask *task = [self post:API_Personnel parameters:parameters completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
-        
-        if (!error) {
-            
-            completeBlock(responseObject, nil);
-            
-        }
-    } ];
-    
-    return task;
-}
-
-- (NSURLSessionDataTask *)requestBulletinWithPages:(NSNumber *)pages
-                                              size:(NSNumber *)size
-                                     completeBlock:(SCBulletinDidCompleteBlock)completeBlock {
-    
-    NSDictionary *parameters = @{@"pno": pages, @"psize": size};
-    
-    NSURLSessionDataTask *task = [self post:API_Bulletin parameters:parameters completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
-        
-        if (!error) {
-            
-            completeBlock(responseObject, nil);
-            
-        }
-    } ];
-    
-    return task;
-}
-
-- (NSURLSessionDataTask *)requestExaminationWithPages:(NSNumber *)pages
-                                                 size:(NSNumber *)size
-                                        completeBlock:(SCExaminationDidCompleteBlock)completeBlock {
-    
-    NSDictionary *parameters = @{@"pno": pages, @"psize": size};
-    
-    NSURLSessionDataTask *task = [self post:API_Examination parameters:parameters completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
-        
-        if (!error) {
-            
-            completeBlock(responseObject, nil);
-            
-        }
-    } ];
-    
-    return task;
-}
-
-- (NSURLSessionDataTask *)requestStatisticsWithPages:(NSNumber *)pages
-                                                size:(NSNumber *)size
-                                       completeBlock:(SCStatisticsDidCompleteBlock)completeBlock {
-    
-    NSDictionary *parameters = @{@"pno": pages, @"psize": size};
-    
-    NSURLSessionDataTask *task = [self post:API_Statistics parameters:parameters completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
-        
-        if (!error) {
-            
-            completeBlock(responseObject, nil);
-            
-        }
-    } ];
-    
-    return task;
-}
-
-- (NSURLSessionDataTask *)requestPlanWithPages:(NSNumber *)pages
-                                          size:(NSNumber *)size
-                                 completeBlock:(SCPlanDidCompleteBlock)completeBlock {
-    
-    NSDictionary *parameters = @{@"pno": pages, @"psize": size};
-    
-    NSURLSessionDataTask *task = [self post:API_Plan parameters:parameters completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+    NSURLSessionDataTask *task = [self post:api parameters:parameters completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
         
         if (!error) {
             
@@ -115,7 +44,24 @@
                               } ];
     
     return task;
-
+    
 }
 
+
+- (NSURLSessionDataTask *)requestOrgListWithPname:(NSString *)pname completeBlock:(SCOrgListDidCompleteBlock)completeBlock {
+    
+    NSDictionary *parameters = @{@"pname": pname};
+    
+    NSURLSessionDataTask *task = [self post:API_OrgList
+                                 parameters:parameters
+                              completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+                                  
+                                  if (!error) {
+                                      
+                                      completeBlock(responseObject, nil);
+                                  }
+                              } ];
+    
+    return task;
+}
 @end

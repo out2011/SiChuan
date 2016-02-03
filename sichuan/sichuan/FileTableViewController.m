@@ -12,7 +12,9 @@
 #import "UIColor+SCColor.h"
 #import "ApiManager+GovFile.h"
 #import "SCCompareHelper.h"
-#import "FileViewController.h"
+#import "ArticlesViewController.h"
+
+#define kTitle @"政府文件"
 
 @interface FileTableViewController ()
 
@@ -33,18 +35,6 @@
     [self refresh];
     [self initializeDataSource];
     [self loadDataIsPulldown:YES];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    if ([segue.identifier isEqualToString:@"fileShowed"]) {
-        
-        FileTableViewCell *cell = (FileTableViewCell *)sender;
-        NSInteger index = [self.tableView indexPathForCell:cell].row;
-        
-        FileViewController *fileVC = [segue destinationViewController];
-        fileVC.data = _data[index];
-    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -111,6 +101,26 @@
     return 65;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    ArticlesViewController *articlesVC = [storyboard instantiateViewControllerWithIdentifier:@"ArticlesViewController"];
+    articlesVC.title = kTitle;
+    
+    if (indexPath.row == 0) {
+        
+        articlesVC.data = _data[0];
+    }
+    else {
+        
+        articlesVC.data = _data[indexPath.row - 1];
+    }
+    
+    [self.navigationController pushViewController:articlesVC animated:YES];
+
+}
+
 #pragma mark - request
 - (void)initializeDataSource {
     
@@ -128,11 +138,11 @@
     }
 }
 
-- (void)loadDataIsPulldown:(BOOL)isPullDown {
+- (void)loadDataIsPulldown:(BOOL)isPulldown {
     
     NSInteger pages = 1;
     
-    if (!isPullDown) {
+    if (!isPulldown) {
         
         _pages++;
         pages = _pages;
@@ -141,7 +151,7 @@
     __weak typeof(self) weakSelf = self;
     [[ApiManager sharedInstance] requestGovFileWithPages:@(pages) size:kPageSize completeBlock:^(NSDictionary *responseObject, NSError *error) {
         
-        if (!isPullDown) {
+        if (!isPulldown) {
             
             NSArray *newData = responseObject[@"list"];
             [_data addObjectsFromArray:newData];

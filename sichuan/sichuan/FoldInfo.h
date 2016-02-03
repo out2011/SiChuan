@@ -15,5 +15,7 @@
 @property (nonatomic, strong) NSNumber *nId;
 @property (nonatomic, getter=isFold) BOOL isFold;
 
+@property (nonatomic, getter=isLoad) BOOL isLoad;
+
 + (NSArray *)fillFoldInformation:(NSArray *)array;
 @end

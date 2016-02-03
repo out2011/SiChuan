@@ -89,13 +89,13 @@
                                         </connections>
                                     </webView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oxn-xF-k2p">
-                                        <rect key="frame" x="8" y="16" width="304" height="20.5"/>
+                                        <rect key="frame" x="16" y="16" width="288" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="stJ-ug-6O7">
-                                        <rect key="frame" x="8" y="52.5" width="304" height="16"/>
+                                        <rect key="frame" x="16" y="52.5" width="288" height="16"/>
                                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="qDu-8Q-G72"/>
@@ -108,12 +108,12 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="dSq-84-c3o" secondAttribute="bottom" constant="8" id="722-Ta-bRc"/>
                                     <constraint firstItem="Oxn-xF-k2p" firstAttribute="top" secondItem="6dP-M7-3tW" secondAttribute="top" constant="16" id="7Vi-gy-6Az"/>
-                                    <constraint firstAttribute="trailing" secondItem="stJ-ug-6O7" secondAttribute="trailing" constant="8" id="9px-dk-kk2"/>
+                                    <constraint firstAttribute="trailing" secondItem="stJ-ug-6O7" secondAttribute="trailing" constant="16" id="9px-dk-kk2"/>
                                     <constraint firstItem="dSq-84-c3o" firstAttribute="leading" secondItem="6dP-M7-3tW" secondAttribute="leading" constant="8" id="FFu-Cj-njl"/>
-                                    <constraint firstAttribute="trailing" secondItem="Oxn-xF-k2p" secondAttribute="trailing" constant="8" id="GZH-St-11T"/>
-                                    <constraint firstItem="stJ-ug-6O7" firstAttribute="leading" secondItem="6dP-M7-3tW" secondAttribute="leading" constant="8" id="Pio-Q5-IQz"/>
+                                    <constraint firstAttribute="trailing" secondItem="Oxn-xF-k2p" secondAttribute="trailing" constant="16" id="GZH-St-11T"/>
+                                    <constraint firstItem="stJ-ug-6O7" firstAttribute="leading" secondItem="6dP-M7-3tW" secondAttribute="leading" constant="16" id="Pio-Q5-IQz"/>
                                     <constraint firstAttribute="trailing" secondItem="dSq-84-c3o" secondAttribute="trailing" constant="8" id="Vne-XA-ZBX"/>
-                                    <constraint firstItem="Oxn-xF-k2p" firstAttribute="leading" secondItem="6dP-M7-3tW" secondAttribute="leading" constant="8" id="Xue-hM-gti"/>
+                                    <constraint firstItem="Oxn-xF-k2p" firstAttribute="leading" secondItem="6dP-M7-3tW" secondAttribute="leading" constant="16" id="Xue-hM-gti"/>
                                     <constraint firstItem="dSq-84-c3o" firstAttribute="top" secondItem="stJ-ug-6O7" secondAttribute="bottom" id="kyF-Lf-Qj9"/>
                                     <constraint firstItem="stJ-ug-6O7" firstAttribute="top" secondItem="Oxn-xF-k2p" secondAttribute="bottom" constant="16" id="yEd-Dj-RHL"/>
                                 </constraints>
@@ -184,16 +184,22 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="buttonPressed:" destination="FdB-eX-l2B" eventType="touchUpInside" id="y9A-94-VuR"/>
+                                    <action selector="openGuide:" destination="FdB-eX-l2B" eventType="touchUpInside" id="MPu-T0-ncN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zyf-7z-bOZ">
                                 <rect key="frame" x="120" y="40" width="80" height="80"/>
                                 <state key="normal" image="ic_service_traffic"/>
+                                <connections>
+                                    <action selector="openTraffic:" destination="FdB-eX-l2B" eventType="touchUpInside" id="AU4-qD-M74"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D1o-au-L6L">
                                 <rect key="frame" x="220" y="40" width="80" height="80"/>
                                 <state key="normal" image="ic_service_security"/>
+                                <connections>
+                                    <action selector="openSecurity:" destination="FdB-eX-l2B" eventType="touchUpInside" id="SeP-Qb-gay"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6I-6Z-dvF">
                                 <rect key="frame" x="20" y="166" width="80" height="80"/>
@@ -209,14 +215,23 @@
                                         <exclude reference="ZdA-ka-fHf"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="openRules:" destination="FdB-eX-l2B" eventType="touchUpInside" id="ftT-o2-GVM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQ4-dg-3Pq">
                                 <rect key="frame" x="120" y="166" width="80" height="80"/>
                                 <state key="normal" image="ic_service_road"/>
+                                <connections>
+                                    <action selector="openRoad:" destination="FdB-eX-l2B" eventType="touchUpInside" id="Wrv-zy-SlD"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Mc-jr-Siq">
                                 <rect key="frame" x="220" y="166" width="80" height="80"/>
                                 <state key="normal" image="ic_service_fund"/>
+                                <connections>
+                                    <action selector="openFund:" destination="FdB-eX-l2B" eventType="touchUpInside" id="J79-Ha-mMd"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C53-CJ-aUc">
                                 <rect key="frame" x="20" y="292" width="80" height="80"/>
@@ -231,17 +246,24 @@
                                         <exclude reference="o2i-zp-pRi"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="openDoc:" destination="FdB-eX-l2B" eventType="touchUpInside" id="Gc7-or-xxZ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KrO-07-zwG">
                                 <rect key="frame" x="120" y="292" width="80" height="80"/>
                                 <state key="normal" image="ic_service_map"/>
                                 <connections>
+                                    <action selector="pushMap:" destination="FdB-eX-l2B" eventType="touchUpInside" id="rnV-5t-ASU"/>
                                     <segue destination="Z31-jp-qj0" kind="show" id="4ac-ba-eCW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9u-lF-oEf">
                                 <rect key="frame" x="220" y="292" width="80" height="80"/>
                                 <state key="normal" image="ic_service_hall"/>
+                                <connections>
+                                    <action selector="openHoll:" destination="FdB-eX-l2B" eventType="touchUpInside" id="9gt-hK-4oh"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="办事指南" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7r-P4-TE7">
                                 <rect key="frame" x="20" y="128" width="80" height="16"/>
@@ -700,7 +722,6 @@
                                 <connections>
                                     <outlet property="date" destination="21e-6r-RbD" id="xWM-5J-QXT"/>
                                     <outlet property="title" destination="Fpa-3Z-YNe" id="Tba-jc-6R8"/>
-                                    <segue destination="JX0-V2-D0x" kind="show" identifier="fileShowed" id="0HO-lK-TdJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -715,26 +736,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CRM-6J-D4K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1257" y="782"/>
-        </scene>
-        <!--政府文件-->
-        <scene sceneID="Odt-4h-v5D">
-            <objects>
-                <viewController id="JX0-V2-D0x" customClass="FileViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2L6-LJ-rof"/>
-                        <viewControllerLayoutGuide type="bottom" id="cm2-2X-20d"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tWw-W5-k3j">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="政府文件" id="rer-Z2-fEe"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TJ2-FN-6jZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2009" y="782"/>
         </scene>
         <!--Gov Affairs Table View Controller-->
         <scene sceneID="7gt-ca-lqe">

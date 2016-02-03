@@ -179,11 +179,11 @@
     }
 }
 
-- (void)loadDataIsPulldown:(BOOL)isPullDown {
+- (void)loadDataIsPulldown:(BOOL)isPulldown {
     
     NSInteger pages = 1;
     
-    if (!isPullDown) {
+    if (!isPulldown) {
         
         _pages++;
         pages = _pages;
@@ -192,7 +192,7 @@
     __weak typeof(self) weakSelf = self;
     [[ApiManager sharedInstance] requestFocusListWithPages:@(pages) size:kPageSize completeBlock:^(NSDictionary *responseObject, NSError *error) {
         
-        if (!isPullDown) {
+        if (!isPulldown) {
             
             NSArray *newData = responseObject[@"list"];
             [_data addObjectsFromArray:newData];

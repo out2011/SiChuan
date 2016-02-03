@@ -43,13 +43,20 @@ typedef void(^SCGovFileDidCompleteBlock)(NSDictionary *responseObject, NSError *
 // --------------- 政务信息 --------------- //
 /// 人事任免
 static NSString *API_Personnel = @"gov-info/detail?type=1&";
-typedef void(^SCPersonnelDidCompleteBlock)(NSDictionary *responseObject, NSError *error);
+
 /// 公示公告
 static NSString *API_Bulletin = @"gov-info/detail?type=2&";
-typedef void(^SCBulletinDidCompleteBlock)(NSDictionary *responseObject, NSError *error);
+
 /// 招考信息
 static NSString *API_Examination = @"gov-info/detail?type=3&";
-typedef void(^SCExaminationDidCompleteBlock)(NSDictionary *responseObject, NSError *error);
+
+/// 四川统计
+static NSString *API_Statistics = @"gov-info/detail?type=4&";
+
+/// 计划报告
+static NSString *API_Plan = @"gov-info/detail?type=5&";
+
+typedef void(^SCNormalDidCompleteBlock)(NSDictionary *responsObject, NSError *error);
 
 /// 机构职能
 static NSString *API_Organization = @"gov-info/org";
@@ -61,12 +68,6 @@ typedef void(^SCOrgListDidCompleteBlock)(NSArray *responseObject, NSError *error
 static NSString *API_OrgDetail = @"gov-info/orgDetail?";
 typedef void(^SCOrgDetailDidCompleteBlock)(NSArray *responseObject, NSError *error);
 
-/// 四川统计
-static NSString *API_Statistics = @"gov-info/detail?type=4&";
-typedef void(^SCStatisticsDidCompleteBlock)(NSDictionary *responseObject, NSError *error);
-/// 计划报告
-static NSString *API_Plan = @"gov-info/detail?type=5&";
-typedef void(^SCPlanDidCompleteBlock)(NSDictionary *responseObject, NSError *error);
 
 // --------------- 政府领导 --------------- //
 /// 政府领导
@@ -87,8 +88,30 @@ typedef void(^SCPhotoDidCompleteBlock)(NSDictionary *responseObject, NSError *er
 static NSString *API_PhotoDetail = @"photo-sc/detail?";
 typedef void(^SCPhotoDetailDicCompleteBlock)(NSDictionary *responseObject, NSError *error);
 
+// --------------- 办事服务 --------------- //
+///办事指南
+static NSString *url_guide = @"http://egov.sczw.gov.cn/";
 
+/// 公交路线
+static NSString *url_traffic = @"http://cdgjbus.com/index.aspx";
 
+/// 社保查询
+static NSString *url_security = @"http://cdhrss.gov.cn/login.jsp";
+
+/// 交通违章
+static NSString *url_rules = @"http://sc.122.gov.cn";
+
+/// 路况查询
+static NSString *url_road = @"http://www.scjt.gov.cn/";
+
+/// 公积金查询
+static NSString *url_fund = @"http://www.scsjgjj.com/";
+
+/// 办事状态
+static NSString *url_doc = @"http://www.sc.gov.cn/10462/include/bjwqjyj20120228.shtml";
+
+/// 电子政务大厅
+static NSString *url_holl = @"http://3g.sczw.gov.cn/";
 
 @interface ApiManager : NSObject
 

@@ -95,10 +95,7 @@
 
 - (void)headViewDidClickButtn:(TitleView *)head {
     
-    NSInteger index = head.tag - kBaseViewTag;
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:index];
-    
-    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView reloadData];
 }
 
 - (void)initializeDataSource {

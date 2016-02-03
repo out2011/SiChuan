@@ -12,7 +12,6 @@
 		3A17A58A1C55BBBE00E160D0 /* FoldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A17A5891C55BBBE00E160D0 /* FoldTableViewCell.m */; };
 		3A17A5901C55BF8600E160D0 /* TitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A17A58F1C55BF8600E160D0 /* TitleView.m */; };
 		3A17A5951C55C72600E160D0 /* FoldInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A17A5941C55C72600E160D0 /* FoldInfo.m */; };
-		3A2736A21C5605E700AEFDD6 /* FileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2736A11C5605E700AEFDD6 /* FileViewController.m */; };
 		3A2736A81C5610F700AEFDD6 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2736A71C5610F700AEFDD6 /* ProfileViewController.m */; };
 		3A2736AB1C5613A000AEFDD6 /* ProFoldTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2736AA1C5613A000AEFDD6 /* ProFoldTableViewController.m */; };
 		3A2736AE1C5613CC00AEFDD6 /* ProReportTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2736AD1C5613CC00AEFDD6 /* ProReportTableViewController.m */; };
@@ -86,8 +85,6 @@
 		3A17A58F1C55BF8600E160D0 /* TitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleView.m; sourceTree = "<group>"; };
 		3A17A5931C55C72600E160D0 /* FoldInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldInfo.h; sourceTree = "<group>"; };
 		3A17A5941C55C72600E160D0 /* FoldInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldInfo.m; sourceTree = "<group>"; };
-		3A2736A01C5605E700AEFDD6 /* FileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileViewController.h; sourceTree = "<group>"; };
-		3A2736A11C5605E700AEFDD6 /* FileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileViewController.m; sourceTree = "<group>"; };
 		3A2736A61C5610F700AEFDD6 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		3A2736A71C5610F700AEFDD6 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		3A2736A91C5613A000AEFDD6 /* ProFoldTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProFoldTableViewController.h; sourceTree = "<group>"; };
@@ -324,8 +321,6 @@
 			children = (
 				3AE3AFC11C51CC07006D3EA9 /* FileTableViewController.h */,
 				3AE3AFC21C51CC07006D3EA9 /* FileTableViewController.m */,
-				3A2736A01C5605E700AEFDD6 /* FileViewController.h */,
-				3A2736A11C5605E700AEFDD6 /* FileViewController.m */,
 			);
 			name = File;
 			sourceTree = "<group>";
@@ -709,7 +704,6 @@
 				3A3D60541C586FCA00B03D40 /* UIColor+SCColor.m in Sources */,
 				3A2736AB1C5613A000AEFDD6 /* ProFoldTableViewController.m in Sources */,
 				3AFFE3551C50B8B700FB6F84 /* ContentTableViewCell.m in Sources */,
-				3A2736A21C5605E700AEFDD6 /* FileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

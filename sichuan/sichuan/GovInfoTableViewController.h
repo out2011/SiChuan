@@ -10,6 +10,6 @@
 
 @interface GovInfoTableViewController : UITableViewController
 
-@property (nonatomic, assign) NSInteger item;
+@property (nonatomic, assign) NSString *api;
 
 @end

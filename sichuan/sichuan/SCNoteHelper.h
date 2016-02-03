@@ -12,4 +12,5 @@
 
 + (NSString *)noteWithDate:(NSString *)date from:(NSString *)from;
 
++ (NSInteger)imagesNumber:(NSString *)data;
 @end

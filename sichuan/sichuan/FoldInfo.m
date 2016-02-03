@@ -33,10 +33,6 @@
         info.nId = dic[@"nid"];
         info.isFold = YES;
         
-        if (i == 0) {
-            info.isFold = NO;
-        }
-        
         [result addObject:info];
     }
     

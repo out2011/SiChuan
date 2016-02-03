@@ -25,4 +25,13 @@
     return [NSString stringWithFormat:@"%@   来源: %@", result, from];
 }
 
++ (NSInteger)imagesNumber:(NSString *)data {
+    
+    NSArray *images = [data componentsSeparatedByString:@"IMG"];
+    
+    return images.count;
+}
+
+
+
 @end

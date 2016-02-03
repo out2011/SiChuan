@@ -21,6 +21,7 @@
 @interface OrganizationTableViewController ()<TitleSectionDeleget>
 
 @property (nonatomic, strong) NSArray *info;
+@property (nonatomic, strong) NSMutableDictionary *items;
 
 @end
 
@@ -32,34 +33,14 @@
     
     //让cell自适应高度
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    _items = [NSMutableDictionary dictionary];
     
-    [self refresh];
     [self initializeDataSource];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - refresh
-- (void)refresh {
-    
-    __unsafe_unretained UITableView *tableView = self.tableView;
-    
-    // 下拉刷新
-    tableView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        // 模拟延迟加载数据，因此2秒后才调用（真实开发中，可以移除这段gcd代码）
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            // 结束刷新
-            [tableView.mj_header endRefreshing];
-        });
-    }];
-    
-    // 设置自动切换透明度(在导航栏下面自动隐藏)
-    tableView.mj_header.automaticallyChangeAlpha = YES;
-    
-    tableView.mj_header.backgroundColor = [UIColor colorWithRGB:0xF0F0F0];
 }
 
 
@@ -72,7 +53,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 1;
+    NSString *key = [NSString stringWithFormat:@"%ld", section];
+    NSArray *items = _items[key];
+    return items.count;
 }
 
 
@@ -84,9 +67,10 @@
         cell = [[FoldTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"OrganizationCell"];
     }
     
-    FoldInfo *info = _info[indexPath.section];
-    
-    cell.contentLable.text = info.information;
+    NSString *key = [NSString stringWithFormat:@"%ld", indexPath.section];
+    NSArray *array = _items[key];
+    NSDictionary *dic = array[indexPath.row];
+    cell.contentLable.text = dic[@"title"];
     
     // Configure the cell...
     
@@ -116,19 +100,14 @@
         return 0;
     }
     
-    NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:16]};
-    NSStringDrawingOptions option = (NSStringDrawingOptions)(NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading);
-    CGSize size = [info.information boundingRectWithSize:CGSizeMake(kWidth - 16, 100000) options:option attributes:attribute context:nil].size;
-    
-    return size.height + 20;
+    return 45;
 }
 
 - (void)headViewDidClickButtn:(TitleView *)head {
     
-    NSInteger index = head.tag - kBaseViewTag;
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:index];
     
-    [self.tableView reloadSections:@[@"index"] withRowAnimation:UITableViewRowAnimationMiddle];
+    NSInteger index = head.tag - kBaseViewTag;
+    [self requestItemWithIndex:index];
 }
 
 #pragma mark - data source
@@ -141,7 +120,25 @@
     }];
 }
 
+- (void)requestItemWithIndex:(NSInteger)index {
+    
+    FoldInfo *info = _info[index];
+    
+    if (info.isLoad) {
+        
+        [self.tableView reloadData];
+        return;
+    }
+    
+    [[ApiManager sharedInstance] requestOrgListWithPname:info.title completeBlock:^(NSArray *responseObject, NSError *error) {
+        
+        info.isLoad = YES;
+        [_items setObject:responseObject forKey:[NSString stringWithFormat:@"%ld", index]];
+        NSLog(@"%@", responseObject);
 
+        [self.tableView reloadData];
+    }];
+}
 
 
 

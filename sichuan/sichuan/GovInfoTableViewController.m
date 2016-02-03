@@ -10,9 +10,18 @@
 #import "FileTableViewCell.h"
 #import "MJRefresh.h"
 #import "UIColor+SCColor.h"
-
+#import "ApiManager+GovAffairs.h"
+#import "SCCompareHelper.h"
+#import "SCNoteHelper.h"
+#import "ArticlesViewController.h"
 
 @interface GovInfoTableViewController ()
+
+@property (nonatomic, assign) NSInteger pages;
+
+@property (nonatomic, strong) NSMutableArray *data;
+
+@property (nonatomic, strong) NSUserDefaults *defaults;
 
 @end
 
@@ -22,6 +31,8 @@
     [super viewDidLoad];
     
     [self refresh];
+    [self initializeDataSource];
+    [self loadDataIsPulldown:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,11 +47,8 @@
     
     // 下拉刷新
     tableView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        // 模拟延迟加载数据，因此2秒后才调用（真实开发中，可以移除这段gcd代码）
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            // 结束刷新
-            [tableView.mj_header endRefreshing];
-        });
+        
+        [self loadDataIsPulldown:YES];
     }];
     
     // 设置自动切换透明度(在导航栏下面自动隐藏)
@@ -48,11 +56,8 @@
     
     // 上拉刷新
     tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        // 模拟延迟加载数据，因此2秒后才调用（真实开发中，可以移除这段gcd代码）
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            // 结束刷新
-            [tableView.mj_footer endRefreshing];
-        });
+        
+        [self loadDataIsPulldown:NO];
     }];
     
     tableView.mj_header.backgroundColor = [UIColor colorWithRGB:0xF0F0F0];
@@ -69,7 +74,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 10;
+    return _data.count;
 }
 
 
@@ -82,51 +87,87 @@
         cell = [[FileTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GovInfoCell"];
     }
     // Configure the cell...
-    
-    cell.title.text = @"xxxx出事了";
+    NSDictionary *dic = _data[indexPath.row];
+    cell.title.text = dic[@"title"];
+    cell.date.text = [SCNoteHelper noteWithDate:dic[@"publishDatetime"] from:dic[@"contentSource"]];
     
     return cell;
 }
-
-
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return 65;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    ArticlesViewController *articlesVC = [storyboard instantiateViewControllerWithIdentifier:@"ArticlesViewController"];
+    articlesVC.title = self.title;
+    articlesVC.data = _data[0];
+    
+    [self.navigationController pushViewController:articlesVC animated:YES];
+
+    
+}
+
+#pragma mark - request
+
 - (void)initializeDataSource {
     
+    _defaults = [NSUserDefaults standardUserDefaults];
+    _data = [NSMutableArray array];
     
+    if (![_defaults objectForKey:_api]) {
+        
+        self.data = [NSMutableArray array];
+    }
+    else {
+        
+        self.data = [[_defaults objectForKey:_api] mutableCopy];
+        [self.tableView reloadData];
+    }
 }
 
 - (void)loadDataIsPulldown:(BOOL)isPulldown {
     
-        switch (_item) {
-            case 0: { ///人事任免
-                
+    NSInteger pages = 1;
     
-            }
-                break;
-            case 1: { ///公示公告
-                
-            }
-                break;
-            case 2: { ///招考信息
-                
-            }
-                break;
-            case 4: { ///四川统计
-                
-            }
-                break;
-            case 5: { ///计划报告
-                
-            }
-                break;
-            default:
-                break;
+    if (!isPulldown) {
+        
+        _pages++;
+        pages = _pages;
+    }
+    
+    __weak typeof(self) weakSelf = self;
+    [[ApiManager sharedInstance] requestNormalWithPages:@(pages) size:kPageSize api:_api completeBlock:^(NSDictionary *responseObject, NSError *error) {
+        
+        if (!isPulldown) {
+            
+            NSArray *newData = responseObject[@"list"];
+            [_data addObjectsFromArray:newData];
+            
+            [weakSelf.tableView.mj_footer endRefreshing];
         }
+        else {
+            
+            if (_data.count > 0 && [SCCompareHelper compareNIdWithData:_data withIdentifier:_api]) {
+                
+                [weakSelf.tableView.mj_header endRefreshing];
+                return;
+            }
+            _data = [responseObject[@"list"] mutableCopy];
+            [weakSelf.tableView.mj_header endRefreshing];
+        }
+        
+        if ([responseObject[@"firstPage"] isEqualToNumber:@(1)]) {
+            
+            [_defaults setObject:_data forKey:_api];
+        }
+        [weakSelf.tableView reloadData];
+    }];
+
 }
 
 @end

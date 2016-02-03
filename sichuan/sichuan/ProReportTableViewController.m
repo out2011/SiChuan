@@ -110,6 +110,7 @@
     ArticlesViewController *articlesVC = [ArticlesViewHelper articlesViewController];
     
     articlesVC.title = self.title;
+    articlesVC.data = _data[indexPath.row];
     
     [self.navigationController pushViewController:articlesVC animated:YES];
 }
@@ -192,7 +193,7 @@
     }
     else {
         
-        if (_data.count > 0 && [SCCompareHelper compareNewData:_data withIdentifier:identifier]) {
+        if (_data.count > 0 && [SCCompareHelper compareNIdWithData:_data withIdentifier:identifier]) {
             
             [self.tableView.mj_header endRefreshing];
             return;
