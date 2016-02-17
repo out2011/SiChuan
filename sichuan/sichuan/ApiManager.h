@@ -113,6 +113,10 @@ static NSString *url_doc = @"http://www.sc.gov.cn/10462/include/bjwqjyj20120228.
 /// 电子政务大厅
 static NSString *url_holl = @"http://3g.sczw.gov.cn/";
 
+/// 地图服务
+static NSString *API_Address = @"contacts";
+typedef void(^SCAddressDicCompleteBlock)(NSArray *responseObject, NSError *error);
+
 @interface ApiManager : NSObject
 
 @property (nonatomic, strong) AFHTTPSessionManager *sessionManager;

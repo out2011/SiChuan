@@ -38,31 +38,31 @@
     GovInfoTableViewController *infoVC = [segue destinationViewController];
     
     switch (index) {
-        case 0:{
+        case 0:{ // 人事任免
             
             infoVC.title = titles[index];
             infoVC.api = API_Personnel;
         }
             break;
-        case 1:{
+        case 1:{ // 公示公告
             
             infoVC.title = titles[index];
             infoVC.api = API_Bulletin;
         }
             break;
-        case 2:{
+        case 2:{ // 招考信息
             
             infoVC.title = titles[index];
             infoVC.api = API_Examination;
         }
             break;
-        case 4:{
+        case 4:{ // 四川统计
             
             infoVC.title = titles[index];
             infoVC.api = API_Statistics;
         }
             break;
-        case 5:{
+        case 5:{ // 计划报告
             
             infoVC.title = titles[index];
             infoVC.api = API_Plan;
@@ -79,7 +79,6 @@
     return 50;
 }
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Information" ofType:@"plist"];
@@ -88,9 +87,6 @@
     
     GovInfoTableViewController *infoVC;
     infoVC.title = titles[indexPath.row];
-    
-    
-    
-    
 }
+
 @end

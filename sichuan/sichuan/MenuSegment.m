@@ -7,6 +7,7 @@
 //
 
 #import "MenuSegment.h"
+#import "UIColor+SCColor.h"
 
 #define kButtonWidth [UIScreen mainScreen].bounds.size.width / 4
 #define kBaseTag 1000
@@ -35,6 +36,7 @@
     self.showsHorizontalScrollIndicator = NO;
     self.contentSize = CGSizeMake(kButtonWidth * _titles.count, 44);
     self.contentOffset = CGPointZero;
+    self.backgroundColor = [UIColor colorWithRGB:0xFFE9B8];
     
     if (_titles.count > 0) {
         

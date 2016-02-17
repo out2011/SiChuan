@@ -13,9 +13,11 @@
 #import "MJRefresh.h"
 #import "UIColor+SCColor.h"
 #import "ApiManager+GovAffairs.h"
+#import "ArticlesViewHelper.h"
+#import "SCBackItem.h"
 
 #define kBaseViewTag 100
-
+#define kTitle @"机构职能"
 #define kWidth [UIScreen mainScreen].bounds.size.width
 
 @interface OrganizationTableViewController ()<TitleSectionDeleget>
@@ -30,6 +32,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.backBarButtonItem = [[SCBackItem alloc] init];
     
     //让cell自适应高度
     self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -77,6 +81,21 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSArray *array = [_items objectForKey:[NSString stringWithFormat:@"%ld", indexPath.section]];
+    NSDictionary *data = array[indexPath.row];
+    
+    ArticlesViewController *articlesVC = [ArticlesViewHelper articlesViewController];
+    articlesVC.api = API_OrgDetail;
+    articlesVC.nID = data[@"nID"];
+    articlesVC.title = kTitle;
+    
+    [self.navigationController pushViewController:articlesVC animated:YES];
+    NSLog(@"%ld", indexPath.row);
+}
+
+#pragma mark - table view delegate
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     TitleView *head = [[TitleView alloc] init];
@@ -120,6 +139,7 @@
     }];
 }
 
+/// 分段数据请求
 - (void)requestItemWithIndex:(NSInteger)index {
     
     FoldInfo *info = _info[index];

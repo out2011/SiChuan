@@ -16,6 +16,8 @@
 #import "SCCompareHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
+#define kBaseButtonTag 200
+
 @interface LeaderTableViewController ()
 
 @property (nonatomic, strong) NSMutableArray *data;
@@ -35,29 +37,30 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    LeaderTableViewCell *cell = (LeaderTableViewCell *)sender;
-    NSInteger index = [self.tableView indexPathForCell:cell].row;
-    NSDictionary *dic = _data[index];
+    
     
     if ([segue.identifier isEqualToString:@"leaderInfoShowed"]) {
-        
+        LeaderTableViewCell *cell = (LeaderTableViewCell *)sender;
+        NSInteger index = [self.tableView indexPathForCell:cell].row;
+        NSDictionary *dic = _data[index];
         LeaderInfoViewController *infoVC = [segue destinationViewController];
         infoVC.information = dic[@"resume"];
     }
     else {
-        
+        UIButton *button = (UIButton *)sender;
         ActivityTableViewController *activityVC = [segue destinationViewController];
-        activityVC.nId = dic[@"nID"];
         
         if ([segue.identifier isEqualToString:@"activityShowed"]) {
-            
+            NSDictionary *dic = _data[(button.tag - kBaseButtonTag) / 2];
             activityVC.title = @"主要活动";
             activityVC.isSpeech = NO;
+            activityVC.nId = dic[@"nID"];
         }
         else {
-            
+            NSDictionary *dic = _data[(button.tag - kBaseButtonTag - 1) / 2];
             activityVC.title = @"工作讲话";
             activityVC.isSpeech = YES;
+            activityVC.nId = dic[@"nID"];
         }
     }
 }
@@ -106,8 +109,9 @@
     [cell.portraits sd_setImageWithURL:[NSURL URLWithString:dic[@"avatarPath"]]];
     cell.title.text = [NSString stringWithFormat:@"%@:%@", dic[@"position"], dic [@"leaderName"]];
     cell.message.text = dic[@"resume"];
-//    cell.activity.tag = kBaseButtonTag + indexPath.row * 2;
-//    cell.speech.tag = kBaseButtonTag + indexPath.row * 2 + 1;
+    cell.activity.tag = kBaseButtonTag + indexPath.row * 2;
+    cell.speech.tag = kBaseButtonTag + indexPath.row * 2 + 1;
+    cell.tag = kBaseButtonTag + indexPath.row;
     
     return cell;
 }

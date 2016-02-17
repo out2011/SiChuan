@@ -14,6 +14,7 @@
 #import "SCCompareHelper.h"
 #import "SCNoteHelper.h"
 #import "ArticlesViewController.h"
+#import "SCBackItem.h"
 
 @interface GovInfoTableViewController ()
 
@@ -29,6 +30,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.backBarButtonItem = [[SCBackItem alloc] init];
     
     [self refresh];
     [self initializeDataSource];

@@ -11,7 +11,7 @@
 @interface ApiManager (GovAffairs)
 
 /**
- *
+ *  通用
  *
  *  @param pno 页数 psize 容量
  *  @param completeBlock 結果
@@ -45,5 +45,15 @@
 - (NSURLSessionDataTask *)requestOrgListWithPname:(NSString *)pname
                                     completeBlock:(SCOrgListDidCompleteBlock)completeBlock;
 
+/**
+ *  机构职能详情
+ *
+ *  @param nid 条目编号
+ *  @param completeBlock 結果
+ *
+ *  @return task
+ */
+- (NSURLSessionDataTask *)requestOrgDetailWithNId:(NSNumber *)NId
+                                    completeBlock:(SCOrgDetailDidCompleteBlock)completeBlock;
 
 @end

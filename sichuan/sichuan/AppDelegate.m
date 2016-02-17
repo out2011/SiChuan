@@ -7,16 +7,32 @@
 //
 
 #import "AppDelegate.h"
+#import <BaiduMapAPI_Map/BMKMapComponent.h>
+#import <BaiduMapAPI_Cloud/BMKCloudSearchComponent.h>
 
-@interface AppDelegate ()
+
+
+@interface AppDelegate ()<BMKGeneralDelegate>
 
 @end
+
+BMKMapManager *_mapManager;
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    _mapManager = [[BMKMapManager alloc] init];
+    
+    BOOL ret = [_mapManager start:@"VTc505oSe4g68Onk2eLsMKq8" generalDelegate:self];
+    
+    if (ret) {
+        
+        NSLog(@"地图加载成功");
+    }
+    
     return YES;
 }
 
@@ -41,5 +57,29 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma mark - Memory management
+
+- (void)onGetNetworkState:(int)iError
+{
+    if (0 == iError) {
+        NSLog(@"联网成功");
+    }
+    else{
+        NSLog(@"onGetNetworkState %d",iError);
+    }
+    
+}
+
+- (void)onGetPermissionState:(int)iError
+{
+    if (0 == iError) {
+        NSLog(@"授权成功");
+    }
+    else {
+        NSLog(@"onGetPermissionState %d",iError);
+    }
+}
+
 
 @end

@@ -12,6 +12,9 @@
 		3A17A58A1C55BBBE00E160D0 /* FoldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A17A5891C55BBBE00E160D0 /* FoldTableViewCell.m */; };
 		3A17A5901C55BF8600E160D0 /* TitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A17A58F1C55BF8600E160D0 /* TitleView.m */; };
 		3A17A5951C55C72600E160D0 /* FoldInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A17A5941C55C72600E160D0 /* FoldInfo.m */; };
+		3A19E9201C74703B0039A57F /* ApiManager+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A19E91F1C74703B0039A57F /* ApiManager+Service.m */; };
+		3A19E9261C7474DB0039A57F /* AddressTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A19E9251C7474DB0039A57F /* AddressTableViewController.m */; };
+		3A19E92C1C7476B60039A57F /* AddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A19E92B1C7476B60039A57F /* AddressTableViewCell.m */; };
 		3A2736A81C5610F700AEFDD6 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2736A71C5610F700AEFDD6 /* ProfileViewController.m */; };
 		3A2736AB1C5613A000AEFDD6 /* ProFoldTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2736AA1C5613A000AEFDD6 /* ProFoldTableViewController.m */; };
 		3A2736AE1C5613CC00AEFDD6 /* ProReportTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2736AD1C5613CC00AEFDD6 /* ProReportTableViewController.m */; };
@@ -85,6 +88,12 @@
 		3A17A58F1C55BF8600E160D0 /* TitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleView.m; sourceTree = "<group>"; };
 		3A17A5931C55C72600E160D0 /* FoldInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldInfo.h; sourceTree = "<group>"; };
 		3A17A5941C55C72600E160D0 /* FoldInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldInfo.m; sourceTree = "<group>"; };
+		3A19E91E1C74703B0039A57F /* ApiManager+Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ApiManager+Service.h"; sourceTree = "<group>"; };
+		3A19E91F1C74703B0039A57F /* ApiManager+Service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ApiManager+Service.m"; sourceTree = "<group>"; };
+		3A19E9241C7474DB0039A57F /* AddressTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressTableViewController.h; sourceTree = "<group>"; };
+		3A19E9251C7474DB0039A57F /* AddressTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressTableViewController.m; sourceTree = "<group>"; };
+		3A19E92A1C7476B60039A57F /* AddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressTableViewCell.h; sourceTree = "<group>"; };
+		3A19E92B1C7476B60039A57F /* AddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressTableViewCell.m; sourceTree = "<group>"; };
 		3A2736A61C5610F700AEFDD6 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		3A2736A71C5610F700AEFDD6 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		3A2736A91C5613A000AEFDD6 /* ProFoldTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProFoldTableViewController.h; sourceTree = "<group>"; };
@@ -260,6 +269,8 @@
 				3A29A7661C5B463C005AD06B /* ApiManager+Leader.m */,
 				3A29A75F1C5B10B5005AD06B /* ApiManager+Photo.h */,
 				3A29A7601C5B10B5005AD06B /* ApiManager+Photo.m */,
+				3A19E91E1C74703B0039A57F /* ApiManager+Service.h */,
+				3A19E91F1C74703B0039A57F /* ApiManager+Service.m */,
 			);
 			name = NetWorking;
 			sourceTree = "<group>";
@@ -365,6 +376,8 @@
 			children = (
 				3AE3AFDB1C5211DA006D3EA9 /* ServiceViewController.h */,
 				3AE3AFDC1C5211DA006D3EA9 /* ServiceViewController.m */,
+				3A19E9241C7474DB0039A57F /* AddressTableViewController.h */,
+				3A19E9251C7474DB0039A57F /* AddressTableViewController.m */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -466,6 +479,8 @@
 				3A17A5891C55BBBE00E160D0 /* FoldTableViewCell.m */,
 				3A17A58E1C55BF8600E160D0 /* TitleView.h */,
 				3A17A58F1C55BF8600E160D0 /* TitleView.m */,
+				3A19E92A1C7476B60039A57F /* AddressTableViewCell.h */,
+				3A19E92B1C7476B60039A57F /* AddressTableViewCell.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -689,12 +704,15 @@
 				3AE3AFD91C5200FE006D3EA9 /* PictureTableViewController.m in Sources */,
 				3A17A5901C55BF8600E160D0 /* TitleView.m in Sources */,
 				3A3D604E1C5856D300B03D40 /* ActivityTableViewController.m in Sources */,
+				3A19E92C1C7476B60039A57F /* AddressTableViewCell.m in Sources */,
 				3A3D607E1C58B0BE00B03D40 /* ApiManager+Focus.m in Sources */,
 				3A29A75E1C5AF15E005AD06B /* ApiManager+Profile.m in Sources */,
 				3AA3416C1C59B0F40084F94B /* SCCompareHelper.m in Sources */,
 				3AFFE3121C50691900FB6F84 /* AppDelegate.m in Sources */,
+				3A19E9201C74703B0039A57F /* ApiManager+Service.m in Sources */,
 				3A2736A81C5610F700AEFDD6 /* ProfileViewController.m in Sources */,
 				3A2736AE1C5613CC00AEFDD6 /* ProReportTableViewController.m in Sources */,
+				3A19E9261C7474DB0039A57F /* AddressTableViewController.m in Sources */,
 				3AE3AFDD1C5211DA006D3EA9 /* ServiceViewController.m in Sources */,
 				3AFFE30F1C50691900FB6F84 /* main.m in Sources */,
 				3A17A58A1C55BBBE00E160D0 /* FoldTableViewCell.m in Sources */,

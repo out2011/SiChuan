@@ -9,6 +9,7 @@
 #import "ArticlesViewController.h"
 #import "SCNoteHelper.h"
 #import "ApiManager+Photo.h"
+#import "ApiManager+GovAffairs.h"
 
 #define kScreenW [UIScreen mainScreen].bounds.size.width
 
@@ -21,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIWebView *contentView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewWidth;
 
 @end
 
@@ -28,6 +30,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _webViewWidth.constant = kScreenW - 16;
     
     [self initializeDataSource];
     [self initializeInterface];
@@ -37,6 +41,16 @@
 - (void)initializeDataSource {
     
     if (!self.data) {
+        
+        if ([self.api isEqualToString:API_OrgDetail]) {
+            
+            [[ApiManager sharedInstance] requestOrgDetailWithNId:self.nID completeBlock:^(NSArray *responseObject, NSError *error) {
+                
+                _data = [responseObject copy];
+                [self initializeInterface];
+            }];
+            return;
+        }
         
         [[ApiManager sharedInstance] requestPhotoDetailWithNId:self.nID completeBlock:^(NSDictionary *responseObject, NSError *error) {
             
@@ -49,10 +63,11 @@
 - (void)initializeInterface {
     
     self.titleLabel.text = _data[@"title"];
-    self.noteLabel.text = [SCNoteHelper noteWithDate:_data[@"publishDatetime"] from:_data [@"contentSource"]];
+    self.noteLabel.text = [SCNoteHelper noteWithDate:_data[@"publishDatetime"] from:_data[@"contentSource"]];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-    _contentView.userInteractionEnabled = NO;
+//    _contentView.userInteractionEnabled = NO;
+    _contentView.scrollView.scrollEnabled = NO;
     [_contentView loadHTMLString:_data[@"content"] baseURL:[NSURL URLWithString:@""]];
 }
 
@@ -80,7 +95,7 @@
     
     NSLog(@"count: %ld", count);
     
-    _webViewHeight.constant = _contentView.scrollView.contentSize.height - 30 * (count - 1);
+    _webViewHeight.constant = _contentView.scrollView.contentSize.height;// - 30 * (count - 1);
     _backgroundView.contentOffset = CGPointMake(0, 0);
 }
 

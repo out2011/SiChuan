@@ -17,5 +17,12 @@
 
 @property (nonatomic, getter=isLoad) BOOL isLoad;
 
+/**
+ *  分组列表数据填充
+ *
+ *  @param array json
+ *
+ *  @return array
+ */
 + (NSArray *)fillFoldInformation:(NSArray *)array;
 @end

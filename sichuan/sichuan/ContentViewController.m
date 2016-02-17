@@ -96,17 +96,8 @@
         
         for (UIViewController *vc in self.childViewControllers) {
             
+            [vc.view removeFromSuperview];
             [vc removeFromParentViewController];
-        }
-    }
-    if (self.view.subviews.count > 0) {
-        
-        for (int i = 0; i < self.view.subviews.count; i++) {
-            
-            if ([self.view.subviews[i] isKindOfClass:[UIView class]]) {
-                
-                [self.view.subviews[i] removeFromSuperview];
-            }
         }
     }
     

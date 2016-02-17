@@ -37,7 +37,7 @@
     if (self) {
         
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(8, 49, kScreenW - 8, 1)];
-        view.backgroundColor = [UIColor colorWithRGB:0x111111];
+        view.backgroundColor = [UIColor colorWithRGB:0xE0E0E0];
         [self addSubview:view];
         
         // 添加button

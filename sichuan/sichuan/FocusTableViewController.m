@@ -19,6 +19,7 @@
 #import "SCNoteHelper.h"
 
 #define kTitle @"聚焦四川"
+#define kScreenW [UIScreen mainScreen].bounds.size.width
 
 @interface FocusTableViewController ()
 
@@ -135,10 +136,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == 0) {
-        return 150;
+        return kScreenW / 16 * 9;
     }
     else {
-        return 65;
+        return 66;
     }
 }
 

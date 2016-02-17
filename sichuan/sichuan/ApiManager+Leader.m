@@ -31,7 +31,7 @@
                                             size:(NSNumber *)size
                                    completeBlock:(SCActivityDidCompleteBlock)completeBlock {
     
-    NSDictionary *parameters = @{@"nID": nId, @"pno": pages, @"psize": size};
+    NSDictionary *parameters = @{@"nid": nId, @"pno": pages, @"psize": size};
     
     NSURLSessionDataTask *task = [self post:API_Activity parameters:parameters completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
         
@@ -50,7 +50,7 @@
                                           size:(NSNumber *)size
                                  completeBlock:(SCSpeechDidCompleteBlock)completeBlock {
     
-    NSDictionary *parameters = @{@"nId": nId, @"pno": pages, @"psize": size};
+    NSDictionary *parameters = @{@"nid": nId, @"pno": pages, @"psize": size};
     
     NSURLSessionDataTask *task = [self post:API_Speech parameters:parameters completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
         

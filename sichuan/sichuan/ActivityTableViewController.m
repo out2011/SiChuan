@@ -7,13 +7,13 @@
 //
 
 #import "ActivityTableViewController.h"
-#import "ContentTableViewCell.h"
 #import "MJRefresh.h"
 #import "UIColor+SCColor.h"
 #import "ApiManager+Leader.h"
 #import "SCCompareHelper.h"
 #import "FileTableViewCell.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import "ArticlesViewHelper.h"
+#import "SCBackItem.h"
 
 @interface ActivityTableViewController ()
 
@@ -30,7 +30,7 @@
     [super viewDidLoad];
     
     _pages = 1;
-    
+    self.navigationItem.backBarButtonItem = [[SCBackItem alloc] init];
     [self refresh];
     [self initializeDataSource];
     [self loadDataIsPulldown:YES];
@@ -60,8 +60,15 @@
     tableView.mj_footer.backgroundColor = [UIColor colorWithRGB:0xF0F0F0];
 }
 
-#pragma mark - Table view data source
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    ArticlesViewController *articlesVC = [ArticlesViewHelper articlesViewController];
+    articlesVC.data = _data[indexPath.row];
+    articlesVC.title = self.title;
+    [self.navigationController pushViewController:articlesVC animated:YES];
+}
 
+#pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
     return 1;
@@ -77,21 +84,6 @@
     
     NSDictionary *dic = _data[indexPath.row];
     
-    if ([[dic objectForKey:@"isPic"] isEqualToNumber:@(1)]) { /// 有图状态下
-        
-        ContentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"activityCell"];
-        if (!cell) {
-            
-            cell = [[ContentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"activityCell"];
-        }
-        
-        [cell.image sd_setImageWithURL:[NSURL URLWithString:[dic objectForKey:@"imagePath"]]];
-        cell.title.text = [dic objectForKey:@"title"];
-        cell.date.text = [dic objectForKey:@"publishDatetime"];
-        return cell;
-    }
-    else { /// 无图状态下
-        
         FileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detailsCell"];
         if (!cell) {
             
@@ -102,7 +94,6 @@
         cell.date.text = [dic objectForKey:@"publishDatetime"];
         
         return cell;
-    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -180,6 +171,8 @@
 
 - (void)fillDatawithIdentifier:(NSString *)identifier isPulldown:(BOOL)isPulldown responseObject:(NSDictionary *)responseObject {
     
+    NSString *key = [NSString stringWithFormat:@"%@%@", identifier, self.nId];
+    
     if (!isPulldown) {
         
         NSArray *newData = [responseObject objectForKey:@"list"];
@@ -189,7 +182,7 @@
     }
     else {
         
-        if (_data.count > 0 && [SCCompareHelper compareNewData:_data withIdentifier:identifier]) {
+        if (_data.count > 0 && [SCCompareHelper compareNewData:_data withIdentifier:key]) {
             
             [self.tableView.mj_header endRefreshing];
             return;
@@ -200,7 +193,6 @@
     
     if ([[responseObject objectForKey:@"firstPage"] isEqualToNumber:@(1)]) {
         
-        NSString *key = [NSString stringWithFormat:@"%@%@", identifier, self.nId];
         [_defaults setObject:_data forKey:key];
     }
 

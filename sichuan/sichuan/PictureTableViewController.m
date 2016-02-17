@@ -18,6 +18,7 @@
 #import "ArticlesViewController.h"
 
 #define kTitle @"图说四川"
+#define kScreenW [UIScreen mainScreen].bounds.size.width
 
 @interface PictureTableViewController ()
 
@@ -112,10 +113,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == 0) {
-        return 150;
+        return kScreenW / 16 * 9;
     }
     else {
-        return 65;
+        return 66;
     }
 }
 
