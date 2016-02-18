@@ -10,6 +10,7 @@
 #import "SCNoteHelper.h"
 #import "ApiManager+Photo.h"
 #import "ApiManager+GovAffairs.h"
+#import "NSString+SCString.h"
 
 #define kScreenW [UIScreen mainScreen].bounds.size.width
 
@@ -66,37 +67,76 @@
     self.noteLabel.text = [SCNoteHelper noteWithDate:_data[@"publishDatetime"] from:_data[@"contentSource"]];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-//    _contentView.userInteractionEnabled = NO;
+    //    _contentView.userInteractionEnabled = NO;
     _contentView.scrollView.scrollEnabled = NO;
-    [_contentView loadHTMLString:_data[@"content"] baseURL:[NSURL URLWithString:@""]];
+    
+    if (_data[@"content"]) {
+        
+        [_contentView loadHTMLString:_data[@"content"] baseURL:[NSURL URLWithString:@""]];
+    }
+    else {
+        
+        [_contentView loadHTMLString:_data[@"resume"] baseURL:[NSURL URLWithString:@""]];
+    }
 }
 
 #pragma  mark - web view delegate
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     
-    NSString *jsCode = [NSString stringWithFormat:@"var script = document.createElement('script');"
-                        "script.type = 'text/javascript';"
-                        "script.text = \"function ResizeImages() { "
-                        "var myimg,oldwidth;"
-                        "var maxwidth=%f;" //缩放系数
-                        "for(i=0;i <document.images.length;i++){"
-                        "myimg = document.images[i];"
-                        "oldwidth = myimg.width;"
-                        "myimg.width = maxwidth;"
-                        "}"
-                        "}\";"
-                        "document.getElementsByTagName('head')[0].appendChild(script);", kScreenW - 32];
-    //拦截网页图片  并修改图片大小
-    [webView stringByEvaluatingJavaScriptFromString:jsCode];
+    NSLog(@"%@", _data);
     
+    NSString *fixImage = [NSString stringWithFormat:@"var script = document.createElement('script');"
+                          "script.type = 'text/javascript';"
+                          "script.text = \"function ResizeImages() { "
+                          "var myimg;"
+                          "var maxwidth=%f;" //缩放系数
+                          "for(i=0;i <document.images.length;i++){"
+                          "myimg = document.images[i];"
+                          "myimg.width = maxwidth;"
+                          "}"
+                          "}\";"
+                          "document.getElementsByTagName('head')[0].appendChild(script);", kScreenW - 32];
+    //拦截网页图片  并修改图片大小
+    [webView stringByEvaluatingJavaScriptFromString:fixImage];
     [_contentView stringByEvaluatingJavaScriptFromString:@"ResizeImages();"];
     
-    NSInteger count = [SCNoteHelper imagesNumber:_data[@"content"]];
+    NSString *fixVideo = [NSString stringWithFormat:@"var script = document.createElement('script');"
+                          "script.type = 'text/javascript';"
+                          "script.text = \"function ResizeVideo() { "
+                          "var myIframe = document.getElementsByTagName('iframe')[0];"
+                          "var maxWidth=%f;" //缩放系数
+                          "myIframe.style.width = maxWidth;"
+                          "myIframe.style.height = maxWidth / 4 * 3;"
+                          "}\";"
+                          "document.getElementsByTagName('DIV')[0].appendChild(script);", kScreenW - 32];
+    [webView stringByEvaluatingJavaScriptFromString:fixVideo];
+    [_contentView stringByEvaluatingJavaScriptFromString:@"ResizeVideo();"];
     
-    NSLog(@"count: %ld", count);
+    // 重置web view高度
+    NSString *height_str= [webView stringByEvaluatingJavaScriptFromString: @"document.body.offsetHeight"];
+    _webViewHeight.constant = [height_str integerValue] + 16;
     
-    _webViewHeight.constant = _contentView.scrollView.contentSize.height;// - 30 * (count - 1);
     _backgroundView.contentOffset = CGPointMake(0, 0);
 }
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    
+    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+        NSURL *url = [request URL];
+        NSString *curUrl= [url absoluteString];
+        
+        NSString *suffix = [curUrl substringFromIndex:curUrl.length - 3];
+        
+        if ([suffix isImageSuffix]) {
+            
+            return NO;
+        }
+        
+        return YES;
+    }
+    
+    return YES;
+}
+
 
 @end

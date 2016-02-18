@@ -48,7 +48,7 @@
     __unsafe_unretained UITableView *tableView = self.tableView;
     
     // 下拉刷新
-    tableView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         [self loadDataIsPulldown:YES];
     }];
@@ -107,15 +107,7 @@
     
     ArticlesViewController *articlesVC = [storyboard instantiateViewControllerWithIdentifier:@"ArticlesViewController"];
     articlesVC.title = kTitle;
-    
-    if (indexPath.row == 0) {
-        
-        articlesVC.data = _data[0];
-    }
-    else {
-        
-        articlesVC.data = _data[indexPath.row - 1];
-    }
+    articlesVC.data = _data[indexPath.row];
     
     [self.navigationController pushViewController:articlesVC animated:YES];
 

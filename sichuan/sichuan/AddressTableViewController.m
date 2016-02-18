@@ -8,9 +8,18 @@
 
 #import "AddressTableViewController.h"
 #import "AddressTableViewCell.h"
+#import "ApiManager+Service.h"
+#import "MJRefresh.h"
+#import "UIColor+SCColor.h"
+#import "MapViewController.h"
+#import "SCBackItem.h"
+
+#define kTitle @"地图服务"
 
 @interface AddressTableViewController ()
 
+@property (nonatomic, strong) NSArray *data;
+@property (nonatomic, strong) NSUserDefaults *defaults;
 @end
 
 @implementation AddressTableViewController
@@ -18,16 +27,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.navigationItem.backBarButtonItem = [[SCBackItem alloc] init];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self refresh];
+    [self initializeDataSource];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)refresh {
+    
+    __unsafe_unretained UITableView *tableView = self.tableView;
+    
+    // 下拉刷新
+    tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [self initializeDataSource];
+    }];
+    tableView.mj_header.backgroundColor = [UIColor colorWithRGB:0xF0F0F0];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    AddressTableViewCell *cell = (AddressTableViewCell *)sender;
+    
+    NSInteger index = [self.tableView indexPathForCell:cell].row;
+    NSDictionary *dic = _data[index];
+    
+    MapViewController *mapVC = [segue destinationViewController];
+    mapVC.address = dic[@"address"];
+    mapVC.department = dic[@"department"];
+    mapVC.title = kTitle;
 }
 
 #pragma mark - Table view data source
@@ -38,7 +66,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 10;
+    return _data.count;
 }
 
 
@@ -50,9 +78,39 @@
         cell = [[AddressTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"addressCell"];
     }
     
+    NSDictionary *dic = _data[indexPath.row];
+    cell.title.text = dic[@"department"];
+    cell.address.text = dic[@"address"];
+    
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return 58;
+}
 
+- (void)initializeDataSource {
+    
+    __weak typeof(self) weakSelf = self;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"address"] != nil) {
+        
+        _data = [[defaults objectForKey:@"address"] copy];
+        [self.tableView reloadData];
+    }
+    
+    [[ApiManager sharedInstance] requestAddressWithCompleteBlock:^(NSArray *responseObject, NSError *error) {
+        
+        if (!error) {
+            
+            _data = [responseObject copy];
+            [defaults setObject:_data forKey:@"address"];
+            [weakSelf.tableView reloadData];
+            [weakSelf.tableView.mj_header endRefreshing];
+        }
+    }];
+}
 
 @end

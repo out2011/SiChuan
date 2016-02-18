@@ -50,7 +50,7 @@
     __unsafe_unretained UITableView *tableView = self.tableView;
     
     // 下拉刷新
-    tableView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         [self loadDataIsPulldown:YES];
     }];

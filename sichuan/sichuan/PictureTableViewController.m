@@ -48,7 +48,7 @@
     __unsafe_unretained UITableView *tableView = self.tableView;
     
     // 下拉刷新
-    tableView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         [self loadDataIsPulldown:YES];
     }];
@@ -170,6 +170,11 @@
     
     __weak typeof(self) weakSelf = self;
     [[ApiManager sharedInstance] requestPhotoWithPages:@(pages) size:kPageSize completeBlock:^(NSDictionary *responseObject, NSError *error) {
+        
+        if (error) {
+            
+            return;
+        }
         
         if (!isPulldown) {
             

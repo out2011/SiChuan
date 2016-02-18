@@ -10,11 +10,11 @@
 #import "MJRefresh.h"
 #import "LeaderTableViewCell.h"
 #import "ActivityTableViewController.h"
-#import "LeaderInfoViewController.h"
 #import "UIColor+SCColor.h"
 #import "ApiManager+Leader.h"
 #import "SCCompareHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "ArticlesViewHelper.h"
 
 #define kBaseButtonTag 200
 
@@ -37,31 +37,20 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    UIButton *button = (UIButton *)sender;
+    ActivityTableViewController *activityVC = [segue destinationViewController];
     
-    
-    if ([segue.identifier isEqualToString:@"leaderInfoShowed"]) {
-        LeaderTableViewCell *cell = (LeaderTableViewCell *)sender;
-        NSInteger index = [self.tableView indexPathForCell:cell].row;
-        NSDictionary *dic = _data[index];
-        LeaderInfoViewController *infoVC = [segue destinationViewController];
-        infoVC.information = dic[@"resume"];
+    if ([segue.identifier isEqualToString:@"activityShowed"]) {
+        NSDictionary *dic = _data[(button.tag - kBaseButtonTag) / 2];
+        activityVC.title = @"主要活动";
+        activityVC.isSpeech = NO;
+        activityVC.nId = dic[@"nID"];
     }
     else {
-        UIButton *button = (UIButton *)sender;
-        ActivityTableViewController *activityVC = [segue destinationViewController];
-        
-        if ([segue.identifier isEqualToString:@"activityShowed"]) {
-            NSDictionary *dic = _data[(button.tag - kBaseButtonTag) / 2];
-            activityVC.title = @"主要活动";
-            activityVC.isSpeech = NO;
-            activityVC.nId = dic[@"nID"];
-        }
-        else {
-            NSDictionary *dic = _data[(button.tag - kBaseButtonTag - 1) / 2];
-            activityVC.title = @"工作讲话";
-            activityVC.isSpeech = YES;
-            activityVC.nId = dic[@"nID"];
-        }
+        NSDictionary *dic = _data[(button.tag - kBaseButtonTag - 1) / 2];
+        activityVC.title = @"工作讲话";
+        activityVC.isSpeech = YES;
+        activityVC.nId = dic[@"nID"];
     }
 }
 
@@ -73,7 +62,7 @@
     // 下拉刷新
     tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         // 模拟延迟加载数据，因此2秒后才调用（真实开发中，可以移除这段gcd代码）
-
+        
         [self loadData];
     }];
     
@@ -114,6 +103,14 @@
     cell.tag = kBaseButtonTag + indexPath.row;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    ArticlesViewController *leaderVC = [ArticlesViewHelper articlesViewController];
+    leaderVC.data = _data[indexPath.row];
+    
+    [self.navigationController pushViewController:leaderVC animated:YES];
 }
 
 #pragma mark - table view delegate
