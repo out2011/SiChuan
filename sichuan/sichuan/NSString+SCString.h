@@ -10,6 +10,9 @@
 
 @interface NSString (SCString)
 
+/// 判断后缀，是否为图片
 - (BOOL)isImageSuffix;
 
+/// 判断后缀，是否为链接
+- (BOOL)isHtmlSuffix;
 @end

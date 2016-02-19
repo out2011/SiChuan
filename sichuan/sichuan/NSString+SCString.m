@@ -20,4 +20,13 @@
     return NO;
 }
 
+- (BOOL)isHtmlSuffix {
+    
+    if ([self isEqualToString:@"tml"]) {
+        
+        return YES;
+    }
+    
+    return NO;
+}
 @end

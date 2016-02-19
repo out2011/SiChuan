@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		38EFE439EDD699DEBDEAF6DD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB0F460A5A3087D2C05255D7 /* libPods.a */; };
+		3A050A541C76EE32003D8FE8 /* UIImage+SCImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A050A531C76EE32003D8FE8 /* UIImage+SCImage.m */; };
 		3A17A5871C55BB1300E160D0 /* OrganizationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A17A5861C55BB1300E160D0 /* OrganizationTableViewController.m */; };
 		3A17A58A1C55BBBE00E160D0 /* FoldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A17A5891C55BBBE00E160D0 /* FoldTableViewCell.m */; };
 		3A17A5901C55BF8600E160D0 /* TitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A17A58F1C55BF8600E160D0 /* TitleView.m */; };
@@ -29,9 +30,7 @@
 		3A3D60571C5896FD00B03D40 /* ArticlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D60561C5896FD00B03D40 /* ArticlesViewController.m */; };
 		3A3D605A1C589A9200B03D40 /* ArticlesViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D60591C589A9200B03D40 /* ArticlesViewHelper.m */; };
 		3A3D605D1C589D4600B03D40 /* SCBackItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D605C1C589D4600B03D40 /* SCBackItem.m */; };
-		3A3D60601C58A11B00B03D40 /* Url.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D605F1C58A11B00B03D40 /* Url.m */; };
 		3A3D60781C58A45100B03D40 /* ApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D60771C58A45100B03D40 /* ApiManager.m */; };
-		3A3D607B1C58AF2800B03D40 /* SCRequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D607A1C58AF2800B03D40 /* SCRequestHelper.m */; };
 		3A3D607E1C58B0BE00B03D40 /* ApiManager+Focus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D607D1C58B0BE00B03D40 /* ApiManager+Focus.m */; };
 		3A718FB11C5F482B00185B66 /* SCNoteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A718FB01C5F482B00185B66 /* SCNoteHelper.m */; };
 		3A7FE41F1C75AF0B00A76B7E /* NSString+SCString.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7FE41E1C75AF0B00A76B7E /* NSString+SCString.m */; };
@@ -45,7 +44,6 @@
 		3AE3AFD91C5200FE006D3EA9 /* PictureTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3AFD81C5200FE006D3EA9 /* PictureTableViewController.m */; };
 		3AE3AFDD1C5211DA006D3EA9 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3AFDC1C5211DA006D3EA9 /* ServiceViewController.m */; };
 		3AE3AFE11C52232B006D3EA9 /* OtherTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3AFE01C52232B006D3EA9 /* OtherTableViewController.m */; };
-		3AE3AFE41C522A37006D3EA9 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3AFE31C522A37006D3EA9 /* AboutViewController.m */; };
 		3AFFE30F1C50691900FB6F84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFFE30E1C50691900FB6F84 /* main.m */; };
 		3AFFE3121C50691900FB6F84 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFFE3111C50691900FB6F84 /* AppDelegate.m */; };
 		3AFFE3181C50691900FB6F84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AFFE3161C50691900FB6F84 /* Main.storyboard */; };
@@ -81,6 +79,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A050A521C76EE32003D8FE8 /* UIImage+SCImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SCImage.h"; sourceTree = "<group>"; };
+		3A050A531C76EE32003D8FE8 /* UIImage+SCImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SCImage.m"; sourceTree = "<group>"; };
 		3A17A5851C55BB1300E160D0 /* OrganizationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrganizationTableViewController.h; sourceTree = "<group>"; };
 		3A17A5861C55BB1300E160D0 /* OrganizationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrganizationTableViewController.m; sourceTree = "<group>"; };
 		3A17A5881C55BBBE00E160D0 /* FoldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldTableViewCell.h; sourceTree = "<group>"; };
@@ -123,12 +123,8 @@
 		3A3D60591C589A9200B03D40 /* ArticlesViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticlesViewHelper.m; sourceTree = "<group>"; };
 		3A3D605B1C589D4600B03D40 /* SCBackItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCBackItem.h; sourceTree = "<group>"; };
 		3A3D605C1C589D4600B03D40 /* SCBackItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCBackItem.m; sourceTree = "<group>"; };
-		3A3D605E1C58A11B00B03D40 /* Url.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Url.h; sourceTree = "<group>"; };
-		3A3D605F1C58A11B00B03D40 /* Url.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Url.m; sourceTree = "<group>"; };
 		3A3D60761C58A45100B03D40 /* ApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiManager.h; sourceTree = "<group>"; };
 		3A3D60771C58A45100B03D40 /* ApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiManager.m; sourceTree = "<group>"; };
-		3A3D60791C58AF2800B03D40 /* SCRequestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRequestHelper.h; sourceTree = "<group>"; };
-		3A3D607A1C58AF2800B03D40 /* SCRequestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRequestHelper.m; sourceTree = "<group>"; };
 		3A3D607C1C58B0BE00B03D40 /* ApiManager+Focus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ApiManager+Focus.h"; sourceTree = "<group>"; };
 		3A3D607D1C58B0BE00B03D40 /* ApiManager+Focus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ApiManager+Focus.m"; sourceTree = "<group>"; };
 		3A718FAF1C5F482B00185B66 /* SCNoteHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNoteHelper.h; sourceTree = "<group>"; };
@@ -155,8 +151,6 @@
 		3AE3AFDC1C5211DA006D3EA9 /* ServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceViewController.m; sourceTree = "<group>"; };
 		3AE3AFDF1C52232B006D3EA9 /* OtherTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherTableViewController.h; sourceTree = "<group>"; };
 		3AE3AFE01C52232B006D3EA9 /* OtherTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherTableViewController.m; sourceTree = "<group>"; };
-		3AE3AFE21C522A37006D3EA9 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
-		3AE3AFE31C522A37006D3EA9 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		3AFFE30A1C50691900FB6F84 /* 中国四川.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "中国四川.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AFFE30E1C50691900FB6F84 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3AFFE3101C50691900FB6F84 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -230,8 +224,6 @@
 			children = (
 				3A17A5931C55C72600E160D0 /* FoldInfo.h */,
 				3A17A5941C55C72600E160D0 /* FoldInfo.m */,
-				3A3D605E1C58A11B00B03D40 /* Url.h */,
-				3A3D605F1C58A11B00B03D40 /* Url.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -245,14 +237,14 @@
 				3A3D60591C589A9200B03D40 /* ArticlesViewHelper.m */,
 				3A3D605B1C589D4600B03D40 /* SCBackItem.h */,
 				3A3D605C1C589D4600B03D40 /* SCBackItem.m */,
-				3A3D60791C58AF2800B03D40 /* SCRequestHelper.h */,
-				3A3D607A1C58AF2800B03D40 /* SCRequestHelper.m */,
 				3AA3416A1C59B0F40084F94B /* SCCompareHelper.h */,
 				3AA3416B1C59B0F40084F94B /* SCCompareHelper.m */,
 				3A718FAF1C5F482B00185B66 /* SCNoteHelper.h */,
 				3A718FB01C5F482B00185B66 /* SCNoteHelper.m */,
 				3A7FE41D1C75AF0A00A76B7E /* NSString+SCString.h */,
 				3A7FE41E1C75AF0B00A76B7E /* NSString+SCString.m */,
+				3A050A521C76EE32003D8FE8 /* UIImage+SCImage.h */,
+				3A050A531C76EE32003D8FE8 /* UIImage+SCImage.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -278,13 +270,6 @@
 				3A19E91F1C74703B0039A57F /* ApiManager+Service.m */,
 			);
 			name = NetWorking;
-			sourceTree = "<group>";
-		};
-		3AE3AF6B1C51BE95006D3EA9 /* Libs */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Libs;
 			sourceTree = "<group>";
 		};
 		3AE3AFC01C51CB88006D3EA9 /* ViewControllers */ = {
@@ -392,8 +377,6 @@
 			children = (
 				3AE3AFDF1C52232B006D3EA9 /* OtherTableViewController.h */,
 				3AE3AFE01C52232B006D3EA9 /* OtherTableViewController.m */,
-				3AE3AFE21C522A37006D3EA9 /* AboutViewController.h */,
-				3AE3AFE31C522A37006D3EA9 /* AboutViewController.m */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -426,9 +409,8 @@
 				3A3D60611C58A22600B03D40 /* NetWorking */,
 				3A17A5921C55C3D500E160D0 /* Utils */,
 				3A17A5911C55C31A00E160D0 /* Models */,
-				3AE3AFC01C51CB88006D3EA9 /* ViewControllers */,
 				3AFFE3461C50788600FB6F84 /* CustomViews */,
-				3AE3AF6B1C51BE95006D3EA9 /* Libs */,
+				3AE3AFC01C51CB88006D3EA9 /* ViewControllers */,
 				3AFFE3101C50691900FB6F84 /* AppDelegate.h */,
 				3AFFE3111C50691900FB6F84 /* AppDelegate.m */,
 				3AFFE3161C50691900FB6F84 /* Main.storyboard */,
@@ -690,9 +672,8 @@
 				3AE3AFCE1C51D56C006D3EA9 /* GovAffairsTableViewController.m in Sources */,
 				3A3D604B1C584F3B00B03D40 /* GovInfoTableViewController.m in Sources */,
 				3A3D60571C5896FD00B03D40 /* ArticlesViewController.m in Sources */,
-				3AE3AFE41C522A37006D3EA9 /* AboutViewController.m in Sources */,
 				3A17A5951C55C72600E160D0 /* FoldInfo.m in Sources */,
-				3A3D60601C58A11B00B03D40 /* Url.m in Sources */,
+				3A050A541C76EE32003D8FE8 /* UIImage+SCImage.m in Sources */,
 				3AFFE34C1C5079C200FB6F84 /* MenuSegment.m in Sources */,
 				3AE3AFD21C51F5B9006D3EA9 /* LeaderTableViewController.m in Sources */,
 				3A29A7641C5B3ECD005AD06B /* ApiManager+GovFile.m in Sources */,
@@ -702,7 +683,6 @@
 				3AE3AFE11C52232B006D3EA9 /* OtherTableViewController.m in Sources */,
 				3A718FB11C5F482B00185B66 /* SCNoteHelper.m in Sources */,
 				3AE3AFC31C51CC07006D3EA9 /* FileTableViewController.m in Sources */,
-				3A3D607B1C58AF2800B03D40 /* SCRequestHelper.m in Sources */,
 				3AFFE34F1C50B1ED00FB6F84 /* FocusTableViewController.m in Sources */,
 				3A3D60781C58A45100B03D40 /* ApiManager.m in Sources */,
 				3AE3AFD91C5200FE006D3EA9 /* PictureTableViewController.m in Sources */,
@@ -870,6 +850,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = sichuan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = L.l.sichuan;
 				PRODUCT_NAME = "中国四川";
 			};
@@ -883,6 +864,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = sichuan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = L.l.sichuan;
 				PRODUCT_NAME = "中国四川";
 			};

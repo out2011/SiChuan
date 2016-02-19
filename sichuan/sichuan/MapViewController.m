@@ -17,9 +17,6 @@
     BMKGeoCodeSearch* _geocodesearch;
 }
 
-
-
-
 @end
 
 @implementation MapViewController
@@ -43,12 +40,10 @@
     
     BOOL flag = [_geocodesearch geoCode:geocodeSearchOption];
     
-    if(flag)
-    {
+    if(flag) {
         NSLog(@"geo检索发送成功");
     }
-    else
-    {
+    else {
         NSLog(@"geo检索发送失败");
     }
 }

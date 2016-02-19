@@ -10,7 +10,10 @@
 
 @interface SCNoteHelper : NSObject
 
+/// 拼接日期、来源
 + (NSString *)noteWithDate:(NSString *)date from:(NSString *)from;
 
+/// 过滤视频
 + (NSString *)filterHtmlString:(NSString *)htmlStr;
+
 @end

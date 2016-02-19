@@ -67,23 +67,24 @@
     self.noteLabel.text = [SCNoteHelper noteWithDate:_data[@"publishDatetime"] from:_data[@"contentSource"]];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-    //    _contentView.userInteractionEnabled = NO;
     _contentView.scrollView.scrollEnabled = NO;
+    
+    NSString *htmlStr;
     
     if (_data[@"content"]) {
         
-        [_contentView loadHTMLString:_data[@"content"] baseURL:[NSURL URLWithString:@""]];
+        htmlStr = [SCNoteHelper filterHtmlString:_data[@"content"]];
     }
     else {
         
-        [_contentView loadHTMLString:_data[@"resume"] baseURL:[NSURL URLWithString:@""]];
+        htmlStr = [SCNoteHelper filterHtmlString:_data[@"resume"]];
     }
+    
+    [_contentView loadHTMLString:htmlStr baseURL:[NSURL URLWithString:@""]];
 }
 
 #pragma  mark - web view delegate
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    
-    NSLog(@"%@", _data);
     
     NSString *fixImage = [NSString stringWithFormat:@"var script = document.createElement('script');"
                           "script.type = 'text/javascript';"
@@ -96,25 +97,35 @@
                           "}"
                           "}\";"
                           "document.getElementsByTagName('head')[0].appendChild(script);", kScreenW - 32];
-    //拦截网页图片  并修改图片大小
+    // 拦截网页图片  并修改图片大小
     [webView stringByEvaluatingJavaScriptFromString:fixImage];
     [_contentView stringByEvaluatingJavaScriptFromString:@"ResizeImages();"];
     
-    NSString *fixVideo = [NSString stringWithFormat:@"var script = document.createElement('script');"
-                          "script.type = 'text/javascript';"
-                          "script.text = \"function ResizeVideo() { "
-                          "var myIframe = document.getElementsByTagName('iframe')[0];"
-                          "var maxWidth=%f;" //缩放系数
-                          "myIframe.style.width = maxWidth;"
-                          "myIframe.style.height = maxWidth / 4 * 3;"
-                          "}\";"
-                          "document.getElementsByTagName('DIV')[0].appendChild(script);", kScreenW - 32];
-    [webView stringByEvaluatingJavaScriptFromString:fixVideo];
-    [_contentView stringByEvaluatingJavaScriptFromString:@"ResizeVideo();"];
+    // 拦截视频，修改视频大小
+//    NSString *fixVideo = [NSString stringWithFormat:@"var script = document.createElement('script');"
+//                          "script.type = 'text/javascript';"
+//                          "script.text = \"function ResizeVideo() { "
+//                          "var myIframe = document.getElementsByTagName('iframe')[0];"
+//                          "var maxWidth=%f;" //缩放系数
+//                          "myIframe.style.width = maxWidth;"
+//                          "myIframe.style.height = maxWidth / 4 * 3;"
+//                          "}\";"
+//                          "document.getElementsByTagName('DIV')[0].appendChild(script);", kScreenW - 32];
+//    [webView stringByEvaluatingJavaScriptFromString:fixVideo];
+//    [_contentView stringByEvaluatingJavaScriptFromString:@"ResizeVideo();"];
     
     // 重置web view高度
     NSString *height_str= [webView stringByEvaluatingJavaScriptFromString: @"document.body.offsetHeight"];
     _webViewHeight.constant = [height_str integerValue] + 16;
+    
+    if ([height_str integerValue] <= 476 && !_data[@"leaderName"]) {
+        
+        _backgroundView.scrollEnabled = NO;
+    }
+    else {
+        
+        _backgroundView.scrollEnabled = YES;
+    }
     
     _backgroundView.contentOffset = CGPointMake(0, 0);
 }
@@ -131,10 +142,14 @@
             
             return NO;
         }
-        
+        else if ([suffix isHtmlSuffix]) {
+            
+            [[UIApplication sharedApplication] openURL:url];
+            
+            return NO;
+        }
         return YES;
     }
-    
     return YES;
 }
 

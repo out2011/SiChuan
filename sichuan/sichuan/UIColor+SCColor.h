@@ -10,6 +10,7 @@
 
 @interface UIColor (SCColor)
 
+
 + (UIColor *)colorWithRGB:(int)color;
 
 @end

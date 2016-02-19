@@ -12,4 +12,5 @@
 
 + (BOOL)compareNewData:(NSMutableArray *)data withIdentifier:(NSString *)identifier;
 + (BOOL)compareNIdWithData:(NSMutableArray *)data withIdentifier:(NSString *)identifier;
+
 @end

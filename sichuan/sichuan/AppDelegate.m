@@ -25,13 +25,7 @@ BMKMapManager *_mapManager;
     // Override point for customization after application launch.
     
     _mapManager = [[BMKMapManager alloc] init];
-    
-    BOOL ret = [_mapManager start:@"VTc505oSe4g68Onk2eLsMKq8" generalDelegate:self];
-    
-    if (ret) {
-        
-        NSLog(@"地图加载成功");
-    }
+    [_mapManager start:@"VTc505oSe4g68Onk2eLsMKq8" generalDelegate:self];
     
     return YES;
 }
@@ -65,7 +59,7 @@ BMKMapManager *_mapManager;
     if (0 == iError) {
         NSLog(@"联网成功");
     }
-    else{
+    else {
         NSLog(@"onGetNetworkState %d",iError);
     }
     

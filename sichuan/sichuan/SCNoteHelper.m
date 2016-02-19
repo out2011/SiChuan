@@ -29,9 +29,20 @@
     
     
     
+    NSRange head = [htmlStr rangeOfString:@"<DIV"];
+    NSRange tail = [htmlStr rangeOfString:@"DIV>"];
     
+    if (head.length == 0) {
+        
+        return htmlStr;
+    }
     
-    return @"";
+    NSRange range = {head.location, tail.location + tail.length + 11};
+    
+    NSMutableString *string = [NSMutableString stringWithString:htmlStr];
+    [string deleteCharactersInRange:range];
+    
+    return [NSString stringWithString:string];
 }
 
 @end

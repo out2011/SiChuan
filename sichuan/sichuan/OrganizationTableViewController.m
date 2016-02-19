@@ -92,7 +92,6 @@
     articlesVC.title = kTitle;
     
     [self.navigationController pushViewController:articlesVC animated:YES];
-    NSLog(@"%ld", indexPath.row);
 }
 
 #pragma mark - table view delegate
@@ -154,7 +153,6 @@
         
         info.isLoad = YES;
         [_items setObject:responseObject forKey:[NSString stringWithFormat:@"%ld", index]];
-        NSLog(@"%@", responseObject);
 
         [self.tableView reloadData];
     }];

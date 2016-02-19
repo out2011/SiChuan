@@ -9,6 +9,9 @@
 #import "RootViewController.h"
 #import "ContentViewController.h"
 #import "MenuSegment.h"
+#import "UIColor+SCColor.h"
+#import "SCBackItem.h"
+#import "UIImage+SCImage.h"
 
 #define kContentEmbedSegue @"ContentEmbedSegue"
 #define kScreenW [UIScreen mainScreen].bounds.size.width
@@ -33,10 +36,7 @@
     [self initializeDataSource];
     [self segmentControlInterfaceSetting];
     
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
-    backItem.title = @"";
-    self.navigationItem.backBarButtonItem = backItem;
-    
+    self.navigationItem.backBarButtonItem = [[SCBackItem alloc] init];
     
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                 [UIColor whiteColor],
@@ -54,8 +54,8 @@
     //    以上面4句是必须的,但是习惯还是加了下面这句话
 //    [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
     
-    self.navigationController.navigationBar.backgroundColor = [UIColor colorWithRed:169/255.0 green:10/255.0 blue:0 alpha:1.0];
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1.000];
+    self.navigationController.navigationBar.backgroundColor = [UIColor colorWithRGB:0xA91300];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRGB:0xFFFFFF];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -68,14 +68,16 @@
     [super viewWillDisappear:animated];
     
     [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ic_home_logo"] forBarMetrics:UIBarMetricsDefault];
+    UIImage *image = [UIImage imageNamed:@"ic_home_logo"];
+    
+    
+    [self.navigationController.navigationBar setBackgroundImage:[image scaled] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -110,17 +112,5 @@
 
     [_contentChildVC contentChangedWithIndex:index];
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 @end

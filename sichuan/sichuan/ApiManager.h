@@ -121,12 +121,16 @@ typedef void(^SCAddressDicCompleteBlock)(NSArray *responseObject, NSError *error
 
 @property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
 
+
+#pragma  mark - manager
 + (ApiManager *)sharedInstance;
 
+/// post request
 - (NSURLSessionDataTask *)post:(NSString *)path
                     parameters:(id)parameters
                  completeBlock:(SCSessionTaskDidCompleteBlock)completeBlock;
 
+/// get request
 - (NSURLSessionDataTask *)get:(NSString *)path
                    parameters:(id)parameters
                 completeBlock:(SCSessionTaskDidCompleteBlock)completeBlock;
