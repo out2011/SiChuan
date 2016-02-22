@@ -8,7 +8,7 @@
 
 #import "UIImage+SCImage.h"
 
-#define kWidth [UIScreen mainScreen].bounds.size.width - 80
+#define kWidth [UIScreen mainScreen].bounds.size.width * 3 / 4
 #define kHeight 44
 
 @implementation UIImage (SCImage)

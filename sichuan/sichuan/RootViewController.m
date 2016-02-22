@@ -44,14 +44,14 @@
     
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
     
-    [self.navigationController.navigationBar setTranslucent:YES];
-    //    为什么要加这个呢，shadowImage 是在ios6.0以后才可用的。但是发现5.0也可以用。不过如果你不判断有没有这个方法，
-    //    而直接去调用可能会crash，所以判断下。作用：如果你设置了上面那句话，你会发现是透明了。但是会有一个阴影在，下面的方法就是去阴影
-    if ([self.navigationController.navigationBar respondsToSelector:@selector(shadowImage)])
-    {
-        [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-    }
-    //    以上面4句是必须的,但是习惯还是加了下面这句话
+//    [self.navigationController.navigationBar setTranslucent:YES];
+//    为什么要加这个呢，shadowImage 是在ios6.0以后才可用的。但是发现5.0也可以用。不过如果你不判断有没有这个方法，
+//    而直接去调用可能会crash，所以判断下。作用：如果你设置了上面那句话，你会发现是透明了。但是会有一个阴影在，下面的方法就是去阴影
+//    if ([self.navigationController.navigationBar respondsToSelector:@selector(shadowImage)])
+//    {
+//        [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+//    }
+//    以上面4句是必须的,但是习惯还是加了下面这句话
 //    [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
     
     self.navigationController.navigationBar.backgroundColor = [UIColor colorWithRGB:0xA91300];
@@ -76,7 +76,9 @@
     
     UIImage *image = [UIImage imageNamed:@"ic_home_logo"];
     
-    
+//    UIImageView *titleView = [[UIImageView alloc]initWithImage:image];
+//    [self.navigationController.navigationBar addSubview:titleView];
+//    [self.navigationController.navigationBar sendSubviewToBack:titleView];
     [self.navigationController.navigationBar setBackgroundImage:[image scaled] forBarMetrics:UIBarMetricsDefault];
 }
 
