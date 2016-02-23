@@ -13,6 +13,7 @@
 #import "ApiManager+GovFile.h"
 #import "SCCompareHelper.h"
 #import "ArticlesViewController.h"
+#import "SCDeviceHelper.h"
 
 #define kTitle @"政府文件"
 
@@ -98,7 +99,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 65;
+    if (![SCDeviceHelper isIphone6]) {
+        
+        return 65;
+    }
+    return 80;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

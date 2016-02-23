@@ -15,6 +15,7 @@
 #import "SCNoteHelper.h"
 #import "ArticlesViewController.h"
 #import "SCBackItem.h"
+#import "SCDeviceHelper.h"
 
 @interface GovInfoTableViewController ()
 
@@ -99,7 +100,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 65;
+    if (![SCDeviceHelper isIphone6]) {
+        
+        return 65;
+    }
+    return 80;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -147,6 +152,12 @@
         if (!isPulldown) {
             
             NSArray *newData = responseObject[@"list"];
+            
+            if (newData.count > 0 && [SCCompareHelper compareNIdWithData:[newData mutableCopy] withIdentifier:_api]) {
+                
+                [weakSelf.tableView.mj_footer endRefreshing];
+                return;
+            }
             [_data addObjectsFromArray:newData];
             
             [weakSelf.tableView.mj_footer endRefreshing];

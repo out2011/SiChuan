@@ -16,4 +16,7 @@
 /// 过滤视频
 + (NSString *)filterHtmlString:(NSString *)htmlStr;
 
+/// 过滤图片
++ (NSString *)filterImageString:(NSString *)imageStr;
+
 @end

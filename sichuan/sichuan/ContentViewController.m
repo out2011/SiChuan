@@ -8,13 +8,13 @@
 
 #import "ContentViewController.h"
 #import "FocusTableViewController.h"
-#import "ProfileTableViewController.h"
+#import "OverViewController.h"
 #import "FileTableViewController.h"
 #import "GovAffairsTableViewController.h"
 #import "LeaderTableViewController.h"
 #import "PictureTableViewController.h"
 #import "ServiceViewController.h"
-#import "OtherTableViewController.h"
+#import "OtherViewController.h"
 
 @interface ContentViewController ()
 
@@ -45,7 +45,7 @@
             break;
         case 1: {
             
-            ProfileTableViewController *profileVC = [storyboard instantiateViewControllerWithIdentifier:@"ProfileTableViewController"];
+            OverViewController *profileVC = [storyboard instantiateViewControllerWithIdentifier:@"OverViewController"];
             [self viewChanged:profileVC];
         }
             break;
@@ -81,7 +81,7 @@
             break;
         case 7: {
             
-            OtherTableViewController *otherVC = [storyboard instantiateViewControllerWithIdentifier:@"OtherTableViewController"];
+            OtherViewController *otherVC = [storyboard instantiateViewControllerWithIdentifier:@"OtherViewController"];
             [self viewChanged:otherVC];
         }
             break;

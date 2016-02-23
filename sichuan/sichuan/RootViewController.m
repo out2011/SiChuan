@@ -12,6 +12,7 @@
 #import "UIColor+SCColor.h"
 #import "SCBackItem.h"
 #import "UIImage+SCImage.h"
+#import "SCDeviceHelper.h"
 
 #define kContentEmbedSegue @"ContentEmbedSegue"
 #define kScreenW [UIScreen mainScreen].bounds.size.width
@@ -25,6 +26,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *container;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
 @end
 
 @implementation RootViewController
@@ -74,8 +76,10 @@
     
     [super viewWillAppear:animated];
     
-    UIImage *image = [UIImage imageNamed:@"ic_home_logo"];
+//    UIImage *image = [UIImage imageNamed:@"ic_home_logo"];
     
+    UIImage *image = [[UIImage imageNamed:@"ic_home_logo"]
+                      resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0) resizingMode:UIImageResizingModeStretch];
 //    UIImageView *titleView = [[UIImageView alloc]initWithImage:image];
 //    [self.navigationController.navigationBar addSubview:titleView];
 //    [self.navigationController.navigationBar sendSubviewToBack:titleView];
@@ -94,7 +98,6 @@
 
 - (void)initializeDataSource {
     
-    
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Information" ofType:@"plist"];
     NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:path];
     _titles = dic[@"MenuTitles"];
@@ -102,11 +105,20 @@
 
 - (void)segmentControlInterfaceSetting {
     
-    _menuSegment = [[MenuSegment alloc] initWithFrame:CGRectMake(0, 0, kScreenW, 44)];
+    CGFloat height = 54;
+    
+    if (![SCDeviceHelper isIphone6]) {
+        
+        height = 44;
+        self.top.constant = 44;
+    }
+    
+    _menuSegment = [[MenuSegment alloc] initWithFrame:CGRectMake(0, 0, kScreenW, height)];
     _menuSegment.titles = _titles;
     _menuSegment.isLoad = NO;
     _menuSegment.menuDelegate = self;
     [self.view addSubview:_menuSegment];
+    
     
 }
 

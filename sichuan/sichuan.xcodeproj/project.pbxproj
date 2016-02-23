@@ -36,6 +36,10 @@
 		3A7FE41F1C75AF0B00A76B7E /* NSString+SCString.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7FE41E1C75AF0B00A76B7E /* NSString+SCString.m */; };
 		3A897FF81C7563FB00A94366 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A897FF71C7563FB00A94366 /* MapViewController.m */; };
 		3AA3416C1C59B0F40084F94B /* SCCompareHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA3416B1C59B0F40084F94B /* SCCompareHelper.m */; };
+		3AD193481C7C3D2F00A471F5 /* SCDeviceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD193471C7C3D2F00A471F5 /* SCDeviceHelper.m */; };
+		3AD1934E1C7C4A6700A471F5 /* ClassifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD1934D1C7C4A6700A471F5 /* ClassifyCell.m */; };
+		3AD193511C7C4C5C00A471F5 /* OverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD193501C7C4C5C00A471F5 /* OverViewController.m */; };
+		3AD193571C7C566C00A471F5 /* OtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD193561C7C566C00A471F5 /* OtherViewController.m */; };
 		3AE3AFC31C51CC07006D3EA9 /* FileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3AFC21C51CC07006D3EA9 /* FileTableViewController.m */; };
 		3AE3AFC61C51CC63006D3EA9 /* FileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3AFC51C51CC63006D3EA9 /* FileTableViewCell.m */; };
 		3AE3AFCE1C51D56C006D3EA9 /* GovAffairsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3AFCD1C51D56C006D3EA9 /* GovAffairsTableViewController.m */; };
@@ -43,7 +47,6 @@
 		3AE3AFD51C51F63D006D3EA9 /* LeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3AFD41C51F63D006D3EA9 /* LeaderTableViewCell.m */; };
 		3AE3AFD91C5200FE006D3EA9 /* PictureTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3AFD81C5200FE006D3EA9 /* PictureTableViewController.m */; };
 		3AE3AFDD1C5211DA006D3EA9 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3AFDC1C5211DA006D3EA9 /* ServiceViewController.m */; };
-		3AE3AFE11C52232B006D3EA9 /* OtherTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3AFE01C52232B006D3EA9 /* OtherTableViewController.m */; };
 		3AFFE30F1C50691900FB6F84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFFE30E1C50691900FB6F84 /* main.m */; };
 		3AFFE3121C50691900FB6F84 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFFE3111C50691900FB6F84 /* AppDelegate.m */; };
 		3AFFE3181C50691900FB6F84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AFFE3161C50691900FB6F84 /* Main.storyboard */; };
@@ -57,7 +60,6 @@
 		3AFFE34F1C50B1ED00FB6F84 /* FocusTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFFE34E1C50B1ED00FB6F84 /* FocusTableViewController.m */; };
 		3AFFE3521C50B70E00FB6F84 /* BlodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFFE3511C50B70E00FB6F84 /* BlodTableViewCell.m */; };
 		3AFFE3551C50B8B700FB6F84 /* ContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFFE3541C50B8B700FB6F84 /* ContentTableViewCell.m */; };
-		3AFFE35B1C50CAE000FB6F84 /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFFE35A1C50CAE000FB6F84 /* ProfileTableViewController.m */; };
 		3AFFE35D1C50DF4E00FB6F84 /* Information.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AFFE35C1C50DF4E00FB6F84 /* Information.plist */; };
 /* End PBXBuildFile section */
 
@@ -95,7 +97,6 @@
 		3A19E9251C7474DB0039A57F /* AddressTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressTableViewController.m; sourceTree = "<group>"; };
 		3A19E92A1C7476B60039A57F /* AddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressTableViewCell.h; sourceTree = "<group>"; };
 		3A19E92B1C7476B60039A57F /* AddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressTableViewCell.m; sourceTree = "<group>"; };
-		3A2736A61C5610F700AEFDD6 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		3A2736A71C5610F700AEFDD6 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		3A2736A91C5613A000AEFDD6 /* ProFoldTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProFoldTableViewController.h; sourceTree = "<group>"; };
 		3A2736AA1C5613A000AEFDD6 /* ProFoldTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProFoldTableViewController.m; sourceTree = "<group>"; };
@@ -135,6 +136,15 @@
 		3A897FF71C7563FB00A94366 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		3AA3416A1C59B0F40084F94B /* SCCompareHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCCompareHelper.h; sourceTree = "<group>"; };
 		3AA3416B1C59B0F40084F94B /* SCCompareHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCCompareHelper.m; sourceTree = "<group>"; };
+		3AD193461C7C3D2F00A471F5 /* SCDeviceHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDeviceHelper.h; sourceTree = "<group>"; };
+		3AD193471C7C3D2F00A471F5 /* SCDeviceHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDeviceHelper.m; sourceTree = "<group>"; };
+		3AD1934C1C7C4A6700A471F5 /* ClassifyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyCell.h; sourceTree = "<group>"; };
+		3AD1934D1C7C4A6700A471F5 /* ClassifyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyCell.m; sourceTree = "<group>"; };
+		3AD1934F1C7C4C5C00A471F5 /* OverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverViewController.h; sourceTree = "<group>"; };
+		3AD193501C7C4C5C00A471F5 /* OverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverViewController.m; sourceTree = "<group>"; };
+		3AD193531C7C4F0500A471F5 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		3AD193551C7C566C00A471F5 /* OtherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherViewController.h; sourceTree = "<group>"; };
+		3AD193561C7C566C00A471F5 /* OtherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherViewController.m; sourceTree = "<group>"; };
 		3AE3AFC11C51CC07006D3EA9 /* FileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTableViewController.h; sourceTree = "<group>"; };
 		3AE3AFC21C51CC07006D3EA9 /* FileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTableViewController.m; sourceTree = "<group>"; };
 		3AE3AFC41C51CC63006D3EA9 /* FileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTableViewCell.h; sourceTree = "<group>"; };
@@ -149,8 +159,14 @@
 		3AE3AFD81C5200FE006D3EA9 /* PictureTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureTableViewController.m; sourceTree = "<group>"; };
 		3AE3AFDB1C5211DA006D3EA9 /* ServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceViewController.h; sourceTree = "<group>"; };
 		3AE3AFDC1C5211DA006D3EA9 /* ServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceViewController.m; sourceTree = "<group>"; };
-		3AE3AFDF1C52232B006D3EA9 /* OtherTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherTableViewController.h; sourceTree = "<group>"; };
-		3AE3AFE01C52232B006D3EA9 /* OtherTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherTableViewController.m; sourceTree = "<group>"; };
+		3AF124B11C7BF96900314784 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		3AF124B31C7BF97600314784 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		3AF124B51C7BF98900314784 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		3AF124B71C7BF99900314784 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3AF124B91C7BF9A300314784 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		3AF124BB1C7BF9AC00314784 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3AF124BD1C7BF9B300314784 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3AF124BF1C7BF9BB00314784 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		3AFFE30A1C50691900FB6F84 /* 中国四川.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "中国四川.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AFFE30E1C50691900FB6F84 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3AFFE3101C50691900FB6F84 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -177,8 +193,6 @@
 		3AFFE3511C50B70E00FB6F84 /* BlodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlodTableViewCell.m; sourceTree = "<group>"; };
 		3AFFE3531C50B8B700FB6F84 /* ContentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentTableViewCell.h; sourceTree = "<group>"; };
 		3AFFE3541C50B8B700FB6F84 /* ContentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentTableViewCell.m; sourceTree = "<group>"; };
-		3AFFE3591C50CAE000FB6F84 /* ProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewController.h; sourceTree = "<group>"; };
-		3AFFE35A1C50CAE000FB6F84 /* ProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewController.m; sourceTree = "<group>"; };
 		3AFFE35C1C50DF4E00FB6F84 /* Information.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Information.plist; sourceTree = "<group>"; };
 		5F3E91B6DCBC996034B50FAB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D61FF88533DFCF0B75D7B55C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -214,6 +228,14 @@
 		0BA10035CD6E72CB2879D7C8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3AF124BF1C7BF9BB00314784 /* CoreBluetooth.framework */,
+				3AF124BD1C7BF9B300314784 /* CoreLocation.framework */,
+				3AF124BB1C7BF9AC00314784 /* AVFoundation.framework */,
+				3AF124B91C7BF9A300314784 /* CoreTelephony.framework */,
+				3AF124B71C7BF99900314784 /* SystemConfiguration.framework */,
+				3AF124B51C7BF98900314784 /* CFNetwork.framework */,
+				3AF124B31C7BF97600314784 /* libsqlite3.tbd */,
+				3AF124B11C7BF96900314784 /* libz.tbd */,
 				DB0F460A5A3087D2C05255D7 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -245,6 +267,8 @@
 				3A7FE41E1C75AF0B00A76B7E /* NSString+SCString.m */,
 				3A050A521C76EE32003D8FE8 /* UIImage+SCImage.h */,
 				3A050A531C76EE32003D8FE8 /* UIImage+SCImage.m */,
+				3AD193461C7C3D2F00A471F5 /* SCDeviceHelper.h */,
+				3AD193471C7C3D2F00A471F5 /* SCDeviceHelper.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -305,9 +329,9 @@
 		3AE3AFC91C51D315006D3EA9 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				3AFFE3591C50CAE000FB6F84 /* ProfileTableViewController.h */,
-				3AFFE35A1C50CAE000FB6F84 /* ProfileTableViewController.m */,
-				3A2736A61C5610F700AEFDD6 /* ProfileViewController.h */,
+				3AD1934F1C7C4C5C00A471F5 /* OverViewController.h */,
+				3AD193501C7C4C5C00A471F5 /* OverViewController.m */,
+				3AD193531C7C4F0500A471F5 /* ProfileViewController.h */,
 				3A2736A71C5610F700AEFDD6 /* ProfileViewController.m */,
 				3A2736A91C5613A000AEFDD6 /* ProFoldTableViewController.h */,
 				3A2736AA1C5613A000AEFDD6 /* ProFoldTableViewController.m */,
@@ -375,8 +399,8 @@
 		3AE3AFDE1C522314006D3EA9 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				3AE3AFDF1C52232B006D3EA9 /* OtherTableViewController.h */,
-				3AE3AFE01C52232B006D3EA9 /* OtherTableViewController.m */,
+				3AD193551C7C566C00A471F5 /* OtherViewController.h */,
+				3AD193561C7C566C00A471F5 /* OtherViewController.m */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -468,6 +492,8 @@
 				3A17A58F1C55BF8600E160D0 /* TitleView.m */,
 				3A19E92A1C7476B60039A57F /* AddressTableViewCell.h */,
 				3A19E92B1C7476B60039A57F /* AddressTableViewCell.m */,
+				3AD1934C1C7C4A6700A471F5 /* ClassifyCell.h */,
+				3AD1934D1C7C4A6700A471F5 /* ClassifyCell.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -551,6 +577,7 @@
 				TargetAttributes = {
 					3AFFE3091C50691900FB6F84 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = RVBPJ9SQ5Q;
 					};
 					3AFFE3221C50691900FB6F84 = {
 						CreatedOnToolsVersion = 7.2;
@@ -664,6 +691,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AFFE3451C5074AD00FB6F84 /* ContentViewController.m in Sources */,
+				3AD193481C7C3D2F00A471F5 /* SCDeviceHelper.m in Sources */,
 				3A29A7611C5B10B5005AD06B /* ApiManager+Photo.m in Sources */,
 				3A3D605D1C589D4600B03D40 /* SCBackItem.m in Sources */,
 				3A29A76A1C5B584F005AD06B /* ApiManager+GovAffairs.m in Sources */,
@@ -673,20 +701,20 @@
 				3A3D604B1C584F3B00B03D40 /* GovInfoTableViewController.m in Sources */,
 				3A3D60571C5896FD00B03D40 /* ArticlesViewController.m in Sources */,
 				3A17A5951C55C72600E160D0 /* FoldInfo.m in Sources */,
+				3AD1934E1C7C4A6700A471F5 /* ClassifyCell.m in Sources */,
 				3A050A541C76EE32003D8FE8 /* UIImage+SCImage.m in Sources */,
 				3AFFE34C1C5079C200FB6F84 /* MenuSegment.m in Sources */,
 				3AE3AFD21C51F5B9006D3EA9 /* LeaderTableViewController.m in Sources */,
 				3A29A7641C5B3ECD005AD06B /* ApiManager+GovFile.m in Sources */,
 				3A3D605A1C589A9200B03D40 /* ArticlesViewHelper.m in Sources */,
-				3AFFE35B1C50CAE000FB6F84 /* ProfileTableViewController.m in Sources */,
 				3A17A5871C55BB1300E160D0 /* OrganizationTableViewController.m in Sources */,
-				3AE3AFE11C52232B006D3EA9 /* OtherTableViewController.m in Sources */,
 				3A718FB11C5F482B00185B66 /* SCNoteHelper.m in Sources */,
 				3AE3AFC31C51CC07006D3EA9 /* FileTableViewController.m in Sources */,
 				3AFFE34F1C50B1ED00FB6F84 /* FocusTableViewController.m in Sources */,
 				3A3D60781C58A45100B03D40 /* ApiManager.m in Sources */,
 				3AE3AFD91C5200FE006D3EA9 /* PictureTableViewController.m in Sources */,
 				3A897FF81C7563FB00A94366 /* MapViewController.m in Sources */,
+				3AD193511C7C4C5C00A471F5 /* OverViewController.m in Sources */,
 				3A17A5901C55BF8600E160D0 /* TitleView.m in Sources */,
 				3A3D604E1C5856D300B03D40 /* ActivityTableViewController.m in Sources */,
 				3A19E92C1C7476B60039A57F /* AddressTableViewCell.m in Sources */,
@@ -694,6 +722,7 @@
 				3A29A75E1C5AF15E005AD06B /* ApiManager+Profile.m in Sources */,
 				3AA3416C1C59B0F40084F94B /* SCCompareHelper.m in Sources */,
 				3AFFE3121C50691900FB6F84 /* AppDelegate.m in Sources */,
+				3AD193571C7C566C00A471F5 /* OtherViewController.m in Sources */,
 				3A19E9201C74703B0039A57F /* ApiManager+Service.m in Sources */,
 				3A2736A81C5610F700AEFDD6 /* ProfileViewController.m in Sources */,
 				3A2736AE1C5613CC00AEFDD6 /* ProReportTableViewController.m in Sources */,
@@ -801,6 +830,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -837,6 +867,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -850,8 +881,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = sichuan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = L.l.sichuan;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dts.zgsc;
 				PRODUCT_NAME = "中国四川";
 			};
 			name = Debug;
@@ -864,8 +895,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = sichuan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = L.l.sichuan;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dts.zgsc;
 				PRODUCT_NAME = "中国四川";
 			};
 			name = Release;

@@ -12,7 +12,9 @@
 
 - (BOOL)isImageSuffix {
     
-    if ([self isEqualToString:@"jpg"] || [self isEqualToString:@"png"]) {
+    NSString *suffix = [self substringFromIndex:self.length - 3];
+    
+    if ([suffix isEqualToString:@"jpg"] || [suffix isEqualToString:@"png"]) {
         
         return YES;
     }
@@ -22,7 +24,13 @@
 
 - (BOOL)isHtmlSuffix {
     
-    if ([self isEqualToString:@"tml"]) {
+    NSString *suffix = [self substringFromIndex:self.length - 4];
+    
+    if ([suffix isEqualToString:@"html"]) {
+        
+        return YES;
+    }
+    else if ([self rangeOfString:@"aspx"].location != NSNotFound) {
         
         return YES;
     }

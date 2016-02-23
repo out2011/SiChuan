@@ -27,22 +27,40 @@
 
 + (NSString *)filterHtmlString:(NSString *)htmlStr {
     
-    
-    
-    NSRange head = [htmlStr rangeOfString:@"<DIV"];
     NSRange tail = [htmlStr rangeOfString:@"DIV>"];
     
-    if (head.length == 0) {
+    if (tail.length == 0) {
         
         return htmlStr;
     }
     
-    NSRange range = {head.location, tail.location + tail.length + 11};
+    NSRange range = {0, tail.location + tail.length};
     
     NSMutableString *string = [NSMutableString stringWithString:htmlStr];
     [string deleteCharactersInRange:range];
     
+    if ([string rangeOfString:@"DIV"].location != NSNotFound) {
+        
+        [self filterHtmlString:string];
+    }
+    
     return [NSString stringWithString:string];
 }
 
++ (NSString *)filterImageString:(NSString *)imageStr {
+    
+    NSRange head = [imageStr rangeOfString:@"<P align=center><A href=\"http://"];
+    NSRange tail = [imageStr rangeOfString:@"jpg\"></A></P>"];
+    
+    if (head.length == 0) {
+        
+        return imageStr;
+    }
+    
+    NSRange range ={head.location, tail.location - head.location + tail.length + 13 * 3};
+    NSMutableString *string = [NSMutableString stringWithString:imageStr];
+    [string deleteCharactersInRange:range];
+    
+    return [NSString stringWithString:string];
+}
 @end

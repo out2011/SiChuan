@@ -15,6 +15,7 @@
 #import "ApiManager+Profile.h"
 #import "SCCompareHelper.h"
 #import "SCNoteHelper.h"
+#import "SCDeviceHelper.h"
 
 #define kBaseSize @(15)
 
@@ -102,7 +103,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 65;
+    if (![SCDeviceHelper isIphone6]) {
+        
+        return 65;
+    }
+    return 80;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

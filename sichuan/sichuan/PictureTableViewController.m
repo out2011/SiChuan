@@ -16,6 +16,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "FileTableViewCell.h"
 #import "ArticlesViewController.h"
+#import "SCDeviceHelper.h"
 
 #define kTitle @"图说四川"
 #define kScreenW [UIScreen mainScreen].bounds.size.width
@@ -116,7 +117,12 @@
         return kScreenW / 16 * 9;
     }
     else {
-        return 66;
+        
+        if (![SCDeviceHelper isIphone6]) {
+            
+            return 65;
+        }
+        return 80;
     }
 }
 

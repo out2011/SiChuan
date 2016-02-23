@@ -13,6 +13,7 @@
 #import "MJRefresh.h"
 #import "UIColor+SCColor.h"
 #import "ApiManager+Profile.h"
+#import "SCNoteHelper.h"
 
 #define kBaseViewTag 100
 
@@ -58,7 +59,10 @@
     
     FoldInfo *info = _info[indexPath.section];
     
-    cell.contentLable.attributedText = [NSAttributedString attributedStringWithHTML:info.information];;
+    NSString *showed = [SCNoteHelper filterImageString:info.information];
+    
+    cell.contentLable.attributedText = [NSAttributedString attributedStringWithHTML:showed];
+    cell.contentLable.font = [UIFont systemFontOfSize:15];
     
     return cell;
 }

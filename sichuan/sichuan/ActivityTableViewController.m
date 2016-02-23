@@ -14,6 +14,7 @@
 #import "FileTableViewCell.h"
 #import "ArticlesViewHelper.h"
 #import "SCBackItem.h"
+#import "SCDeviceHelper.h"
 
 @interface ActivityTableViewController ()
 
@@ -98,7 +99,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 65;
+    if (![SCDeviceHelper isIphone6]) {
+        
+        return 65;
+    }
+    return 80;
 }
 
 #pragma mark - request

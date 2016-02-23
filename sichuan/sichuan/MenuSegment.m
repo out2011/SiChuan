@@ -8,6 +8,7 @@
 
 #import "MenuSegment.h"
 #import "UIColor+SCColor.h"
+#import "SCDeviceHelper.h"
 
 #define kButtonWidth [UIScreen mainScreen].bounds.size.width / 4
 #define kBaseTag 1000
@@ -17,7 +18,6 @@
 @end
 
 @implementation MenuSegment
-
 
 - (void)layoutSubviews {
     
@@ -32,9 +32,17 @@
 }
 
 - (void)segmentSetting {
+    
+    CGFloat height = 54;
+    CGFloat font = 19;
+    if (![SCDeviceHelper isIphone6]) {
+        
+        font = 15;
+        height = 44;
+    }
 
     self.showsHorizontalScrollIndicator = NO;
-    self.contentSize = CGSizeMake(kButtonWidth * _titles.count, 44);
+    self.contentSize = CGSizeMake(kButtonWidth * _titles.count, height);
     self.contentOffset = CGPointZero;
     self.backgroundColor = [UIColor colorWithRGB:0xFFE9B8];
     
@@ -44,9 +52,9 @@
             
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             button.tag = kBaseTag + i;
-            button.frame = CGRectMake(kButtonWidth * i, 0, kButtonWidth, 40);
+            button.frame = CGRectMake(kButtonWidth * i, 0, kButtonWidth, height);
             [button setTitle:_titles[i] forState:UIControlStateNormal];
-            button.titleLabel.font = [UIFont systemFontOfSize:14];
+            button.titleLabel.font = [UIFont systemFontOfSize:font];
             [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [button setTitleColor:[UIColor brownColor] forState:UIControlStateSelected];
             [button addTarget:self action:@selector(segmentSelected:) forControlEvents:UIControlEventTouchUpInside];

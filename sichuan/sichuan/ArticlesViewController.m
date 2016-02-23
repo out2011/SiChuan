@@ -13,6 +13,7 @@
 #import "NSString+SCString.h"
 
 #define kScreenW [UIScreen mainScreen].bounds.size.width
+#define kScreenH [UIScreen mainScreen].bounds.size.height
 
 @interface ArticlesViewController ()<UIWebViewDelegate>
 
@@ -118,14 +119,14 @@
     NSString *height_str= [webView stringByEvaluatingJavaScriptFromString: @"document.body.offsetHeight"];
     _webViewHeight.constant = [height_str integerValue] + 16;
     
-    if ([height_str integerValue] <= 476 && !_data[@"leaderName"]) {
-        
-        _backgroundView.scrollEnabled = NO;
-    }
-    else {
-        
-        _backgroundView.scrollEnabled = YES;
-    }
+//    if ([height_str integerValue] <= kScreenH - 64 && !_data[@"leaderName"]) {
+//        
+//        _backgroundView.scrollEnabled = NO;
+//    }
+//    else {
+//        
+//        _backgroundView.scrollEnabled = YES;
+//    }
     
     _backgroundView.contentOffset = CGPointMake(0, 0);
 }
@@ -134,15 +135,13 @@
     
     if (navigationType == UIWebViewNavigationTypeLinkClicked) {
         NSURL *url = [request URL];
-        NSString *curUrl= [url absoluteString];
+        NSString *urlStr = [url absoluteString];
         
-        NSString *suffix = [curUrl substringFromIndex:curUrl.length - 3];
-        
-        if ([suffix isImageSuffix]) {
+        if ([urlStr isImageSuffix]) {
             
             return NO;
         }
-        else if ([suffix isHtmlSuffix]) {
+        else if ([urlStr isHtmlSuffix]) {
             
             [[UIApplication sharedApplication] openURL:url];
             

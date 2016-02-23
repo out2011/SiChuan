@@ -15,8 +15,10 @@
 #import "SCCompareHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ArticlesViewHelper.h"
+#import "SCDeviceHelper.h"
 
 #define kBaseButtonTag 200
+#define kTitle @"政府领导"
 
 @interface LeaderTableViewController ()
 
@@ -109,6 +111,7 @@
     
     ArticlesViewController *leaderVC = [ArticlesViewHelper articlesViewController];
     leaderVC.data = _data[indexPath.row];
+    leaderVC.title = kTitle;
     
     [self.navigationController pushViewController:leaderVC animated:YES];
 }
@@ -116,7 +119,11 @@
 #pragma mark - table view delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 80;
+    if (![SCDeviceHelper isIphone6]) {
+        
+        return 80;
+    }
+    return 90;
 }
 
 #pragma mark - request

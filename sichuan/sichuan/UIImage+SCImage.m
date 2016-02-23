@@ -8,7 +8,7 @@
 
 #import "UIImage+SCImage.h"
 
-#define kWidth [UIScreen mainScreen].bounds.size.width * 3 / 4
+#define kWidth [UIScreen mainScreen].bounds.size.width
 #define kHeight 44
 
 @implementation UIImage (SCImage)
@@ -16,7 +16,7 @@
 - (UIImage *)scaled {
     
     UIGraphicsBeginImageContext(CGSizeMake(kWidth, kHeight));
-    [self drawInRect:CGRectMake(10, 0, kWidth, kHeight)];
+    [self drawInRect:CGRectMake(0, 0, kWidth, kHeight)];
     UIImage *reSizeImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return reSizeImage;
