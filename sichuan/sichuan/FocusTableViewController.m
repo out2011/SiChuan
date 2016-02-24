@@ -11,7 +11,7 @@
 #import "ContentTableViewCell.h"
 #import "MJRefresh.h"
 #import "UIColor+SCColor.h"
-#import "ApiManager.h"
+#import "ApiManager+Focus.h"
 #import "FileTableViewCell.h"
 #import "SCCompareHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>

@@ -176,6 +176,8 @@ BMKMapManager *_mapManager;
 /** APP已经接收到“远程”通知(推送) - 透传推送消息  */
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
     
+    /// 收到消息后 这里做处理；
+    
     // 处理APN
     NSLog(@"\n>>>[Receive RemoteNotification - Background Fetch]:%@\n\n", userInfo);
     
@@ -208,6 +210,12 @@ BMKMapManager *_mapManager;
     }
     
     NSString *msg = [NSString stringWithFormat:@" payloadId=%@,taskId=%@,messageId:%@,payloadMsg:%@%@", payloadId, taskId, aMsgId, payloadMsg, offLine ? @"<离线消息>" : @""];
+    ////  这里收到透传数据
+    
+    NSData *jsonData = [payloadMsg dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushMessage" object:self userInfo:dicData];
     NSLog(@"\n>>>[GexinSdk ReceivePayload]:%@\n\n", msg);
     
     /**

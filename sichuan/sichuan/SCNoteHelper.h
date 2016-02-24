@@ -19,4 +19,9 @@
 /// 过滤图片
 + (NSString *)filterImageString:(NSString *)imageStr;
 
+/// 获取push标题
++ (NSString *)title:(NSString *)title;
+
+/// 拆分push字符串
++ (NSArray *)messageWithString:(NSString *)string;
 @end

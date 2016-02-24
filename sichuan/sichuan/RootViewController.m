@@ -13,6 +13,9 @@
 #import "SCBackItem.h"
 #import "UIImage+SCImage.h"
 #import "SCDeviceHelper.h"
+#import "ApiManager+Push.h"
+#import "SCNoteHelper.h"
+#import "ArticlesViewHelper.h"
 
 #define kContentEmbedSegue @"ContentEmbedSegue"
 #define kScreenW [UIScreen mainScreen].bounds.size.width
@@ -35,6 +38,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self notificationCenterSetting];
     [self initializeDataSource];
     [self segmentControlInterfaceSetting];
     
@@ -118,8 +122,6 @@
     _menuSegment.isLoad = NO;
     _menuSegment.menuDelegate = self;
     [self.view addSubview:_menuSegment];
-    
-    
 }
 
 - (void)selectedAtIndex:(NSInteger)index {
@@ -127,4 +129,36 @@
     [_contentChildVC contentChangedWithIndex:index];
 }
 
+- (void)notificationCenterSetting {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationAction:) name:@"pushMessage" object:nil];
+}
+
+- (void)notificationAction:(NSNotification *)notify {
+    
+    if (notify.userInfo) {
+        
+        NSArray *message = [SCNoteHelper messageWithString:notify.userInfo[@"payload"]];
+        NSNumber *nid = [[[NSNumberFormatter alloc] init] numberFromString:message[0]];
+        
+        [[ApiManager sharedInstance] requestPushMsgWithNid:nid type:message[1] completeBlock:^(NSDictionary *responseObject, NSError *error) {
+            
+            ArticlesViewController *articlesVC = [ArticlesViewHelper articlesViewController];
+            
+            articlesVC.title = [SCNoteHelper title:message[1]];
+            articlesVC.data = responseObject;
+            
+            [self.navigationController pushViewController:articlesVC animated:YES];
+            NSLog(@"push message :%@", responseObject);
+        }];
+    }
+    
+    NSLog(@"notify: %@", notify.userInfo);
+}
+
+- (void)dealloc{
+    
+    //移除指定的通知，不然会造成内存泄露
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"pushMessage" object:nil];
+}
 @end

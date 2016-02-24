@@ -18,7 +18,7 @@
  *
  *  @return task
  */
-- (NSURLSessionDataTask *)requestAddressWithCompleteBlock:(SCAddressDicCompleteBlock)completeBlock;
+- (NSURLSessionDataTask *)requestAddressWithCompleteBlock:(SCAddressDidCompleteBlock)completeBlock;
 
 
 @end

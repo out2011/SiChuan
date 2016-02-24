@@ -14,11 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>MLLabel.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,7 +27,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>5BAE1A647E3DB8DCD8D27771C6D321BE</key>
+		<key>4F12E6A129C1283BA72B53009CC77791</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>66B84FB6E60BF4AEAB74C5A82EA38BB3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,17 +42,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>902F10D0E4D6393A9F6FA04BAA73AA69</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>928353533005A4198EBDA5B700D37B64</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A13C2021CDCA2F53EED207CA354BA810</key>
 		<dict>
 			<key>primary</key>
 			<true/>

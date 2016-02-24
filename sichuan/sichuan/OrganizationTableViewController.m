@@ -74,7 +74,7 @@
     NSString *key = [NSString stringWithFormat:@"%ld", indexPath.section];
     NSArray *array = _items[key];
     NSDictionary *dic = array[indexPath.row];
-    cell.contentLable.text = dic[@"title"];
+    cell.textView.text = dic[@"title"];
     
     // Configure the cell...
     

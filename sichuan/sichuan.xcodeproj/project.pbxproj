@@ -24,6 +24,8 @@
 		3A29A7641C5B3ECD005AD06B /* ApiManager+GovFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A29A7631C5B3ECD005AD06B /* ApiManager+GovFile.m */; };
 		3A29A7671C5B463C005AD06B /* ApiManager+Leader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A29A7661C5B463C005AD06B /* ApiManager+Leader.m */; };
 		3A29A76A1C5B584F005AD06B /* ApiManager+GovAffairs.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A29A7691C5B584F005AD06B /* ApiManager+GovAffairs.m */; };
+		3A33A0F71C7D39F8009CD02D /* GovAffairsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A33A0F61C7D39F8009CD02D /* GovAffairsViewController.m */; };
+		3A33A0FA1C7D5686009CD02D /* ApiManager+Push.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A33A0F91C7D5686009CD02D /* ApiManager+Push.m */; };
 		3A3D604B1C584F3B00B03D40 /* GovInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D604A1C584F3B00B03D40 /* GovInfoTableViewController.m */; };
 		3A3D604E1C5856D300B03D40 /* ActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D604D1C5856D300B03D40 /* ActivityTableViewController.m */; };
 		3A3D60541C586FCA00B03D40 /* UIColor+SCColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D60531C586FCA00B03D40 /* UIColor+SCColor.m */; };
@@ -42,7 +44,6 @@
 		3AD193571C7C566C00A471F5 /* OtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD193561C7C566C00A471F5 /* OtherViewController.m */; };
 		3AE3AFC31C51CC07006D3EA9 /* FileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3AFC21C51CC07006D3EA9 /* FileTableViewController.m */; };
 		3AE3AFC61C51CC63006D3EA9 /* FileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3AFC51C51CC63006D3EA9 /* FileTableViewCell.m */; };
-		3AE3AFCE1C51D56C006D3EA9 /* GovAffairsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3AFCD1C51D56C006D3EA9 /* GovAffairsTableViewController.m */; };
 		3AE3AFD21C51F5B9006D3EA9 /* LeaderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3AFD11C51F5B9006D3EA9 /* LeaderTableViewController.m */; };
 		3AE3AFD51C51F63D006D3EA9 /* LeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3AFD41C51F63D006D3EA9 /* LeaderTableViewCell.m */; };
 		3AE3AFD91C5200FE006D3EA9 /* PictureTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3AFD81C5200FE006D3EA9 /* PictureTableViewController.m */; };
@@ -112,6 +113,10 @@
 		3A29A7661C5B463C005AD06B /* ApiManager+Leader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ApiManager+Leader.m"; sourceTree = "<group>"; };
 		3A29A7681C5B584F005AD06B /* ApiManager+GovAffairs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ApiManager+GovAffairs.h"; sourceTree = "<group>"; };
 		3A29A7691C5B584F005AD06B /* ApiManager+GovAffairs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ApiManager+GovAffairs.m"; sourceTree = "<group>"; };
+		3A33A0F51C7D39F8009CD02D /* GovAffairsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GovAffairsViewController.h; sourceTree = "<group>"; };
+		3A33A0F61C7D39F8009CD02D /* GovAffairsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GovAffairsViewController.m; sourceTree = "<group>"; };
+		3A33A0F81C7D5686009CD02D /* ApiManager+Push.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ApiManager+Push.h"; sourceTree = "<group>"; };
+		3A33A0F91C7D5686009CD02D /* ApiManager+Push.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ApiManager+Push.m"; sourceTree = "<group>"; };
 		3A3D60491C584F3B00B03D40 /* GovInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GovInfoTableViewController.h; sourceTree = "<group>"; };
 		3A3D604A1C584F3B00B03D40 /* GovInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GovInfoTableViewController.m; sourceTree = "<group>"; };
 		3A3D604C1C5856D300B03D40 /* ActivityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableViewController.h; sourceTree = "<group>"; };
@@ -149,8 +154,6 @@
 		3AE3AFC21C51CC07006D3EA9 /* FileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTableViewController.m; sourceTree = "<group>"; };
 		3AE3AFC41C51CC63006D3EA9 /* FileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTableViewCell.h; sourceTree = "<group>"; };
 		3AE3AFC51C51CC63006D3EA9 /* FileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTableViewCell.m; sourceTree = "<group>"; };
-		3AE3AFCC1C51D56C006D3EA9 /* GovAffairsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GovAffairsTableViewController.h; sourceTree = "<group>"; };
-		3AE3AFCD1C51D56C006D3EA9 /* GovAffairsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GovAffairsTableViewController.m; sourceTree = "<group>"; };
 		3AE3AFD01C51F5B9006D3EA9 /* LeaderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderTableViewController.h; sourceTree = "<group>"; };
 		3AE3AFD11C51F5B9006D3EA9 /* LeaderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderTableViewController.m; sourceTree = "<group>"; };
 		3AE3AFD31C51F63D006D3EA9 /* LeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderTableViewCell.h; sourceTree = "<group>"; };
@@ -292,6 +295,8 @@
 				3A29A7601C5B10B5005AD06B /* ApiManager+Photo.m */,
 				3A19E91E1C74703B0039A57F /* ApiManager+Service.h */,
 				3A19E91F1C74703B0039A57F /* ApiManager+Service.m */,
+				3A33A0F81C7D5686009CD02D /* ApiManager+Push.h */,
+				3A33A0F91C7D5686009CD02D /* ApiManager+Push.m */,
 			);
 			name = NetWorking;
 			sourceTree = "<group>";
@@ -353,8 +358,8 @@
 		3AE3AFCB1C51D534006D3EA9 /* GovAffairs */ = {
 			isa = PBXGroup;
 			children = (
-				3AE3AFCC1C51D56C006D3EA9 /* GovAffairsTableViewController.h */,
-				3AE3AFCD1C51D56C006D3EA9 /* GovAffairsTableViewController.m */,
+				3A33A0F51C7D39F8009CD02D /* GovAffairsViewController.h */,
+				3A33A0F61C7D39F8009CD02D /* GovAffairsViewController.m */,
 				3A17A5851C55BB1300E160D0 /* OrganizationTableViewController.h */,
 				3A17A5861C55BB1300E160D0 /* OrganizationTableViewController.m */,
 				3A3D60491C584F3B00B03D40 /* GovInfoTableViewController.h */,
@@ -697,7 +702,6 @@
 				3A29A76A1C5B584F005AD06B /* ApiManager+GovAffairs.m in Sources */,
 				3AFFE3521C50B70E00FB6F84 /* BlodTableViewCell.m in Sources */,
 				3AE3AFD51C51F63D006D3EA9 /* LeaderTableViewCell.m in Sources */,
-				3AE3AFCE1C51D56C006D3EA9 /* GovAffairsTableViewController.m in Sources */,
 				3A3D604B1C584F3B00B03D40 /* GovInfoTableViewController.m in Sources */,
 				3A3D60571C5896FD00B03D40 /* ArticlesViewController.m in Sources */,
 				3A17A5951C55C72600E160D0 /* FoldInfo.m in Sources */,
@@ -734,6 +738,8 @@
 				3AE3AFC61C51CC63006D3EA9 /* FileTableViewCell.m in Sources */,
 				3AFFE3421C50710500FB6F84 /* RootViewController.m in Sources */,
 				3A29A7671C5B463C005AD06B /* ApiManager+Leader.m in Sources */,
+				3A33A0F71C7D39F8009CD02D /* GovAffairsViewController.m in Sources */,
+				3A33A0FA1C7D5686009CD02D /* ApiManager+Push.m in Sources */,
 				3A3D60541C586FCA00B03D40 /* UIColor+SCColor.m in Sources */,
 				3A2736AB1C5613A000AEFDD6 /* ProFoldTableViewController.m in Sources */,
 				3AFFE3551C50B8B700FB6F84 /* ContentTableViewCell.m in Sources */,
@@ -879,6 +885,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = sichuan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
@@ -893,6 +900,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = sichuan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";

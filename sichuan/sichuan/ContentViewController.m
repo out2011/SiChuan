@@ -10,7 +10,7 @@
 #import "FocusTableViewController.h"
 #import "OverViewController.h"
 #import "FileTableViewController.h"
-#import "GovAffairsTableViewController.h"
+#import "GovAffairsViewController.h"
 #import "LeaderTableViewController.h"
 #import "PictureTableViewController.h"
 #import "ServiceViewController.h"
@@ -57,7 +57,7 @@
             break;
         case 3: {
             
-            GovAffairsTableViewController *govVC = [storyboard instantiateViewControllerWithIdentifier:@"GovAffairsTableViewController"];
+            GovAffairsViewController *govVC = [storyboard instantiateViewControllerWithIdentifier:@"GovAffairsViewController"];
             [self viewChanged:govVC];
         }
             break;

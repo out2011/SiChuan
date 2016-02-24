@@ -114,9 +114,12 @@ static NSString *url_doc = @"http://www.sc.gov.cn/10462/include/bjwqjyj20120228.
 static NSString *url_holl = @"http://3g.sczw.gov.cn/";
 
 /// 地图服务
-static NSString *API_Address = @"contacts";
-typedef void(^SCAddressDicCompleteBlock)(NSArray *responseObject, NSError *error);
+static NSString *API_address = @"contacts";
+typedef void(^SCAddressDidCompleteBlock)(NSArray *responseObject, NSError *error);
 
+// --------------- 推送通知 --------------- //
+static NSString *API_pushMsg = @"pushMsg";
+typedef void(^SCPushMsgDidCompleteBlock)(NSDictionary *responseObject, NSError *error);
 @interface ApiManager : NSObject
 
 @property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
@@ -136,7 +139,6 @@ typedef void(^SCAddressDicCompleteBlock)(NSArray *responseObject, NSError *error
                 completeBlock:(SCSessionTaskDidCompleteBlock)completeBlock;
 @end
 
-#import "ApiManager+Focus.h"
 
 
 

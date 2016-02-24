@@ -10,11 +10,11 @@
 
 @implementation ApiManager (Service)
 
-- (NSURLSessionDataTask *)requestAddressWithCompleteBlock:(SCAddressDicCompleteBlock)completeBlock {
+- (NSURLSessionDataTask *)requestAddressWithCompleteBlock:(SCAddressDidCompleteBlock)completeBlock {
     
     NSDictionary *parameters;
     
-    NSURLSessionDataTask *task = [self post:API_Address
+    NSURLSessionDataTask *task = [self post:API_address
                                  parameters:parameters
                               completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
                                   

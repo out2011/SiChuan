@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MLLabel/NSAttributedString+MLLabel.h>
-#import "MLLabel.h"
 
 @interface FoldTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet MLLabel *contentLable;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @end

@@ -63,4 +63,27 @@
     
     return [NSString stringWithString:string];
 }
+
++ (NSArray *)messageWithString:(NSString *)string {
+    
+    
+    return [string componentsSeparatedByString:@"-"];
+}
+
++ (NSString *)title:(NSString *)title {
+    
+    if ([title isEqualToString:@"file"]) {
+        
+        return @"政府文件";
+    }
+    else if ([title isEqualToString:@"focus"]) {
+        
+        return @"今日四川";
+    }
+    
+    else {
+        
+        return @"政务信息";
+    }
+}
 @end
