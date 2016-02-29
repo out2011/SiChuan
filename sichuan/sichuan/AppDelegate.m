@@ -10,6 +10,10 @@
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
 #import <BaiduMapAPI_Cloud/BMKCloudSearchComponent.h>
 #import "GeTuiSdk.h"
+#import <ShareSDK/ShareSDK.h>
+#import "WXApi.h"
+#import "WeiboSDK.h"
+#import <TencentOpenAPI/QQApiInterface.h>
 
 #define kGtAppId           @"LQuJmpN9dO8oJPGl8PEPr3"
 #define kGtAppKey          @"aVlcTi1cagAWwXsgkblhM1"
@@ -42,6 +46,42 @@ BMKMapManager *_mapManager;
     [self receiveNotificationByLaunchingOptions:launchOptions];
     
     [GeTuiSdk clearAllNotificationForNotificationBar];
+    
+    /// share SDK
+    [ShareSDK registerApp:@""
+          activePlatforms:@[@(SSDKPlatformTypeSinaWeibo),
+                            @(SSDKPlatformSubTypeWechatSession),
+                            @(SSDKPlatformSubTypeWechatTimeline),
+                            @(SSDKPlatformSubTypeQQFriend)] onImport:nil
+          onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo) {
+              
+              switch (platformType)
+              {
+                      // 微博分享
+                  case SSDKPlatformTypeSinaWeibo:
+                      //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
+//                      [appInfo SSDKSetupSinaWeiboByAppKey:@"152870617"
+//                                            appSecret:@"a3be638dd9ca01b61ad5d8c0cb96f0fe"
+//                                              redirectUri:@"http://www.sharesdk.cn"
+//                                                 authType:SSDKAuthTypeSSO];
+                      break;
+                      // 微信朋友
+                  case SSDKPlatformSubTypeWechatSession:
+//                      [appInfo SSDKSetupWeChatByAppId:@"" appSecret:@""];
+                      break;
+                      // 微信朋友圈
+                  case SSDKPlatformSubTypeWechatTimeline:
+//                      [appInfo SSDKSetupWeChatByAppId:@"" appSecret:@""];
+                      break;
+                      // QQ好友
+                  case SSDKPlatformSubTypeQQFriend:
+//                      [appInfo SSDKSetupQQByAppId:@"" appKey:@"" authType:SSDKAuthTypeSSO];
+                      break;
+                  default:
+                      break;
+              }
+              
+          }];
     return YES;
 }
 
@@ -137,10 +177,10 @@ BMKMapManager *_mapManager;
         
         /// test !!!!!
         
-//        NSData *jsonData = [payloadMsg dataUsingEncoding:NSUTF8StringEncoding];
-//        NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
-//
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"pushMessage" object:self userInfo:userInfo];
+        //        NSData *jsonData = [payloadMsg dataUsingEncoding:NSUTF8StringEncoding];
+        //        NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
+        //
+        //        [[NSNotificationCenter defaultCenter] postNotificationName:@"pushMessage" object:self userInfo:userInfo];
         
         [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
         
@@ -216,10 +256,10 @@ BMKMapManager *_mapManager;
     /// test !!!!!
     
     
-//            NSData *jsonData = [payloadMsg dataUsingEncoding:NSUTF8StringEncoding];
-//            NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
-//    
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushMessage" object:self userInfo:dicData];
+    //            NSData *jsonData = [payloadMsg dataUsingEncoding:NSUTF8StringEncoding];
+    //            NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
+    //
+    //    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushMessage" object:self userInfo:dicData];
     NSLog(@"\n>>>[GexinSdk ReceivePayload]:%@\n\n", msg);
     
     /**

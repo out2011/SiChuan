@@ -18,6 +18,7 @@
 #import "RootViewController.h"
 
 #define kScreenW [UIScreen mainScreen].bounds.size.width
+#define kScreenH [UIScreen mainScreen].bounds.size.height
 
 @interface ContentViewController () <UIScrollViewDelegate>
 
@@ -35,6 +36,7 @@
     
     _selectedIndex = 0;
     self.loadVCs = [NSMutableArray array];
+    
     [self addAllViewController];
     [self scrollViewSetting];
 //    [self contentChangedWithIndex:_index];
@@ -43,6 +45,7 @@
 - (void)scrollViewSetting {
     
     self.scrollView.contentSize = CGSizeMake(kScreenW * 8, 0);
+    NSLog(@"width: %f", kScreenW);
     self.scrollView.contentOffset = CGPointZero;
     
     for (int i = 0; i < 2; i++) {
@@ -84,7 +87,8 @@
 - (void)addShowViewWithIndex:(NSInteger)index {
     
     UIViewController *vc = self.childViewControllers[index];
-    vc.view.frame = CGRectMake(index * kScreenW, 0, kScreenW, self.view.bounds.size.height);
+    vc.view.frame = CGRectMake(index * kScreenW, 0, kScreenW, kScreenH);
+    NSLog(@"frame: %f,  ", [UIScreen mainScreen].bounds.size.height);
     [self.scrollView addSubview:vc.view];
     [self.loadVCs addObject:vc.view];
 }

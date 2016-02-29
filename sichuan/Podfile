@@ -6,3 +6,10 @@ pod 'MJRefresh'
 pod 'SDWebImage', '~> 3.7'
 pod 'BaiduMapKit', '~> 2.10.0'
 pod 'GTSDK'
+
+pod 'ShareSDK3'
+pod 'MOBFoundation'
+
+pod 'ShareSDK3/ShareSDKPlatforms/QQ'
+pod 'ShareSDK3/ShareSDKPlatforms/SinaWeibo'
+pod 'ShareSDK3/ShareSDKPlatforms/WeChat'

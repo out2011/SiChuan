@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sichuan/AppDelegate.m"
-            timestampString = "478151105.352624"
+            timestampString = "478419892.403429"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "-receiveNotificationByLaunchingOptions:"
             landmarkType = "5">
          </BreakpointContent>
@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sichuan/AppDelegate.m"
-            timestampString = "478151105.352624"
+            timestampString = "478419892.403429"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
             landmarkName = "-GeTuiSdkDidReceivePayload:andTaskId:andMessageId:andOffLine:fromApplication:"
             landmarkType = "5">
          </BreakpointContent>
@@ -68,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sichuan/AppDelegate.m"
-            timestampString = "478151070.453197"
+            timestampString = "478419892.403429"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
             landmarkType = "5">
          </BreakpointContent>

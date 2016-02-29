@@ -11,6 +11,7 @@
 #import "ApiManager+Photo.h"
 #import "ApiManager+GovAffairs.h"
 #import "NSString+SCString.h"
+#import <ShareSDK/ShareSDK.h>
 
 #define kScreenW [UIScreen mainScreen].bounds.size.width
 #define kScreenH [UIScreen mainScreen].bounds.size.height
@@ -37,6 +38,7 @@
     
     [self initializeDataSource];
     [self initializeInterface];
+    [self inititalizeShareItem];
 }
 
 
@@ -84,6 +86,12 @@
     [_contentView loadHTMLString:htmlStr baseURL:[NSURL URLWithString:@""]];
 }
 
+- (void)inititalizeShareItem {
+    
+    UIBarButtonItem *shareItem = [[UIBarButtonItem alloc] initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(shared)];
+    self.navigationItem.rightBarButtonItem = shareItem;
+    
+}
 #pragma  mark - web view delegate
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     
@@ -102,32 +110,10 @@
     [webView stringByEvaluatingJavaScriptFromString:fixImage];
     [_contentView stringByEvaluatingJavaScriptFromString:@"ResizeImages();"];
     
-    // 拦截视频，修改视频大小
-//    NSString *fixVideo = [NSString stringWithFormat:@"var script = document.createElement('script');"
-//                          "script.type = 'text/javascript';"
-//                          "script.text = \"function ResizeVideo() { "
-//                          "var myIframe = document.getElementsByTagName('iframe')[0];"
-//                          "var maxWidth=%f;" //缩放系数
-//                          "myIframe.style.width = maxWidth;"
-//                          "myIframe.style.height = maxWidth / 4 * 3;"
-//                          "}\";"
-//                          "document.getElementsByTagName('DIV')[0].appendChild(script);", kScreenW - 32];
-//    [webView stringByEvaluatingJavaScriptFromString:fixVideo];
-//    [_contentView stringByEvaluatingJavaScriptFromString:@"ResizeVideo();"];
-    
     // 重置web view高度
     NSString *height_str= [webView stringByEvaluatingJavaScriptFromString: @"document.body.offsetHeight"];
     _webViewHeight.constant = [height_str integerValue] + 16;
-    
-//    if ([height_str integerValue] <= kScreenH - 64 && !_data[@"leaderName"]) {
-//        
-//        _backgroundView.scrollEnabled = NO;
-//    }
-//    else {
-//        
-//        _backgroundView.scrollEnabled = YES;
-//    }
-    
+
     _backgroundView.contentOffset = CGPointMake(0, 0);
 }
 
@@ -150,6 +136,11 @@
         return YES;
     }
     return YES;
+}
+
+- (void)shared {
+    
+    
 }
 
 

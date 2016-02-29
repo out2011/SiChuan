@@ -35,6 +35,10 @@
 		3A3D60781C58A45100B03D40 /* ApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D60771C58A45100B03D40 /* ApiManager.m */; };
 		3A3D607E1C58B0BE00B03D40 /* ApiManager+Focus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D607D1C58B0BE00B03D40 /* ApiManager+Focus.m */; };
 		3A718FB11C5F482B00185B66 /* SCNoteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A718FB01C5F482B00185B66 /* SCNoteHelper.m */; };
+		3A7753DE1C83E19300B68339 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7753DD1C83E19300B68339 /* QuartzCore.framework */; };
+		3A7753E01C83E1A600B68339 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7753DF1C83E1A600B68339 /* libicucore.tbd */; };
+		3A7753E21C83E1C900B68339 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7753E11C83E1C900B68339 /* libstdc++.tbd */; };
+		3A7753E31C83E1D800B68339 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF124B31C7BF97600314784 /* libsqlite3.tbd */; };
 		3A7FE41F1C75AF0B00A76B7E /* NSString+SCString.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7FE41E1C75AF0B00A76B7E /* NSString+SCString.m */; };
 		3A897FF81C7563FB00A94366 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A897FF71C7563FB00A94366 /* MapViewController.m */; };
 		3AA3416C1C59B0F40084F94B /* SCCompareHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA3416B1C59B0F40084F94B /* SCCompareHelper.m */; };
@@ -135,6 +139,9 @@
 		3A3D607D1C58B0BE00B03D40 /* ApiManager+Focus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ApiManager+Focus.m"; sourceTree = "<group>"; };
 		3A718FAF1C5F482B00185B66 /* SCNoteHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNoteHelper.h; sourceTree = "<group>"; };
 		3A718FB01C5F482B00185B66 /* SCNoteHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNoteHelper.m; sourceTree = "<group>"; };
+		3A7753DD1C83E19300B68339 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3A7753DF1C83E1A600B68339 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		3A7753E11C83E1C900B68339 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		3A7FE41D1C75AF0A00A76B7E /* NSString+SCString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SCString.h"; sourceTree = "<group>"; };
 		3A7FE41E1C75AF0B00A76B7E /* NSString+SCString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SCString.m"; sourceTree = "<group>"; };
 		3A897FF61C7563FB00A94366 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -207,6 +214,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A7753E31C83E1D800B68339 /* libsqlite3.tbd in Frameworks */,
+				3A7753E21C83E1C900B68339 /* libstdc++.tbd in Frameworks */,
+				3A7753E01C83E1A600B68339 /* libicucore.tbd in Frameworks */,
+				3A7753DE1C83E19300B68339 /* QuartzCore.framework in Frameworks */,
 				38EFE439EDD699DEBDEAF6DD /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,6 +242,9 @@
 		0BA10035CD6E72CB2879D7C8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A7753E11C83E1C900B68339 /* libstdc++.tbd */,
+				3A7753DF1C83E1A600B68339 /* libicucore.tbd */,
+				3A7753DD1C83E19300B68339 /* QuartzCore.framework */,
 				3AF124BF1C7BF9BB00314784 /* CoreBluetooth.framework */,
 				3AF124BD1C7BF9B300314784 /* CoreLocation.framework */,
 				3AF124BB1C7BF9AC00314784 /* AVFoundation.framework */,
