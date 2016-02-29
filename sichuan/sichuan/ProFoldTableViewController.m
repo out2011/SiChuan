@@ -65,7 +65,7 @@
         
 //        cell.contentLable.attributedText = [NSAttributedString attributedStringWithHTML:showed];
 //        cell.contentLable.font = [UIFont systemFontOfSize:2000];
-        NSAttributedString *attributedString = [[NSAttributedString alloc] initWithData:[info.information dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSFontAttributeName: [UIFont systemFontOfSize:22] } documentAttributes:nil error:nil];
+        NSAttributedString *attributedString = [[NSAttributedString alloc] initWithData:[showed dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSFontAttributeName: [UIFont systemFontOfSize:22] } documentAttributes:nil error:nil];
 //        textView.attributedText = attributedString;
         cell.textView.attributedText = attributedString;
     }
@@ -85,7 +85,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
-    return 50;
+    return 54;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

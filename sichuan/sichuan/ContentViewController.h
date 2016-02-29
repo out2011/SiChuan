@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) RootViewController *parentVC;
 
-@property (nonatomic, assign) NSInteger index;
+@property (nonatomic, assign) NSInteger selectedIndex;
 
 
 - (void)contentChangedWithIndex:(NSInteger)index;

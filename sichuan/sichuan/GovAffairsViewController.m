@@ -10,12 +10,14 @@
 #import "ClassifyCell.h"
 #import "GovInfoTableViewController.h"
 #import "ApiManager+GovAffairs.h"
+#import "SCDeviceHelper.h"
 
 @interface GovAffairsViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) NSArray *titles;
 @property (nonatomic) NSInteger selected;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewHeight;
 @end
 
 @implementation GovAffairsViewController
@@ -89,6 +91,10 @@
     }
     
     NSDictionary *dic = self.titles[indexPath.row];
+    
+    if (![SCDeviceHelper isIphone6]) {
+        cell.title.font = [UIFont systemFontOfSize:17];
+    }
     cell.title.text = dic[@"title"];
     cell.image.image = [UIImage imageNamed:dic[@"image"]];
     
@@ -109,4 +115,8 @@
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return 54;
+}
 @end

@@ -10,6 +10,7 @@
 #import "UIColor+SCColor.h"
 #import "SCDeviceHelper.h"
 
+#define kScreenW [UIScreen mainScreen].bounds.size.width
 #define kButtonWidth [UIScreen mainScreen].bounds.size.width / 4
 #define kBaseTag 1000
 
@@ -79,16 +80,41 @@
         
         UIButton *button = (UIButton *)[self viewWithTag:kBaseTag + i];
         button.selected = NO;
-//        button.enabled = YES;
     }
     sender.selected = YES;
-//    sender.enabled = NO;
     
     _selectedIndex = sender.tag - kBaseTag;
     [self.menuDelegate selectedAtIndex:_selectedIndex];
 }
 
-
+- (void)segmentChangeIndex:(NSInteger)index {
+    
+    for (int i = 0; i < _titles.count; i++) {
+        
+        UIButton *button = (UIButton *)[self viewWithTag:kBaseTag + i];
+        button.selected = NO;
+        
+        if (index == i) {
+            
+            button.selected = YES;
+        }
+    }
+    
+    _selectedIndex = index;
+    
+    if (index * kButtonWidth < self.contentOffset.x || (index + 1) * kButtonWidth > self.contentOffset.x + kScreenW) {
+        
+        if (index > 3) {
+            
+            [self setContentOffset:CGPointMake(kScreenW, 0) animated:YES];
+        }
+        else {
+            
+            [self setContentOffset:CGPointZero animated:YES];
+        }
+        
+    }
+}
 
 
 

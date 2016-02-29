@@ -11,9 +11,9 @@
 #import <BaiduMapAPI_Cloud/BMKCloudSearchComponent.h>
 #import "GeTuiSdk.h"
 
-#define kGtAppId           @"OvUVEmNkMt9NmJCPFCR3j9"
-#define kGtAppKey          @"jf2rX5rga36XNqmLVi27F5"
-#define kGtAppSecret       @"rWAbzP4QK8AhHBlCRBfA07"
+#define kGtAppId           @"LQuJmpN9dO8oJPGl8PEPr3"
+#define kGtAppKey          @"aVlcTi1cagAWwXsgkblhM1"
+#define kGtAppSecret       @"Kaz5Z7nfPx7A8Saogn6KC"
 
 @interface AppDelegate ()<BMKGeneralDelegate, GeTuiSdkDelegate>
 
@@ -40,6 +40,8 @@ BMKMapManager *_mapManager;
     
     // 处理远程通知启动APP
     [self receiveNotificationByLaunchingOptions:launchOptions];
+    
+    [GeTuiSdk clearAllNotificationForNotificationBar];
     return YES;
 }
 
@@ -132,6 +134,16 @@ BMKMapManager *_mapManager;
      */
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (userInfo) {
+        
+        /// test !!!!!
+        
+//        NSData *jsonData = [payloadMsg dataUsingEncoding:NSUTF8StringEncoding];
+//        NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
+//
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"pushMessage" object:self userInfo:userInfo];
+        
+        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+        
         NSLog(@"\n>>>[Launching RemoteNotification]:%@", userInfo);
     }
 }
@@ -165,22 +177,12 @@ BMKMapManager *_mapManager;
 }
 
 #pragma mark - APP运行中接收到通知(推送)处理
-
-/** APP已经接收到“远程”通知(推送) - (App运行在后台/App运行在前台) */
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    application.applicationIconBadgeNumber = 0; // 标签
-    
-    NSLog(@"\n>>>[Receive RemoteNotification]:%@\n\n", userInfo);
-}
-
 /** APP已经接收到“远程”通知(推送) - 透传推送消息  */
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
     
-    /// 收到消息后 这里做处理；
-    
     // 处理APN
     NSLog(@"\n>>>[Receive RemoteNotification - Background Fetch]:%@\n\n", userInfo);
-    
+    NSString *payloadMsg = [userInfo objectForKey:@"payload"];
     completionHandler(UIBackgroundFetchResultNewData);
 }
 
@@ -210,12 +212,14 @@ BMKMapManager *_mapManager;
     }
     
     NSString *msg = [NSString stringWithFormat:@" payloadId=%@,taskId=%@,messageId:%@,payloadMsg:%@%@", payloadId, taskId, aMsgId, payloadMsg, offLine ? @"<离线消息>" : @""];
-    ////  这里收到透传数据
     
-    NSData *jsonData = [payloadMsg dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
+    /// test !!!!!
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushMessage" object:self userInfo:dicData];
+    
+//            NSData *jsonData = [payloadMsg dataUsingEncoding:NSUTF8StringEncoding];
+//            NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
+//    
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushMessage" object:self userInfo:dicData];
     NSLog(@"\n>>>[GexinSdk ReceivePayload]:%@\n\n", msg);
     
     /**
@@ -226,13 +230,6 @@ BMKMapManager *_mapManager;
      *返回值：BOOL，YES表示该命令已经提交，NO表示该命令未提交成功。注：该结果不代表服务器收到该条命令
      **/
     [GeTuiSdk sendFeedbackMessage:90001 taskId:taskId msgId:aMsgId];
-}
-
-/** SDK收到sendMessage消息回调 */
-- (void)GeTuiSdkDidSendMessage:(NSString *)messageId result:(int)result {
-    // [4-EXT]:发送上行消息结果反馈
-    NSString *msg = [NSString stringWithFormat:@"sendmessage=%@,result=%d", messageId, result];
-    NSLog(@"\n>>>[GexinSdk DidSendMessage]:%@\n\n", msg);
 }
 
 /** SDK运行状态通知 */

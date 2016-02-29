@@ -9,6 +9,7 @@
 #import "OverViewController.h"
 #import "ClassifyCell.h"
 #import "ProReportTableViewController.h"
+#import "SCDeviceHelper.h"
 
 @interface OverViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -18,6 +19,7 @@
 
 @property (nonatomic) NSInteger selected;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewHeight;
 @end
 
 @implementation OverViewController
@@ -64,6 +66,10 @@
     }
     
     NSDictionary *dic = self.titles[indexPath.row];
+    
+    if (![SCDeviceHelper isIphone6]) {
+        cell.title.font = [UIFont systemFontOfSize:17];
+    }
     cell.title.text = dic[@"title"];
     cell.image.image = [UIImage imageNamed:dic[@"image"]];
     
@@ -71,8 +77,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return 44;
+
+    return 54;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

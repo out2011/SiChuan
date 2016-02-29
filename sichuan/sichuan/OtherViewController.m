@@ -8,11 +8,13 @@
 
 #import "OtherViewController.h"
 #import "ClassifyCell.h"
+#import "SCDeviceHelper.h"
 
 @interface OtherViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSArray *titles;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewHeight;
 @end
 
 @implementation OtherViewController
@@ -24,6 +26,11 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Information" ofType:@"plist"];
     NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:path];
     self.titles = dic[@"Others"];
+    
+    if ([SCDeviceHelper isIphone6]) {
+        
+        self.viewHeight.constant = 54 * self.titles.count - 1;
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -50,6 +57,10 @@
     }
     
     NSDictionary *dic = self.titles[indexPath.row];
+    
+    if (![SCDeviceHelper isIphone6]) {
+        cell.title.font = [UIFont systemFontOfSize:17];
+    }
     cell.title.text = dic[@"title"];
     cell.image.image = [UIImage imageNamed:dic[@"image"]];
     
@@ -58,7 +69,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 44;
+    return 54;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -36,7 +36,7 @@
     
     if (self) {
         
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(8, 49, kScreenW - 8, 1)];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(8, 53, kScreenW - 8, 1)];
         view.backgroundColor = [UIColor colorWithRGB:0xE0E0E0];
         [self addSubview:view];
         
@@ -49,7 +49,7 @@
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         // 设置按钮的内容左对齐
         button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        button.titleLabel.font = [UIFont systemFontOfSize:16];
+        button.titleLabel.font = [UIFont systemFontOfSize:19];
         // 设置button的内边距
         button.titleEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
         button.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);

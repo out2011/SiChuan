@@ -14,4 +14,6 @@
 
 @property (nonatomic, strong) ContentViewController *contentChildVC;
 
+/// 滑动翻页时，改变button状态
+- (void)scrollChangeIndex:(NSInteger)index;
 @end

@@ -124,11 +124,17 @@
     [self.view addSubview:_menuSegment];
 }
 
+- (void)scrollChangeIndex:(NSInteger)index {
+    
+    [_menuSegment segmentChangeIndex:index];
+}
+
 - (void)selectedAtIndex:(NSInteger)index {
 
     [_contentChildVC contentChangedWithIndex:index];
 }
 
+#pragma mark - 通知中心
 - (void)notificationCenterSetting {
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationAction:) name:@"pushMessage" object:nil];

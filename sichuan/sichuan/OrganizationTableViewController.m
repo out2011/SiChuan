@@ -74,7 +74,7 @@
     NSString *key = [NSString stringWithFormat:@"%ld", indexPath.section];
     NSArray *array = _items[key];
     NSDictionary *dic = array[indexPath.row];
-    cell.textView.text = dic[@"title"];
+    cell.label.text = dic[@"title"];
     
     // Configure the cell...
     
@@ -97,7 +97,7 @@
 #pragma mark - table view delegate
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    TitleView *head = [[TitleView alloc] init];
+    TitleView *head = [TitleView headWithTableView:tableView];
     head.tag = kBaseViewTag + section;
     head.info = _info[section];
     head.delegate = self;
@@ -107,7 +107,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
-    return 50;
+    return 54;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

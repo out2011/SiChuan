@@ -21,4 +21,5 @@
 @property (nonatomic, assign) NSInteger selectedIndex;
 @property (nonatomic, weak) id<MenuSegmentDelegate> menuDelegate;
 
+- (void)segmentChangeIndex:(NSInteger)index;
 @end
