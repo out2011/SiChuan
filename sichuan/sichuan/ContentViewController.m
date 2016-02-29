@@ -33,20 +33,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+
     _selectedIndex = 0;
     self.loadVCs = [NSMutableArray array];
     
     [self addAllViewController];
     [self scrollViewSetting];
-//    [self contentChangedWithIndex:_index];
+//    [self contentChangedWithIndex:0];
 }
 
 - (void)scrollViewSetting {
-    
+
     self.scrollView.contentSize = CGSizeMake(kScreenW * 8, 0);
-    NSLog(@"width: %f", kScreenW);
-    self.scrollView.contentOffset = CGPointZero;
+    NSLog(@"width: %f", self.scrollView.contentSize.width);
+    self.scrollView.contentOffset = CGPointMake(0, 0);
     
     for (int i = 0; i < 2; i++) {
         
@@ -87,8 +87,7 @@
 - (void)addShowViewWithIndex:(NSInteger)index {
     
     UIViewController *vc = self.childViewControllers[index];
-    vc.view.frame = CGRectMake(index * kScreenW, 0, kScreenW, kScreenH);
-    NSLog(@"frame: %f,  ", [UIScreen mainScreen].bounds.size.height);
+    vc.view.frame = CGRectMake(index * kScreenW, 0, self.scrollView.bounds.size.width, kScreenH);
     [self.scrollView addSubview:vc.view];
     [self.loadVCs addObject:vc.view];
 }
@@ -156,7 +155,7 @@
         // 在左侧添加新的view
         if (newIndex > 0) {
             UIViewController *vc = self.childViewControllers[newIndex - 1];
-            vc.view.frame = CGRectMake((newIndex - 1) * kScreenW, 0, kScreenW, self.view.bounds.size.height);
+            vc.view.frame = CGRectMake((newIndex - 1) * kScreenW, 0, kScreenW, kScreenH);
             [self.scrollView addSubview:vc.view];
             [self.loadVCs insertObject:vc.view atIndex:0];
         }
@@ -174,7 +173,7 @@
         // 在右侧添加新的view
         if (newIndex < 7) {
             UIViewController *vc = self.childViewControllers[newIndex + 1];
-            vc.view.frame = CGRectMake((newIndex + 1) * kScreenW, 0, kScreenW, self.view.bounds.size.height);
+            vc.view.frame = CGRectMake((newIndex + 1) * kScreenW, 0, kScreenW, kScreenH);
             [self.scrollView addSubview:vc.view];
             [self.loadVCs addObject:vc.view];
         }

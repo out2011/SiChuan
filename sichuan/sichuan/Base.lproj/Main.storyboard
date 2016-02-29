@@ -157,6 +157,17 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fki-at-Aia">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="450"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="244-oY-4ad"/>
+                                    <constraint firstAttribute="width" constant="320" id="qOY-EO-gsm"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="244-oY-4ad"/>
+                                        <exclude reference="qOY-EO-gsm"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="delegate" destination="PLz-oQ-WQg" id="3S4-8e-2LX"/>
                                 </connections>
