@@ -13,7 +13,6 @@
 #import <ShareSDK/ShareSDK.h>
 #import "WXApi.h"
 #import "WeiboSDK.h"
-#import <TencentOpenAPI/QQApiInterface.h>
 
 #define kGtAppId           @"LQuJmpN9dO8oJPGl8PEPr3"
 #define kGtAppKey          @"aVlcTi1cagAWwXsgkblhM1"
@@ -48,10 +47,10 @@ BMKMapManager *_mapManager;
     [GeTuiSdk clearAllNotificationForNotificationBar];
     
     /// share SDK
-    [ShareSDK registerApp:@""
+    [ShareSDK registerApp:@"fdb0a4a2e140"
           activePlatforms:@[@(SSDKPlatformTypeSinaWeibo),
-                            @(SSDKPlatformSubTypeWechatSession),
                             @(SSDKPlatformSubTypeWechatTimeline),
+                            @(SSDKPlatformSubTypeWechatSession),
                             @(SSDKPlatformSubTypeQQFriend)] onImport:nil
           onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo) {
               

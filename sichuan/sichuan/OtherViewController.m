@@ -9,6 +9,8 @@
 #import "OtherViewController.h"
 #import "ClassifyCell.h"
 #import "SCDeviceHelper.h"
+#import "ApiManager.h"
+#import "RMUniversalAlert.h"
 
 @interface OtherViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -76,7 +78,7 @@
     
     switch (indexPath.row) {
         case 0: {
-            NSLog(@"版本检测");
+            [self checkVersion];
         }
             break;
         case 1: {
@@ -86,6 +88,51 @@
         default:
             break;
     }
+}
+
+- (void)checkVersion {
+    
+    
+    __weak OtherViewController *weakSelf = self;
+    [[ApiManager sharedInstance] requestVersionWithCompleteBlock:^(NSDictionary *responseObject, NSError *error) {
+        
+        CGFloat nowVersion = [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"] floatValue];
+        
+        NSDictionary *versionData = responseObject[@"iOS"];
+        CGFloat newVersion = [versionData[@"version"] floatValue];
+        
+        if (newVersion > nowVersion) {
+            
+            [weakSelf updateWithUrl:versionData[@"url"]];
+        }
+        else {
+            
+            [weakSelf newestVersion];
+        }
+    }];
+}
+
+- (void)newestVersion {
+    
+    [RMUniversalAlert showAlertInViewController:self withTitle:@"" message:@"当前已是最新版本" cancelButtonTitle:@"确定" destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:^(RMUniversalAlert * _Nonnull alert, NSInteger buttonIndex) {
+        
+    }];
+}
+
+- (void)updateWithUrl:(NSString *)url {
+    
+    [RMUniversalAlert showAlertInViewController:self withTitle:@"更新" message:@"有新版本，是否更新？" cancelButtonTitle:@"取消" destructiveButtonTitle:@"更新" otherButtonTitles:nil tapBlock:^(RMUniversalAlert * _Nonnull alert, NSInteger buttonIndex) {
+        
+        switch (buttonIndex) {
+            case 1:
+                [[UIApplication sharedApplication]
+                 openURL:[NSURL URLWithString:url]];
+                break;
+                
+            default:
+                break;
+        }
+    }];
 }
 
 @end

@@ -1,6 +1,17 @@
 {
   "images" : [
     {
+      "resizing" : {
+        "mode" : "3-part-horizontal",
+        "center" : {
+          "mode" : "tile",
+          "width" : 5
+        },
+        "cap-insets" : {
+          "right" : 0,
+          "left" : 363
+        }
+      },
       "idiom" : "universal",
       "filename" : "ic_home_logo.png",
       "scale" : "1x"

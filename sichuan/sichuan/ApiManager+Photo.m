@@ -16,7 +16,7 @@
     
     NSDictionary *parameters = @{@"pno": pages, @"psize": size};
     
-    NSURLSessionDataTask *task = [self post:API_Photo parameters:parameters completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+    NSURLSessionDataTask *task = [self post:api_photo parameters:parameters completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
         
         if (!error) {
             
@@ -33,7 +33,7 @@
     
     NSDictionary *parameters = @{@"nid": nId};
     
-    NSURLSessionDataTask *task = [self post:API_PhotoDetail parameters:parameters completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+    NSURLSessionDataTask *task = [self post:api_photoDetail parameters:parameters completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
         
         if (!error) {
             

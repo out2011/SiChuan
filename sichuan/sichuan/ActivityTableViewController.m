@@ -9,7 +9,7 @@
 #import "ActivityTableViewController.h"
 #import "MJRefresh.h"
 #import "UIColor+SCColor.h"
-#import "ApiManager+Leader.h"
+#import "ApiManager.h"
 #import "SCCompareHelper.h"
 #import "FileTableViewCell.h"
 #import "ArticlesViewHelper.h"

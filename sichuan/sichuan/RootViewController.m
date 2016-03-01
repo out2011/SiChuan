@@ -13,7 +13,7 @@
 #import "SCBackItem.h"
 #import "UIImage+SCImage.h"
 #import "SCDeviceHelper.h"
-#import "ApiManager+Push.h"
+#import "ApiManager.h"
 #import "SCNoteHelper.h"
 #import "ArticlesViewHelper.h"
 
@@ -64,16 +64,17 @@
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRGB:0xFFFFFF];
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    
-    return UIStatusBarStyleLightContent;
-}
+//- (UIStatusBarStyle)preferredStatusBarStyle {
+//    
+//    return UIStatusBarStyleLightContent;
+//}
 
 - (void)viewWillDisappear:(BOOL)animated {
     
     [super viewWillDisappear:animated];
     
-    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+//    UIImage *image = [UIImage alloc] initWithc
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@""] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

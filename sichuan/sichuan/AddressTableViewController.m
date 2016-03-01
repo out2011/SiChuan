@@ -8,7 +8,7 @@
 
 #import "AddressTableViewController.h"
 #import "AddressTableViewCell.h"
-#import "ApiManager+Service.h"
+#import "ApiManager.h"
 #import "MJRefresh.h"
 #import "UIColor+SCColor.h"
 #import "MapViewController.h"

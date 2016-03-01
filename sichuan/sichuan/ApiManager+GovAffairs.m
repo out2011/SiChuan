@@ -33,7 +33,7 @@
     
     NSDictionary *parameters;
     
-    NSURLSessionDataTask *task = [self post:API_Organization
+    NSURLSessionDataTask *task = [self post:api_organization
                                  parameters:parameters
                               completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
                                   
@@ -52,7 +52,7 @@
     
     NSDictionary *parameters = @{@"pname": pname};
     
-    NSURLSessionDataTask *task = [self post:API_OrgList
+    NSURLSessionDataTask *task = [self post:api_orgList
                                  parameters:parameters
                               completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
                                   
@@ -69,7 +69,7 @@
     
     NSDictionary *parameters = @{@"nid": NId};
     
-    NSURLSessionDataTask *task = [self post:API_OrgDetail
+    NSURLSessionDataTask *task = [self post:api_orgDetail
                                  parameters:parameters
                               completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
                                   

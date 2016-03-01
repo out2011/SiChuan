@@ -16,7 +16,7 @@
     
     NSDictionary *parameters = @{@"pno": pages, @"psize": size};
     
-    NSURLSessionDataTask *task = [self post:API_FocusList parameters:parameters completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+    NSURLSessionDataTask *task = [self post:api_focusList parameters:parameters completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
         
         if (!error) {
             

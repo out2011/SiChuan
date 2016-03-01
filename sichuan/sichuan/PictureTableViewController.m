@@ -11,7 +11,7 @@
 #import "BlodTableViewCell.h"
 #import "ContentTableViewCell.h"
 #import "UIColor+SCColor.h"
-#import "ApiManager+Photo.h"
+#import "ApiManager.h"
 #import "SCCompareHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "FileTableViewCell.h"
@@ -88,7 +88,7 @@
         
         ;
         
-        [cell.image sd_setImageWithURL:[NSURL URLWithString:dic[@"imagePath"]]];
+        [cell.picture sd_setImageWithURL:[NSURL URLWithString:dic[@"imagePath"]]];
         cell.title.text = dic[@"title"];
         
         return cell;
@@ -103,7 +103,7 @@
             cell = [[ContentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"PhotoCell"];
         }
         
-        [cell.image sd_setImageWithURL:[NSURL URLWithString:dic [@"imagePath"]]];
+        [cell.picture sd_setImageWithURL:[NSURL URLWithString:dic [@"imagePath"]]];
         cell.title.text = dic[@"title"];
         cell.date.text = dic[@"publishDatetime"];
         return cell;

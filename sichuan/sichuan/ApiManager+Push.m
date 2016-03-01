@@ -15,7 +15,7 @@
     
     NSDictionary *parameters = @{@"nid": nid, @"type": type};
     
-    NSURLSessionDataTask *task = [self post:API_pushMsg parameters:parameters completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+    NSURLSessionDataTask *task = [self post:api_pushMsg parameters:parameters completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
         
         if (!error) {
             

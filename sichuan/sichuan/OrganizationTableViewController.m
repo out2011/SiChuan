@@ -12,7 +12,7 @@
 #import "TitleView.h"
 #import "MJRefresh.h"
 #import "UIColor+SCColor.h"
-#import "ApiManager+GovAffairs.h"
+#import "ApiManager.h"
 #import "ArticlesViewHelper.h"
 #import "SCBackItem.h"
 
@@ -87,7 +87,7 @@
     NSDictionary *data = array[indexPath.row];
     
     ArticlesViewController *articlesVC = [ArticlesViewHelper articlesViewController];
-    articlesVC.api = API_OrgDetail;
+    articlesVC.api = api_orgDetail;
     articlesVC.nID = data[@"nID"];
     articlesVC.title = kTitle;
     
@@ -122,7 +122,6 @@
 }
 
 - (void)headViewDidClickButtn:(TitleView *)head {
-    
     
     NSInteger index = head.tag - kBaseViewTag;
     [self requestItemWithIndex:index];

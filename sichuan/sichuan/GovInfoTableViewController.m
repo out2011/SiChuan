@@ -10,7 +10,7 @@
 #import "FileTableViewCell.h"
 #import "MJRefresh.h"
 #import "UIColor+SCColor.h"
-#import "ApiManager+GovAffairs.h"
+#import "ApiManager.h"
 #import "SCCompareHelper.h"
 #import "SCNoteHelper.h"
 #import "ArticlesViewController.h"

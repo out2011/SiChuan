@@ -11,7 +11,7 @@
 #import "ContentTableViewCell.h"
 #import "MJRefresh.h"
 #import "UIColor+SCColor.h"
-#import "ApiManager+Focus.h"
+#import "ApiManager.h"
 #import "FileTableViewCell.h"
 #import "SCCompareHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -28,6 +28,8 @@
 @property (nonatomic, strong) NSUserDefaults *defaults;
 
 @property (nonatomic, assign) NSInteger pages;
+
+@property (nonatomic, strong) UIImage *selectedImage;
 
 @end
 
@@ -61,8 +63,8 @@
     
     // 上拉刷新
     tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-
-            [self loadDataIsPulldown:NO];
+        
+        [self loadDataIsPulldown:NO];
     }];
     
     tableView.mj_header.backgroundColor = [UIColor colorWithRGB:0xF0F0F0];
@@ -73,12 +75,12 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
+    
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
+    
     return _data.count;
 }
 
@@ -93,7 +95,7 @@
         
         ;
         
-        [cell.image sd_setImageWithURL:[NSURL URLWithString:dic[@"imagePath"]]];
+        [cell.picture sd_setImageWithURL:[NSURL URLWithString:dic[@"imagePath"]]];
         cell.title.text = dic[@"title"];
         
         return cell;
@@ -112,7 +114,7 @@
                 cell = [[ContentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ContentCell"];
             }
             
-            [cell.image sd_setImageWithURL:[NSURL URLWithString:dic[@"imagePath"]]];
+            [cell.picture sd_setImageWithURL:[NSURL URLWithString:dic[@"imagePath"]]];
             cell.title.text = dic[@"title"];
             cell.date.text = note;
             return cell;
@@ -158,10 +160,17 @@
     if (indexPath.row == 0) {
         
         articlesVC.data = _data[0];
+        BlodTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        articlesVC.shareImage = cell.picture.image;
     }
     else {
         
         articlesVC.data = _data[indexPath.row - 1];
+        if ([articlesVC.data[@"isPic"] isEqualToNumber:@(1)]) {
+            
+            ContentTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            articlesVC.shareImage = cell.picture.image;
+        }
     }
     
     [self.navigationController pushViewController:articlesVC animated:YES];

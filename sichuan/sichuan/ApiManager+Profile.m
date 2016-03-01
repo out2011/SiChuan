@@ -14,7 +14,7 @@
     
     NSDictionary *parameters;
     
-    NSURLSessionDataTask *task = [self post:API_Situation
+    NSURLSessionDataTask *task = [self post:api_situation
                                  parameters:parameters
                               completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
                                   
@@ -32,7 +32,7 @@
     
     NSDictionary *parameters = @{@"pname": pname};
     
-    NSURLSessionDataTask *task = [self post:API_Position
+    NSURLSessionDataTask *task = [self post:api_position
                                  parameters:parameters
                               completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
                                   
@@ -51,7 +51,7 @@
     
     NSDictionary *parameters = @{@"pno": pages, @"psize": size};
     
-    NSURLSessionDataTask *task = [self post:API_News
+    NSURLSessionDataTask *task = [self post:api_news
                                  parameters:parameters
                               completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
                                   
@@ -67,7 +67,7 @@
     
     NSDictionary *parameters = @{@"pno": pages, @"psize": size};
     
-    NSURLSessionDataTask *task = [self post:API_StaNotice
+    NSURLSessionDataTask *task = [self post:api_staNotice
                                  parameters:parameters
                               completeBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
                                   

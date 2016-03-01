@@ -12,7 +12,7 @@
 #import "TitleView.h"
 #import "MJRefresh.h"
 #import "UIColor+SCColor.h"
-#import "ApiManager+Profile.h"
+#import "ApiManager.h"
 #import "SCNoteHelper.h"
 
 #define kBaseViewTag 100

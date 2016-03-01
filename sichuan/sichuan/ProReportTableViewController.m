@@ -12,7 +12,7 @@
 #import "UIColor+SCColor.h"
 #import "ArticlesViewHelper.h"
 #import "SCBackItem.h"
-#import "ApiManager+Profile.h"
+#import "ApiManager.h"
 #import "SCCompareHelper.h"
 #import "SCNoteHelper.h"
 #import "SCDeviceHelper.h"

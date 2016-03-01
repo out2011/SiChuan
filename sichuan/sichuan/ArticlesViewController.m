@@ -8,10 +8,13 @@
 
 #import "ArticlesViewController.h"
 #import "SCNoteHelper.h"
-#import "ApiManager+Photo.h"
-#import "ApiManager+GovAffairs.h"
+#import "ApiManager.h"
 #import "NSString+SCString.h"
 #import <ShareSDK/ShareSDK.h>
+#import <ShareSDKUI/ShareSDK+SSUI.h>
+#import <ShareSDKUI/SSUIShareActionSheetStyle.h>
+#import <ShareSDKUI/SSUIShareActionSheetCustomItem.h>
+#import <ShareSDK/ShareSDK+Base.h>
 
 #define kScreenW [UIScreen mainScreen].bounds.size.width
 #define kScreenH [UIScreen mainScreen].bounds.size.height
@@ -41,12 +44,16 @@
     [self inititalizeShareItem];
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return NO; // 返回NO表示要显示，返回YES将hiden
+}
 
 - (void)initializeDataSource {
     
     if (!self.data) {
         
-        if ([self.api isEqualToString:API_OrgDetail]) {
+        if ([self.api isEqualToString:api_orgDetail]) {
             
             [[ApiManager sharedInstance] requestOrgDetailWithNId:self.nID completeBlock:^(NSArray *responseObject, NSError *error) {
                 
@@ -140,7 +147,25 @@
 
 - (void)shared {
     
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@""]];
     
+    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+    [shareParams SSDKEnableUseClientShare];
+//    NSArray* imageArray = @[[UIImage imageNamed:@"shareImg.png"]];
+    [shareParams SSDKSetupShareParamsByText:@"分享内容"
+                                     images:@[self.shareImage]
+                                        url:[NSURL URLWithString:@"http://www.mob.com"]
+                                      title:@"分享标题"
+                                       type:SSDKContentTypeAuto];
+    
+    [ShareSDK showShareActionSheet:self.view
+                             items:nil
+                       shareParams:shareParams
+               onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+        
+                   
+                   
+    }];
 }
 
 

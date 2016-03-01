@@ -11,7 +11,7 @@
 #import "LeaderTableViewCell.h"
 #import "ActivityTableViewController.h"
 #import "UIColor+SCColor.h"
-#import "ApiManager+Leader.h"
+#import "ApiManager.h"
 #import "SCCompareHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ArticlesViewHelper.h"

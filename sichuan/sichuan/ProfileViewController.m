@@ -7,7 +7,7 @@
 //
 
 #import "ProfileViewController.h"
-#import "ApiManager+Profile.h"
+#import "ApiManager.h"
 
 @interface ProfileViewController ()
 

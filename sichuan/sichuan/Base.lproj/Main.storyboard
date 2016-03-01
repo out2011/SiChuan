@@ -1112,7 +1112,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQ8-rN-88b">
                                             <rect key="frame" x="8" y="11" width="304" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -1157,10 +1157,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="149.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yvD-GJ-zG9">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="149.5"/>
-                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1y-M3-UCt">
                                             <rect key="frame" x="0.0" y="131" width="320" height="18"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1168,6 +1164,10 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yvD-GJ-zG9">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="149.5"/>
+                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="k1y-M3-UCt" secondAttribute="bottom" id="FsQ-gO-A0c"/>
@@ -1180,7 +1180,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="image" destination="yvD-GJ-zG9" id="dc3-xk-m7v"/>
+                                    <outlet property="picture" destination="yvD-GJ-zG9" id="xHw-bL-RxS"/>
                                     <outlet property="title" destination="k1y-M3-UCt" id="wyI-Qb-UOh"/>
                                 </connections>
                             </tableViewCell>
@@ -1191,6 +1191,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="64.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Zd-iq-xBE">
+                                            <rect key="frame" x="106" y="8" width="181" height="23"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYU-jN-JVT">
+                                            <rect key="frame" x="106" y="39.5" width="181" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OG4-ia-bNl">
                                             <rect key="frame" x="8" y="8" width="90" height="48.5"/>
                                             <constraints>
@@ -1205,18 +1217,6 @@
                                                 </mask>
                                             </variation>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Zd-iq-xBE">
-                                            <rect key="frame" x="106" y="8" width="181" height="23"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYU-jN-JVT">
-                                            <rect key="frame" x="106" y="39.5" width="181" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="OG4-ia-bNl" secondAttribute="bottom" constant="8" id="0HC-dk-w8M"/>
@@ -1260,7 +1260,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="date" destination="UYU-jN-JVT" id="0G8-Qf-4zX"/>
-                                    <outlet property="image" destination="OG4-ia-bNl" id="9kp-6B-tAl"/>
+                                    <outlet property="picture" destination="OG4-ia-bNl" id="Wgp-7V-e3H"/>
                                     <outlet property="title" destination="8Zd-iq-xBE" id="dhe-WS-JYH"/>
                                 </connections>
                             </tableViewCell>
@@ -1663,7 +1663,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="image" destination="wY1-9c-FcE" id="uon-E8-4XO"/>
+                                    <outlet property="picture" destination="wY1-9c-FcE" id="yPE-I9-rOt"/>
                                     <outlet property="title" destination="Bve-hS-06D" id="KzM-4j-9Ha"/>
                                 </connections>
                             </tableViewCell>
@@ -1707,7 +1707,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="date" destination="xjI-HV-whr" id="9Ox-62-Xsa"/>
-                                    <outlet property="image" destination="6Vd-8u-myj" id="nuJ-i8-ChO"/>
+                                    <outlet property="picture" destination="6Vd-8u-myj" id="azd-E6-wvD"/>
                                     <outlet property="title" destination="r5i-0d-FRC" id="7BK-sd-Q4I"/>
                                 </connections>
                             </tableViewCell>

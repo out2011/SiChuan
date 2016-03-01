@@ -9,7 +9,7 @@
 #import "GovAffairsViewController.h"
 #import "ClassifyCell.h"
 #import "GovInfoTableViewController.h"
-#import "ApiManager+GovAffairs.h"
+#import "ApiManager.h"
 #import "SCDeviceHelper.h"
 
 @interface GovAffairsViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -43,27 +43,27 @@
         switch (_selected) {
             case 0:{ // 人事任免
                 
-                infoVC.api = API_Personnel;
+                infoVC.api = api_personnel;
             }
                 break;
             case 1:{ // 公示公告
                 
-                infoVC.api = API_Bulletin;
+                infoVC.api = api_bulletin;
             }
                 break;
             case 2:{ // 招考信息
                 
-                infoVC.api = API_Examination;
+                infoVC.api = api_examination;
             }
                 break;
             case 4:{ // 四川统计
                 
-                infoVC.api = API_Statistics;
+                infoVC.api = api_statistics;
             }
                 break;
             case 5:{ // 计划报告
                 
-                infoVC.api = API_Plan;
+                infoVC.api = api_plan;
             }
                 break;
             default:
