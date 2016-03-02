@@ -95,10 +95,10 @@
 
 - (void)inititalizeShareItem {
     
-    UIBarButtonItem *shareItem = [[UIBarButtonItem alloc] initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(shared)];
+    UIBarButtonItem *shareItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_share"] style:UIBarButtonItemStylePlain target:self action:@selector(shared)];
     self.navigationItem.rightBarButtonItem = shareItem;
-    
 }
+
 #pragma  mark - web view delegate
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     
@@ -147,22 +147,62 @@
 
 - (void)shared {
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@""]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@""]];
     
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     [shareParams SSDKEnableUseClientShare];
 //    NSArray* imageArray = @[[UIImage imageNamed:@"shareImg.png"]];
-    [shareParams SSDKSetupShareParamsByText:@"分享内容"
-                                     images:@[self.shareImage]
-                                        url:[NSURL URLWithString:@"http://www.mob.com"]
-                                      title:@"分享标题"
+    
+    UIImage *image;
+    if (self.shareImage) {
+        
+        image = self.shareImage;
+    }
+    else {
+        
+        image = [UIImage imageNamed:@"ic_app"];
+    }
+    NSString *weiboContent = [NSString  stringWithFormat:@"%@\n%@",_data[@"title"],
+                              _data[@"webUrl"]];
+    [shareParams SSDKSetupShareParamsByText:weiboContent
+                                     images:image
+                                        url:[NSURL URLWithString:_data[@"webUrl"]]
+                                      title:_data[@"title"]
                                        type:SSDKContentTypeAuto];
+    
+    
+    
+    
+//    [shareParams SSDKSetupSinaWeiboShareParamsByText:weiboContent
+//                                               title:_data[@"title"]
+//                                               image:self.shareImage
+//                                                 url:[NSURL
+//                                                      URLWithString:_data[@"webUrl"]]
+//                                            latitude:12
+//                                           longitude:12
+//                                            objectID:nil
+//                                                type:SSDKContentTypeAuto];
+    
     
     [ShareSDK showShareActionSheet:self.view
                              items:nil
                        shareParams:shareParams
                onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
         
+                   switch (state) {
+                       case SSDKResponseStateSuccess:
+                       {
+                           NSLog(@"11111");
+                           break;
+                       }
+                       case SSDKResponseStateFail:
+                       {
+                           NSLog(@"222222");
+                           break;
+                       }
+                       default:
+                           break;
+                   }
                    
                    
     }];

@@ -177,9 +177,29 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="fki-at-Aia" secondAttribute="trailing" id="80h-se-vzH"/>
                             <constraint firstItem="fki-at-Aia" firstAttribute="top" secondItem="C5g-tS-JLZ" secondAttribute="bottom" id="9mc-FF-3Ar"/>
+                            <constraint firstItem="fki-at-Aia" firstAttribute="centerY" secondItem="QzB-Bj-y2j" secondAttribute="centerY" id="Ajw-Dq-Nh7"/>
+                            <constraint firstItem="fki-at-Aia" firstAttribute="height" secondItem="QzB-Bj-y2j" secondAttribute="height" id="Ap7-bI-ggk"/>
                             <constraint firstItem="fki-at-Aia" firstAttribute="leading" secondItem="QzB-Bj-y2j" secondAttribute="leading" id="Doo-vX-mwS"/>
+                            <constraint firstItem="b04-mM-pCZ" firstAttribute="top" secondItem="fki-at-Aia" secondAttribute="bottom" id="LdU-aZ-Ll9"/>
+                            <constraint firstItem="fki-at-Aia" firstAttribute="top" secondItem="C5g-tS-JLZ" secondAttribute="bottom" id="YL3-KX-9jk"/>
+                            <constraint firstItem="fki-at-Aia" firstAttribute="width" secondItem="QzB-Bj-y2j" secondAttribute="width" id="hDb-Fb-w4e"/>
+                            <constraint firstItem="fki-at-Aia" firstAttribute="leading" secondItem="QzB-Bj-y2j" secondAttribute="leading" id="ior-Zl-P9i"/>
                             <constraint firstItem="b04-mM-pCZ" firstAttribute="top" secondItem="fki-at-Aia" secondAttribute="bottom" id="kME-Hy-f4e"/>
+                            <constraint firstItem="fki-at-Aia" firstAttribute="centerX" secondItem="QzB-Bj-y2j" secondAttribute="centerX" id="uQe-4G-y6V"/>
+                            <constraint firstAttribute="trailing" secondItem="fki-at-Aia" secondAttribute="trailing" id="uUU-Gz-cs7"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="80h-se-vzH"/>
+                                <exclude reference="9mc-FF-3Ar"/>
+                                <exclude reference="Doo-vX-mwS"/>
+                                <exclude reference="YL3-KX-9jk"/>
+                                <exclude reference="ior-Zl-P9i"/>
+                                <exclude reference="uUU-Gz-cs7"/>
+                                <exclude reference="LdU-aZ-Ll9"/>
+                                <exclude reference="kME-Hy-f4e"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="scrollView" destination="fki-at-Aia" id="B68-Fj-2Xd"/>

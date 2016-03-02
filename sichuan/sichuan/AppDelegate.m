@@ -11,6 +11,9 @@
 #import <BaiduMapAPI_Cloud/BMKCloudSearchComponent.h>
 #import "GeTuiSdk.h"
 #import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
 #import "WXApi.h"
 #import "WeiboSDK.h"
 
@@ -48,10 +51,28 @@ BMKMapManager *_mapManager;
     
     /// share SDK
     [ShareSDK registerApp:@"fdb0a4a2e140"
-          activePlatforms:@[@(SSDKPlatformTypeSinaWeibo),
-                            @(SSDKPlatformSubTypeWechatTimeline),
+          activePlatforms:@[@(SSDKPlatformSubTypeQQFriend),
                             @(SSDKPlatformSubTypeWechatSession),
-                            @(SSDKPlatformSubTypeQQFriend)] onImport:nil
+                            @(SSDKPlatformSubTypeWechatTimeline),
+                            @(SSDKPlatformTypeSinaWeibo)
+                            ] onImport:^(SSDKPlatformType platformType)
+     {
+         switch (platformType)
+         {
+
+             case SSDKPlatformTypeQQ:
+                 [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
+                 break;
+             case SSDKPlatformTypeSinaWeibo:
+                 [ShareSDKConnector connectWeibo:[WeiboSDK class]];
+                 break;
+             case SSDKPlatformTypeWechat:
+                 [ShareSDKConnector connectWeChat:[WXApi class]];
+                 break;
+             default:
+                 break;
+         }
+     }
           onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo) {
               
               switch (platformType)
@@ -59,22 +80,18 @@ BMKMapManager *_mapManager;
                       // 微博分享
                   case SSDKPlatformTypeSinaWeibo:
                       //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
-//                      [appInfo SSDKSetupSinaWeiboByAppKey:@"152870617"
-//                                            appSecret:@"a3be638dd9ca01b61ad5d8c0cb96f0fe"
-//                                              redirectUri:@"http://www.sharesdk.cn"
-//                                                 authType:SSDKAuthTypeSSO];
+                      [appInfo SSDKSetupSinaWeiboByAppKey:@"3859129567"
+                                            appSecret:@"4eb21b8a532adfda253766778a6eeb32"
+                                              redirectUri:@"http://www.sc.gov.cn/"
+                                                 authType:SSDKAuthTypeSSO];
                       break;
-                      // 微信朋友
-                  case SSDKPlatformSubTypeWechatSession:
-//                      [appInfo SSDKSetupWeChatByAppId:@"" appSecret:@""];
-                      break;
-                      // 微信朋友圈
-                  case SSDKPlatformSubTypeWechatTimeline:
-//                      [appInfo SSDKSetupWeChatByAppId:@"" appSecret:@""];
+                      // 微信
+                  case SSDKPlatformTypeWechat:
+                      [appInfo SSDKSetupWeChatByAppId:@"wxf335847c0e8fecf9" appSecret:@"2344425428daaf8cda1ad6557fac1de9"];
                       break;
                       // QQ好友
-                  case SSDKPlatformSubTypeQQFriend:
-//                      [appInfo SSDKSetupQQByAppId:@"" appKey:@"" authType:SSDKAuthTypeSSO];
+                  case SSDKPlatformTypeQQ:
+                      [appInfo SSDKSetupQQByAppId:@"1105213352" appKey:@"AWRrZt3L4QEVFT6r" authType:SSDKAuthTypeSSO];
                       break;
                   default:
                       break;
@@ -174,13 +191,6 @@ BMKMapManager *_mapManager;
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (userInfo) {
         
-        /// test !!!!!
-        
-        //        NSData *jsonData = [payloadMsg dataUsingEncoding:NSUTF8StringEncoding];
-        //        NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
-        //
-        //        [[NSNotificationCenter defaultCenter] postNotificationName:@"pushMessage" object:self userInfo:userInfo];
-        
         [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
         
         NSLog(@"\n>>>[Launching RemoteNotification]:%@", userInfo);
@@ -221,7 +231,12 @@ BMKMapManager *_mapManager;
     
     // 处理APN
     NSLog(@"\n>>>[Receive RemoteNotification - Background Fetch]:%@\n\n", userInfo);
-    NSString *payloadMsg = [userInfo objectForKey:@"payload"];
+    
+    /// 收到透传消息
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushMessage" object:self userInfo:userInfo];
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
     completionHandler(UIBackgroundFetchResultNewData);
 }
 
@@ -244,31 +259,15 @@ BMKMapManager *_mapManager;
 - (void)GeTuiSdkDidReceivePayload:(NSString *)payloadId andTaskId:(NSString *)taskId andMessageId:(NSString *)aMsgId andOffLine:(BOOL)offLine fromApplication:(NSString *)appId {
     
     // [4]: 收到个推消息
-    NSData *payload = [GeTuiSdk retrivePayloadById:payloadId];
-    NSString *payloadMsg = nil;
-    if (payload) {
-        payloadMsg = [[NSString alloc] initWithBytes:payload.bytes length:payload.length encoding:NSUTF8StringEncoding];
-    }
-    
-    NSString *msg = [NSString stringWithFormat:@" payloadId=%@,taskId=%@,messageId:%@,payloadMsg:%@%@", payloadId, taskId, aMsgId, payloadMsg, offLine ? @"<离线消息>" : @""];
-    
-    /// test !!!!!
-    
-    
-    //            NSData *jsonData = [payloadMsg dataUsingEncoding:NSUTF8StringEncoding];
-    //            NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
-    //
-    //    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushMessage" object:self userInfo:dicData];
-    NSLog(@"\n>>>[GexinSdk ReceivePayload]:%@\n\n", msg);
-    
-    /**
-     *汇报个推自定义事件
-     *actionId：用户自定义的actionid，int类型，取值90001-90999。
-     *taskId：下发任务的任务ID。
-     *msgId： 下发任务的消息ID。
-     *返回值：BOOL，YES表示该命令已经提交，NO表示该命令未提交成功。注：该结果不代表服务器收到该条命令
-     **/
-    [GeTuiSdk sendFeedbackMessage:90001 taskId:taskId msgId:aMsgId];
+//    NSData *payload = [GeTuiSdk retrivePayloadById:payloadId];
+//    NSString *payloadMsg = nil;
+//    if (payload) {
+//        payloadMsg = [[NSString alloc] initWithBytes:payload.bytes length:payload.length encoding:NSUTF8StringEncoding];
+//    }
+//    
+//    NSString *msg = [NSString stringWithFormat:@" payloadId=%@,taskId=%@,messageId:%@,payloadMsg:%@%@", payloadId, taskId, aMsgId, payloadMsg, offLine ? @"<离线消息>" : @""];
+//    
+//    NSLog(@"\n>>>[GexinSdk ReceivePayload]:%@\n\n", msg);
 }
 
 /** SDK运行状态通知 */

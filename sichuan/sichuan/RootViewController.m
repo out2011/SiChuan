@@ -156,11 +156,8 @@
             articlesVC.data = responseObject;
             
             [self.navigationController pushViewController:articlesVC animated:YES];
-            NSLog(@"push message :%@", responseObject);
         }];
     }
-    
-    NSLog(@"notify: %@", notify.userInfo);
 }
 
 - (void)dealloc{
