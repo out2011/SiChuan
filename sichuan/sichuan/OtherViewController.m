@@ -11,6 +11,7 @@
 #import "SCDeviceHelper.h"
 #import "ApiManager.h"
 #import "RMUniversalAlert.h"
+#import "SCVersionHelper.h"
 
 @interface OtherViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -96,12 +97,12 @@
     __weak OtherViewController *weakSelf = self;
     [[ApiManager sharedInstance] requestVersionWithCompleteBlock:^(NSDictionary *responseObject, NSError *error) {
         
-        CGFloat nowVersion = [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"] floatValue];
+        NSString *nowVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
         
         NSDictionary *versionData = responseObject[@"iOS"];
-        CGFloat newVersion = [versionData[@"version"] floatValue];
+        NSString *newVersion = versionData[@"version"];
         
-        if (newVersion > nowVersion) {
+        if ([SCVersionHelper updateWithNewVersion:newVersion oldVersion:nowVersion]) {
             
             [weakSelf updateWithUrl:versionData[@"url"]];
         }

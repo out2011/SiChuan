@@ -24,6 +24,7 @@
 		3A29A7641C5B3ECD005AD06B /* ApiManager+GovFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A29A7631C5B3ECD005AD06B /* ApiManager+GovFile.m */; };
 		3A29A7671C5B463C005AD06B /* ApiManager+Leader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A29A7661C5B463C005AD06B /* ApiManager+Leader.m */; };
 		3A29A76A1C5B584F005AD06B /* ApiManager+GovAffairs.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A29A7691C5B584F005AD06B /* ApiManager+GovAffairs.m */; };
+		3A327E1C1C87D53F00F025B2 /* SCVersionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A327E1B1C87D53F00F025B2 /* SCVersionHelper.m */; };
 		3A33A0F71C7D39F8009CD02D /* GovAffairsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A33A0F61C7D39F8009CD02D /* GovAffairsViewController.m */; };
 		3A33A0FA1C7D5686009CD02D /* ApiManager+Push.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A33A0F91C7D5686009CD02D /* ApiManager+Push.m */; };
 		3A3D604B1C584F3B00B03D40 /* GovInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D604A1C584F3B00B03D40 /* GovInfoTableViewController.m */; };
@@ -135,6 +136,8 @@
 		3A29A7661C5B463C005AD06B /* ApiManager+Leader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ApiManager+Leader.m"; sourceTree = "<group>"; };
 		3A29A7681C5B584F005AD06B /* ApiManager+GovAffairs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ApiManager+GovAffairs.h"; sourceTree = "<group>"; };
 		3A29A7691C5B584F005AD06B /* ApiManager+GovAffairs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ApiManager+GovAffairs.m"; sourceTree = "<group>"; };
+		3A327E1A1C87D53F00F025B2 /* SCVersionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCVersionHelper.h; sourceTree = "<group>"; };
+		3A327E1B1C87D53F00F025B2 /* SCVersionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCVersionHelper.m; sourceTree = "<group>"; };
 		3A33A0F51C7D39F8009CD02D /* GovAffairsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GovAffairsViewController.h; sourceTree = "<group>"; };
 		3A33A0F61C7D39F8009CD02D /* GovAffairsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GovAffairsViewController.m; sourceTree = "<group>"; };
 		3A33A0F81C7D5686009CD02D /* ApiManager+Push.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ApiManager+Push.h"; sourceTree = "<group>"; };
@@ -353,6 +356,8 @@
 				3A050A531C76EE32003D8FE8 /* UIImage+SCImage.m */,
 				3AD193461C7C3D2F00A471F5 /* SCDeviceHelper.h */,
 				3AD193471C7C3D2F00A471F5 /* SCDeviceHelper.m */,
+				3A327E1A1C87D53F00F025B2 /* SCVersionHelper.h */,
+				3A327E1B1C87D53F00F025B2 /* SCVersionHelper.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -914,6 +919,7 @@
 				3AA3416C1C59B0F40084F94B /* SCCompareHelper.m in Sources */,
 				3A7FBB231C856CD000F96313 /* ApiManager+Version.m in Sources */,
 				3AFFE3121C50691900FB6F84 /* AppDelegate.m in Sources */,
+				3A327E1C1C87D53F00F025B2 /* SCVersionHelper.m in Sources */,
 				3AD193571C7C566C00A471F5 /* OtherViewController.m in Sources */,
 				3A19E9201C74703B0039A57F /* ApiManager+Service.m in Sources */,
 				3A2736A81C5610F700AEFDD6 /* ProfileViewController.m in Sources */,
@@ -985,6 +991,150 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3A327E1D1C8812BE00F025B2 /* zgsc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhihong Mao (877VX5W6B5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhihong Mao (877VX5W6B5)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = zgsc;
+		};
+		3A327E1E1C8812BE00F025B2 /* zgsc */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F3E91B6DCBC996034B50FAB /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhihong Mao (877VX5W6B5)";
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/sichuan/ShareSDK",
+					"$(PROJECT_DIR)/sichuan/ShareSDK/Support/Optional",
+					"$(PROJECT_DIR)/sichuan/ShareSDK/Support/PlatformSDK/QQSDK",
+					"$(PROJECT_DIR)/sichuan/ShareSDK/Support/Required",
+				);
+				INFOPLIST_FILE = sichuan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/sichuan/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
+					"$(PROJECT_DIR)/sichuan/ShareSDK/Support/PlatformSDK/WeChatSDK",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"GeTuiSdk-1.3.2\"",
+					"-l\"MJRefresh\"",
+					"-l\"RMUniversalAlert\"",
+					"-l\"SDWebImage\"",
+					"-l\"UIActionSheet+Blocks\"",
+					"-l\"UIAlertController+Blocks\"",
+					"-l\"UIAlertView+Blocks\"",
+					"-l\"sqlite3.0\"",
+					"-l\"stdc++.6.0.9\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"BaiduMapAPI_Base\"",
+					"-framework",
+					"\"BaiduMapAPI_Cloud\"",
+					"-framework",
+					"\"BaiduMapAPI_Location\"",
+					"-framework",
+					"\"BaiduMapAPI_Map\"",
+					"-framework",
+					"\"BaiduMapAPI_Radar\"",
+					"-framework",
+					"\"BaiduMapAPI_Search\"",
+					"-framework",
+					"\"BaiduMapAPI_Utils\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreBluetooth\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-all_load",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dts.zgsc;
+				PRODUCT_NAME = "中国四川";
+			};
+			name = zgsc;
+		};
+		3A327E1F1C8812BE00F025B2 /* zgsc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = sichuanTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = L.l.sichuanTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sichuan.app/sichuan";
+			};
+			name = zgsc;
+		};
+		3A327E201C8812BE00F025B2 /* zgsc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = sichuanUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = L.l.sichuanUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = sichuan;
+				USES_XCTRUNNER = YES;
+			};
+			name = zgsc;
+		};
 		3AFFE3351C50691900FB6F84 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1002,7 +1152,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhihong Mao (877VX5W6B5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhihong Mao (877VX5W6B5)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1023,7 +1174,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "";
 				SDKROOT = iphoneos;
 			};
@@ -1046,7 +1197,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhihong Mao (877VX5W6B5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhihong Mao (877VX5W6B5)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1072,7 +1224,7 @@
 			baseConfigurationReference = D61FF88533DFCF0B75D7B55C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhihong Mao (877VX5W6B5)";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1088,6 +1240,60 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/sichuan/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/sichuan/ShareSDK/Support/PlatformSDK/WeChatSDK",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"GeTuiSdk-1.3.2\"",
+					"-l\"MJRefresh\"",
+					"-l\"RMUniversalAlert\"",
+					"-l\"SDWebImage\"",
+					"-l\"UIActionSheet+Blocks\"",
+					"-l\"UIAlertController+Blocks\"",
+					"-l\"UIAlertView+Blocks\"",
+					"-l\"sqlite3.0\"",
+					"-l\"stdc++.6.0.9\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"BaiduMapAPI_Base\"",
+					"-framework",
+					"\"BaiduMapAPI_Cloud\"",
+					"-framework",
+					"\"BaiduMapAPI_Location\"",
+					"-framework",
+					"\"BaiduMapAPI_Map\"",
+					"-framework",
+					"\"BaiduMapAPI_Radar\"",
+					"-framework",
+					"\"BaiduMapAPI_Search\"",
+					"-framework",
+					"\"BaiduMapAPI_Utils\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreBluetooth\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dts.zgsc;
 				PRODUCT_NAME = "中国四川";
@@ -1099,7 +1305,7 @@
 			baseConfigurationReference = 5F3E91B6DCBC996034B50FAB /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhihong Mao (877VX5W6B5)";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1115,6 +1321,60 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/sichuan/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/sichuan/ShareSDK/Support/PlatformSDK/WeChatSDK",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"GeTuiSdk-1.3.2\"",
+					"-l\"MJRefresh\"",
+					"-l\"RMUniversalAlert\"",
+					"-l\"SDWebImage\"",
+					"-l\"UIActionSheet+Blocks\"",
+					"-l\"UIAlertController+Blocks\"",
+					"-l\"UIAlertView+Blocks\"",
+					"-l\"sqlite3.0\"",
+					"-l\"stdc++.6.0.9\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"BaiduMapAPI_Base\"",
+					"-framework",
+					"\"BaiduMapAPI_Cloud\"",
+					"-framework",
+					"\"BaiduMapAPI_Location\"",
+					"-framework",
+					"\"BaiduMapAPI_Map\"",
+					"-framework",
+					"\"BaiduMapAPI_Radar\"",
+					"-framework",
+					"\"BaiduMapAPI_Search\"",
+					"-framework",
+					"\"BaiduMapAPI_Utils\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreBluetooth\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dts.zgsc;
 				PRODUCT_NAME = "中国四川";
@@ -1177,6 +1437,7 @@
 			buildConfigurations = (
 				3AFFE3351C50691900FB6F84 /* Debug */,
 				3AFFE3361C50691900FB6F84 /* Release */,
+				3A327E1D1C8812BE00F025B2 /* zgsc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1186,6 +1447,7 @@
 			buildConfigurations = (
 				3AFFE3381C50691900FB6F84 /* Debug */,
 				3AFFE3391C50691900FB6F84 /* Release */,
+				3A327E1E1C8812BE00F025B2 /* zgsc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1195,6 +1457,7 @@
 			buildConfigurations = (
 				3AFFE33B1C50691900FB6F84 /* Debug */,
 				3AFFE33C1C50691900FB6F84 /* Release */,
+				3A327E1F1C8812BE00F025B2 /* zgsc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1204,6 +1467,7 @@
 			buildConfigurations = (
 				3AFFE33E1C50691900FB6F84 /* Debug */,
 				3AFFE33F1C50691900FB6F84 /* Release */,
+				3A327E201C8812BE00F025B2 /* zgsc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

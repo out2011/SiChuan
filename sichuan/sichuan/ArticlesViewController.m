@@ -164,7 +164,9 @@
     }
     NSString *weiboContent = [NSString  stringWithFormat:@"%@\n%@",_data[@"title"],
                               _data[@"webUrl"]];
-    [shareParams SSDKSetupShareParamsByText:weiboContent
+    
+    
+    [shareParams SSDKSetupShareParamsByText:_data[@"title"]
                                      images:image
                                         url:[NSURL URLWithString:_data[@"webUrl"]]
                                       title:_data[@"title"]
@@ -173,15 +175,15 @@
     
     
     
-//    [shareParams SSDKSetupSinaWeiboShareParamsByText:weiboContent
-//                                               title:_data[@"title"]
-//                                               image:self.shareImage
-//                                                 url:[NSURL
-//                                                      URLWithString:_data[@"webUrl"]]
-//                                            latitude:12
-//                                           longitude:12
-//                                            objectID:nil
-//                                                type:SSDKContentTypeAuto];
+    [shareParams SSDKSetupSinaWeiboShareParamsByText:weiboContent
+                                               title:_data[@"title"]
+                                               image:self.shareImage
+                                                 url:[NSURL
+                                                      URLWithString:_data[@"webUrl"]]
+                                            latitude:0
+                                           longitude:0
+                                            objectID:nil
+                                                type:SSDKContentTypeAuto];
     
     
     [ShareSDK showShareActionSheet:self.view

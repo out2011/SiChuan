@@ -57,7 +57,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    NSString *key = [NSString stringWithFormat:@"%ld", section];
+    NSString *key = [NSString stringWithFormat:@"%ld", (long)section];
     NSArray *items = _items[key];
     return items.count;
 }
@@ -71,7 +71,7 @@
         cell = [[FoldTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"OrganizationCell"];
     }
     
-    NSString *key = [NSString stringWithFormat:@"%ld", indexPath.section];
+    NSString *key = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
     NSArray *array = _items[key];
     NSDictionary *dic = array[indexPath.row];
     cell.label.text = dic[@"title"];
@@ -83,7 +83,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSArray *array = [_items objectForKey:[NSString stringWithFormat:@"%ld", indexPath.section]];
+    NSArray *array = [_items objectForKey:[NSString stringWithFormat:@"%ld", (long)indexPath.section]];
     NSDictionary *data = array[indexPath.row];
     
     ArticlesViewController *articlesVC = [ArticlesViewHelper articlesViewController];
@@ -151,7 +151,7 @@
     [[ApiManager sharedInstance] requestOrgListWithPname:info.title completeBlock:^(NSArray *responseObject, NSError *error) {
         
         info.isLoad = YES;
-        [_items setObject:responseObject forKey:[NSString stringWithFormat:@"%ld", index]];
+        [_items setObject:responseObject forKey:[NSString stringWithFormat:@"%ld", (long)index]];
 
         [self.tableView reloadData];
     }];
