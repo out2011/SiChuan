@@ -17,9 +17,13 @@
 #import "WXApi.h"
 #import "WeiboSDK.h"
 
-#define kGtAppId           @"LQuJmpN9dO8oJPGl8PEPr3"
-#define kGtAppKey          @"aVlcTi1cagAWwXsgkblhM1"
-#define kGtAppSecret       @"Kaz5Z7nfPx7A8Saogn6KC"
+//#define kGtAppId           @"LQuJmpN9dO8oJPGl8PEPr3"
+//#define kGtAppKey          @"aVlcTi1cagAWwXsgkblhM1"
+//#define kGtAppSecret       @"Kaz5Z7nfPx7A8Saogn6KC"
+
+#define kGtAppId           @"qDPpO4r3M98kWZXSpbOPA3"
+#define kGtAppKey          @"TgzLhn6f3a5bZCOZdKpAD9"
+#define kGtAppSecret       @"ZtygHSElCqAxOmJVzoRwG"
 
 @interface AppDelegate ()<BMKGeneralDelegate, GeTuiSdkDelegate>
 

@@ -74,7 +74,7 @@
     [super viewWillDisappear:animated];
     
 //    UIImage *image = [UIImage alloc] initWithc
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@""] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationBar"] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -143,7 +143,7 @@
 
 - (void)notificationAction:(NSNotification *)notify {
     
-    if (notify.userInfo) {
+    if (notify.userInfo[@"payload"]) {
         
         NSArray *message = [SCNoteHelper messageWithString:notify.userInfo[@"payload"]];
         NSNumber *nid = [[[NSNumberFormatter alloc] init] numberFromString:message[0]];

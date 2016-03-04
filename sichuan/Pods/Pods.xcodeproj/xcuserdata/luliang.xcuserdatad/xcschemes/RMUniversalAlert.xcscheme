@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '32919916BB8189B796164D1B'
+               BlueprintIdentifier = 'E3A9684D82B8070EDDC25D2B'
                BlueprintName = 'RMUniversalAlert'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libRMUniversalAlert.a'>

@@ -41,7 +41,6 @@
     
     [self initializeDataSource];
     [self initializeInterface];
-    [self inititalizeShareItem];
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -58,6 +57,7 @@
             [[ApiManager sharedInstance] requestOrgDetailWithNId:self.nID completeBlock:^(NSArray *responseObject, NSError *error) {
                 
                 _data = [responseObject copy];
+                
                 [self initializeInterface];
             }];
             return;
@@ -79,6 +79,10 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     _contentView.scrollView.scrollEnabled = NO;
     
+    if (_data[@"webUrl"]) {
+        [self inititalizeShareItem];
+    }
+    
     NSString *htmlStr;
     
     if (_data[@"content"]) {
@@ -93,6 +97,7 @@
     [_contentView loadHTMLString:htmlStr baseURL:[NSURL URLWithString:@""]];
 }
 
+/// 添加分享按钮
 - (void)inititalizeShareItem {
     
     UIBarButtonItem *shareItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_share"] style:UIBarButtonItemStylePlain target:self action:@selector(shared)];
@@ -165,15 +170,11 @@
     NSString *weiboContent = [NSString  stringWithFormat:@"%@\n%@",_data[@"title"],
                               _data[@"webUrl"]];
     
-    
-    [shareParams SSDKSetupShareParamsByText:_data[@"title"]
+    [shareParams SSDKSetupShareParamsByText:@"中国四川"
                                      images:image
                                         url:[NSURL URLWithString:_data[@"webUrl"]]
                                       title:_data[@"title"]
                                        type:SSDKContentTypeAuto];
-    
-    
-    
     
     [shareParams SSDKSetupSinaWeiboShareParamsByText:weiboContent
                                                title:_data[@"title"]
