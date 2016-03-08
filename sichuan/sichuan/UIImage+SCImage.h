@@ -13,4 +13,6 @@
 /// 修改图片尺寸
 - (UIImage *)scaled;
 
+/// 分享图片压缩
+- (UIImage *)sharedImageScaled;
 @end

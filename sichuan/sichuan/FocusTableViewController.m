@@ -172,7 +172,7 @@
             articlesVC.shareImage = cell.picture.image;
         }
     }
-    
+
     [self.navigationController pushViewController:articlesVC animated:YES];
     
 }

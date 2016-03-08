@@ -20,10 +20,23 @@
 //#define kGtAppId           @"LQuJmpN9dO8oJPGl8PEPr3"
 //#define kGtAppKey          @"aVlcTi1cagAWwXsgkblhM1"
 //#define kGtAppSecret       @"Kaz5Z7nfPx7A8Saogn6KC"
-
-#define kGtAppId           @"qDPpO4r3M98kWZXSpbOPA3"
-#define kGtAppKey          @"TgzLhn6f3a5bZCOZdKpAD9"
-#define kGtAppSecret       @"ZtygHSElCqAxOmJVzoRwG"
+// 个推
+#define kGtAppId     @"qDPpO4r3M98kWZXSpbOPA3"
+#define kGtAppKey    @"TgzLhn6f3a5bZCOZdKpAD9"
+#define kGtAppSecret @"ZtygHSElCqAxOmJVzoRwG"
+// 百度地图
+#define kBDMapKey    @"VTc505oSe4g68Onk2eLsMKq8"
+// share SDK
+#define kShareKey    @"fdb0a4a2e140"
+// 微博
+#define kWBAppKey    @"3859129567"
+#define kWBAppSecret @"4eb21b8a532adfda253766778a6eeb32"
+// 微信
+#define kWXAppSecret @"2344425428daaf8cda1ad6557fac1de9"
+#define kWXAppID     @"wxf335847c0e8fecf9"
+// 腾讯
+#define kTXAppKey    @"AWRrZt3L4QEVFT6r"
+#define kTXAppID     @"1105213352"
 
 @interface AppDelegate ()<BMKGeneralDelegate, GeTuiSdkDelegate>
 
@@ -39,11 +52,14 @@ BMKMapManager *_mapManager;
     
     /// 百度地图
     _mapManager = [[BMKMapManager alloc] init];
-    [_mapManager start:@"VTc505oSe4g68Onk2eLsMKq8" generalDelegate:self];
+    [_mapManager start:kBDMapKey generalDelegate:self];
     
     /// 个推
     // 通过 appId、 appKey 、appSecret 启动SDK，注：该方法需要在主线程中调用
-    [GeTuiSdk startSdkWithAppId:kGtAppId appKey:kGtAppKey appSecret:kGtAppSecret delegate:self];
+    [GeTuiSdk startSdkWithAppId:kGtAppId
+                         appKey:kGtAppKey
+                      appSecret:kGtAppSecret
+                       delegate:self];
     
     // 注册APNS
     [self registerUserNotification];
@@ -54,7 +70,7 @@ BMKMapManager *_mapManager;
     [GeTuiSdk clearAllNotificationForNotificationBar];
     
     /// share SDK
-    [ShareSDK registerApp:@"fdb0a4a2e140"
+    [ShareSDK registerApp:kShareKey
           activePlatforms:@[@(SSDKPlatformSubTypeQQFriend),
                             @(SSDKPlatformSubTypeWechatSession),
                             @(SSDKPlatformSubTypeWechatTimeline),
@@ -63,7 +79,7 @@ BMKMapManager *_mapManager;
      {
          switch (platformType)
          {
-
+                 
              case SSDKPlatformTypeQQ:
                  [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
                  break;
@@ -84,24 +100,27 @@ BMKMapManager *_mapManager;
                       // 微博分享
                   case SSDKPlatformTypeSinaWeibo:
                       //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
-                      [appInfo SSDKSetupSinaWeiboByAppKey:@"3859129567"
-                                            appSecret:@"4eb21b8a532adfda253766778a6eeb32"
+                      [appInfo SSDKSetupSinaWeiboByAppKey:kWBAppKey
+                                                appSecret:kWBAppSecret
                                               redirectUri:@"http://www.sc.gov.cn/"
                                                  authType:SSDKAuthTypeSSO];
                       break;
                       // 微信
                   case SSDKPlatformTypeWechat:
-                      [appInfo SSDKSetupWeChatByAppId:@"wxf335847c0e8fecf9" appSecret:@"2344425428daaf8cda1ad6557fac1de9"];
+                      [appInfo SSDKSetupWeChatByAppId:kWXAppID
+                                            appSecret:kWXAppSecret];
                       break;
                       // QQ好友
                   case SSDKPlatformTypeQQ:
-                      [appInfo SSDKSetupQQByAppId:@"1105213352" appKey:@"AWRrZt3L4QEVFT6r" authType:SSDKAuthTypeSSO];
+                      [appInfo SSDKSetupQQByAppId:kTXAppID
+                                           appKey:kTXAppKey
+                                         authType:SSDKAuthTypeSSO];
                       break;
                   default:
                       break;
               }
-              
           }];
+    
     return YES;
 }
 
@@ -249,6 +268,8 @@ BMKMapManager *_mapManager;
 /** SDK启动成功返回cid */
 - (void)GeTuiSdkDidRegisterClient:(NSString *)clientId {
     // [4-EXT-1]: 个推SDK已注册，返回clientId
+    
+    
     NSLog(@"\n>>>[GeTuiSdk RegisterClient]:%@\n\n", clientId);
 }
 
@@ -263,15 +284,21 @@ BMKMapManager *_mapManager;
 - (void)GeTuiSdkDidReceivePayload:(NSString *)payloadId andTaskId:(NSString *)taskId andMessageId:(NSString *)aMsgId andOffLine:(BOOL)offLine fromApplication:(NSString *)appId {
     
     // [4]: 收到个推消息
-//    NSData *payload = [GeTuiSdk retrivePayloadById:payloadId];
-//    NSString *payloadMsg = nil;
-//    if (payload) {
-//        payloadMsg = [[NSString alloc] initWithBytes:payload.bytes length:payload.length encoding:NSUTF8StringEncoding];
-//    }
+    NSData *payload = [GeTuiSdk retrivePayloadById:payloadId];
+    NSString *payloadMsg = nil;
+    if (payload) {
+        payloadMsg = [[NSString alloc] initWithBytes:payload.bytes length:payload.length encoding:NSUTF8StringEncoding];
+    }
+    
+    NSString *msg = [NSString stringWithFormat:@" payloadId=%@,taskId=%@,messageId:%@,payloadMsg:%@%@", payloadId, taskId, aMsgId, payloadMsg, offLine ? @"<离线消息>" : @""];
+    
+    /// 收到透传消息
+//    NSData *jsonData = [payloadMsg dataUsingEncoding:NSUTF8StringEncoding];
+//    NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
 //    
-//    NSString *msg = [NSString stringWithFormat:@" payloadId=%@,taskId=%@,messageId:%@,payloadMsg:%@%@", payloadId, taskId, aMsgId, payloadMsg, offLine ? @"<离线消息>" : @""];
-//    
-//    NSLog(@"\n>>>[GexinSdk ReceivePayload]:%@\n\n", msg);
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushMessage" object:self userInfo:dicData];
+    //
+        NSLog(@"\n>>>[GexinSdk ReceivePayload]:%@\n\n", msg);
 }
 
 /** SDK运行状态通知 */

@@ -143,9 +143,9 @@
 
 - (void)notificationAction:(NSNotification *)notify {
     
-    if (notify.userInfo[@"payload"]) {
+    if (notify.userInfo[@"category"]) {
         
-        NSArray *message = [SCNoteHelper messageWithString:notify.userInfo[@"payload"]];
+        NSArray *message = [SCNoteHelper messageWithString:notify.userInfo[@"category"]];
         NSNumber *nid = [[[NSNumberFormatter alloc] init] numberFromString:message[0]];
         
         [[ApiManager sharedInstance] requestPushMsgWithNid:nid type:message[1] completeBlock:^(NSDictionary *responseObject, NSError *error) {

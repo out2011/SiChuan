@@ -113,7 +113,7 @@
     ArticlesViewController *articlesVC = [storyboard instantiateViewControllerWithIdentifier:@"ArticlesViewController"];
     articlesVC.title = kTitle;
     articlesVC.data = _data[indexPath.row];
-    
+
     [self.navigationController pushViewController:articlesVC animated:YES];
 
 }

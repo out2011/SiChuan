@@ -22,4 +22,12 @@
     return reSizeImage;
 }
 
+- (UIImage *)sharedImageScaled {
+    
+    UIGraphicsBeginImageContext(CGSizeMake(self.size.width * 0.6, self.size.height * 0.6));
+    [self drawInRect:CGRectMake(0, 0, self.size.width * 0.6, self.size.height * 0.6)];
+    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return scaledImage;
+}
 @end

@@ -15,6 +15,7 @@
 #import <ShareSDKUI/SSUIShareActionSheetStyle.h>
 #import <ShareSDKUI/SSUIShareActionSheetCustomItem.h>
 #import <ShareSDK/ShareSDK+Base.h>
+#import "UIImage+SCImage.h"
 
 #define kScreenW [UIScreen mainScreen].bounds.size.width
 #define kScreenH [UIScreen mainScreen].bounds.size.height
@@ -161,7 +162,7 @@
     UIImage *image;
     if (self.shareImage) {
         
-        image = self.shareImage;
+        image = [self.shareImage sharedImageScaled];
     }
     else {
         
