@@ -63,7 +63,6 @@
     
     // 下拉刷新
     tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        // 模拟延迟加载数据，因此2秒后才调用（真实开发中，可以移除这段gcd代码）
         
         [self loadData];
     }];
@@ -93,7 +92,6 @@
     if (!cell) {
         cell = [[LeaderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LeaderCell"];
     }
-    // Configure the cell...
     
     NSDictionary *dic = _data[indexPath.row];
     

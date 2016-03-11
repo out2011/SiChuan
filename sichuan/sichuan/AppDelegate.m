@@ -156,7 +156,6 @@ BMKMapManager *_mapManager;
     else {
         NSLog(@"onGetNetworkState %d",iError);
     }
-    
 }
 
 - (void)onGetPermissionState:(int)iError
@@ -268,7 +267,6 @@ BMKMapManager *_mapManager;
 /** SDK启动成功返回cid */
 - (void)GeTuiSdkDidRegisterClient:(NSString *)clientId {
     // [4-EXT-1]: 个推SDK已注册，返回clientId
-    
     
     NSLog(@"\n>>>[GeTuiSdk RegisterClient]:%@\n\n", clientId);
 }

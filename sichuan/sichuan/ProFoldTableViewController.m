@@ -36,6 +36,13 @@
     [self initializeDataSource];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -47,7 +54,6 @@
     
     return 1;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FoldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProfileFoldCell"];
@@ -63,10 +69,7 @@
         
         NSString *showed = [SCNoteHelper filterImageString:info.information];
         
-//        cell.contentLable.attributedText = [NSAttributedString attributedStringWithHTML:showed];
-//        cell.contentLable.font = [UIFont systemFontOfSize:2000];
         NSAttributedString *attributedString = [[NSAttributedString alloc] initWithData:[showed dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSFontAttributeName: [UIFont systemFontOfSize:22] } documentAttributes:nil error:nil];
-//        textView.attributedText = attributedString;
         cell.textView.attributedText = attributedString;
     }
     
@@ -100,7 +103,7 @@
     NSStringDrawingOptions option = (NSStringDrawingOptions)(NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading);
     CGSize size = [info.information boundingRectWithSize:CGSizeMake(kWidth - 16, 100000) options:option attributes:attribute context:nil].size;
     
-    return size.height;
+    return size.height - 30;
 }
 
 - (void)headViewDidClickButtn:(TitleView *)head {

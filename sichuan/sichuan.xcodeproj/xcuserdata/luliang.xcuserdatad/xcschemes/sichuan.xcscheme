@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3AFFE3091C50691900FB6F84"
-               BuildableName = "&#x4e2d;&#x56fd;&#x56db;&#x5ddd;.app"
+               BuildableName = "zgsc.app"
                BlueprintName = "sichuan"
                ReferencedContainer = "container:sichuan.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3AFFE3091C50691900FB6F84"
-            BuildableName = "&#x4e2d;&#x56fd;&#x56db;&#x5ddd;.app"
+            BuildableName = "zgsc.app"
             BlueprintName = "sichuan"
             ReferencedContainer = "container:sichuan.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3AFFE3091C50691900FB6F84"
-            BuildableName = "&#x4e2d;&#x56fd;&#x56db;&#x5ddd;.app"
+            BuildableName = "zgsc.app"
             BlueprintName = "sichuan"
             ReferencedContainer = "container:sichuan.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3AFFE3091C50691900FB6F84"
-            BuildableName = "&#x4e2d;&#x56fd;&#x56db;&#x5ddd;.app"
+            BuildableName = "zgsc.app"
             BlueprintName = "sichuan"
             ReferencedContainer = "container:sichuan.xcodeproj">
          </BuildableReference>

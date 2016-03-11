@@ -44,9 +44,11 @@
     [self initializeInterface];
 }
 
-- (BOOL)prefersStatusBarHidden
-{
-    return NO; // 返回NO表示要显示，返回YES将hiden
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 - (void)initializeDataSource {
@@ -157,7 +159,6 @@
     
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     [shareParams SSDKEnableUseClientShare];
-//    NSArray* imageArray = @[[UIImage imageNamed:@"shareImg.png"]];
     
     UIImage *image;
     if (self.shareImage) {
@@ -171,7 +172,7 @@
     NSString *weiboContent = [NSString  stringWithFormat:@"%@\n%@",_data[@"title"],
                               _data[@"webUrl"]];
     
-    [shareParams SSDKSetupShareParamsByText:@"中国四川"
+    [shareParams SSDKSetupShareParamsByText:self.title
                                      images:image
                                         url:[NSURL URLWithString:_data[@"webUrl"]]
                                       title:_data[@"title"]
@@ -186,7 +187,6 @@
                                            longitude:0
                                             objectID:nil
                                                 type:SSDKContentTypeAuto];
-    
     
     [ShareSDK showShareActionSheet:self.view
                              items:nil
@@ -207,8 +207,6 @@
                        default:
                            break;
                    }
-                   
-                   
     }];
 }
 

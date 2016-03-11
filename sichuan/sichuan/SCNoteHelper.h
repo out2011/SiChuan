@@ -24,4 +24,6 @@
 
 /// 拆分push字符串
 + (NSArray *)messageWithString:(NSString *)string;
+
++ (NSArray *)filterEmpty:(NSArray *)array;
 @end

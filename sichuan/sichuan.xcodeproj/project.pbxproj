@@ -231,7 +231,7 @@
 		3AF124BB1C7BF9AC00314784 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		3AF124BD1C7BF9B300314784 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3AF124BF1C7BF9BB00314784 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		3AFFE30A1C50691900FB6F84 /* 中国四川.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "中国四川.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AFFE30A1C50691900FB6F84 /* zgsc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zgsc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AFFE30E1C50691900FB6F84 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3AFFE3101C50691900FB6F84 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3AFFE3111C50691900FB6F84 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -611,7 +611,7 @@
 		3AFFE30B1C50691900FB6F84 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3AFFE30A1C50691900FB6F84 /* 中国四川.app */,
+				3AFFE30A1C50691900FB6F84 /* zgsc.app */,
 				3AFFE3231C50691900FB6F84 /* sichuanTests.xctest */,
 				3AFFE32E1C50691900FB6F84 /* sichuanUITests.xctest */,
 			);
@@ -719,7 +719,7 @@
 			);
 			name = sichuan;
 			productName = sichuan;
-			productReference = 3AFFE30A1C50691900FB6F84 /* 中国四川.app */;
+			productReference = 3AFFE30A1C50691900FB6F84 /* zgsc.app */;
 			productType = "com.apple.product-type.application";
 		};
 		3AFFE3221C50691900FB6F84 /* sichuanTests */ = {
@@ -1036,7 +1036,8 @@
 			baseConfigurationReference = 5F3E91B6DCBC996034B50FAB /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhihong Mao (877VX5W6B5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1108,7 +1109,8 @@
 					"-w",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dts.zgsc;
-				PRODUCT_NAME = "中国四川";
+				PRODUCT_NAME = zgsc;
+				PROVISIONING_PROFILE = "";
 			};
 			name = zgsc;
 		};
@@ -1226,7 +1228,8 @@
 			baseConfigurationReference = D61FF88533DFCF0B75D7B55C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhihong Mao (877VX5W6B5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1298,7 +1301,8 @@
 					"-w",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dts.zgsc;
-				PRODUCT_NAME = "中国四川";
+				PRODUCT_NAME = zgsc;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1307,7 +1311,8 @@
 			baseConfigurationReference = 5F3E91B6DCBC996034B50FAB /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhihong Mao (877VX5W6B5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1379,7 +1384,8 @@
 					"-w",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dts.zgsc;
-				PRODUCT_NAME = "中国四川";
+				PRODUCT_NAME = zgsc;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

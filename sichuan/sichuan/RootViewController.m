@@ -24,15 +24,31 @@
 @interface RootViewController ()<UIScrollViewDelegate, MenuSegmentDelegate>
 
 @property (nonatomic, strong) MenuSegment *menuSegment;
+@property (weak, nonatomic) IBOutlet UIView *segmentBackground;
 
 @property (nonatomic, strong) NSArray *titles;
 
 @property (weak, nonatomic) IBOutlet UIView *container;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *segmentHeight;
+
+
+@property (nonatomic, strong) UIImageView *customNavigationBar;
 @end
 
 @implementation RootViewController
+
+
+- (UIView *)customNavigationBar {
+    if (!_customNavigationBar) {
+        
+        _customNavigationBar = [[UIImageView alloc] init];
+        _customNavigationBar.alpha = 1;
+        _customNavigationBar.image = [UIImage imageNamed:@"ic_home_logo"];
+        _customNavigationBar.backgroundColor = [UIColor colorWithRGB:0xA91300];
+    }
+    return _customNavigationBar;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,6 +58,8 @@
     [self initializeDataSource];
     [self segmentControlInterfaceSetting];
     
+    NSLog(@"width %f", kScreenW);
+    
     self.navigationItem.backBarButtonItem = [[SCBackItem alloc] init];
     
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -49,46 +67,20 @@
                                 NSForegroundColorAttributeName, nil];
     
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
-    
-//    [self.navigationController.navigationBar setTranslucent:YES];
-//    为什么要加这个呢，shadowImage 是在ios6.0以后才可用的。但是发现5.0也可以用。不过如果你不判断有没有这个方法，
-//    而直接去调用可能会crash，所以判断下。作用：如果你设置了上面那句话，你会发现是透明了。但是会有一个阴影在，下面的方法就是去阴影
-//    if ([self.navigationController.navigationBar respondsToSelector:@selector(shadowImage)])
-//    {
-//        [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-//    }
-//    以上面4句是必须的,但是习惯还是加了下面这句话
-//    [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
-    
-    self.navigationController.navigationBar.backgroundColor = [UIColor colorWithRGB:0xA91300];
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRGB:0xFFFFFF];
-}
-
-//- (UIStatusBarStyle)preferredStatusBarStyle {
-//    
-//    return UIStatusBarStyleLightContent;
-//}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    
-    [super viewWillDisappear:animated];
-    
-//    UIImage *image = [UIImage alloc] initWithc
+    self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationBar"] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRGB:0xFFFFFF];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    self.customNavigationBar.frame = CGRectMake(0, 20, kScreenW, 44);
+    [self.view addSubview:self.customNavigationBar];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
     
-//    UIImage *image = [UIImage imageNamed:@"ic_home_logo"];
-    
-    UIImage *image = [[UIImage imageNamed:@"ic_home_logo"]
-                      resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0) resizingMode:UIImageResizingModeStretch];
-//    UIImageView *titleView = [[UIImageView alloc]initWithImage:image];
-//    [self.navigationController.navigationBar addSubview:titleView];
-//    [self.navigationController.navigationBar sendSubviewToBack:titleView];
-    [self.navigationController.navigationBar setBackgroundImage:[image scaled] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -96,7 +88,6 @@
     if ([segue.identifier isEqualToString:kContentEmbedSegue]) {
         
         _contentChildVC = segue.destinationViewController;
-        
         _contentChildVC.parentVC = self;
     }
 }
@@ -115,14 +106,15 @@
     if (![SCDeviceHelper isIphone6]) {
         
         height = 44;
-        self.top.constant = 44;
+        self.segmentHeight.constant = 44;
     }
     
     _menuSegment = [[MenuSegment alloc] initWithFrame:CGRectMake(0, 0, kScreenW, height)];
     _menuSegment.titles = _titles;
     _menuSegment.isLoad = NO;
     _menuSegment.menuDelegate = self;
-    [self.view addSubview:_menuSegment];
+    [self.segmentBackground addSubview:_menuSegment];
+//    [self.view addSubview:_menuSegment];
 }
 
 - (void)scrollChangeIndex:(NSInteger)index {
@@ -143,9 +135,11 @@
 
 - (void)notificationAction:(NSNotification *)notify {
     
-    if (notify.userInfo[@"category"]) {
+    NSDictionary *dic = notify.userInfo[@"aps"];
+    
+    if (dic[@"category"]) {
         
-        NSArray *message = [SCNoteHelper messageWithString:notify.userInfo[@"category"]];
+        NSArray *message = [SCNoteHelper messageWithString:dic[@"category"]];
         NSNumber *nid = [[[NSNumberFormatter alloc] init] numberFromString:message[0]];
         
         [[ApiManager sharedInstance] requestPushMsgWithNid:nid type:message[1] completeBlock:^(NSDictionary *responseObject, NSError *error) {

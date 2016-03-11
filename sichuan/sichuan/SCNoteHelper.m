@@ -17,10 +17,7 @@
     NSDate *date = [formatter dateFromString:dateStr];
     [formatter setDateFormat:@"yyyy年MM月dd日"];
     
-    
     NSString *result = [formatter stringFromDate:date];
-    
-    
     
     return [NSString stringWithFormat:@"%@   来源: %@", result, from];
 }
@@ -57,7 +54,7 @@
         return imageStr;
     }
     
-    NSRange range ={head.location, tail.location - head.location + tail.length + 13 * 3};
+    NSRange range ={head.location, tail.location - head.location + tail.length + 15 * 3};
     NSMutableString *string = [NSMutableString stringWithString:imageStr];
     [string deleteCharactersInRange:range];
     
@@ -85,5 +82,26 @@
         
         return @"政务信息";
     }
+}
+
++ (NSArray *)filterEmpty:(NSArray *)array {
+    
+    NSMutableArray *result = [NSMutableArray array];
+    
+    for (int i = 0; i < array.count; i++) {
+        
+        NSMutableDictionary *dic = [array[i] mutableCopy];
+        
+        for (NSString *key in [dic allKeys]) {
+            
+            if ([dic[key] isEqual:[NSNull null]]) {
+                
+                [dic setObject:@"" forKey:key];
+            }
+        }
+        [result addObject:dic];
+    }
+    
+    return [result copy];
 }
 @end

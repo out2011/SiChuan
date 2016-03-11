@@ -86,8 +86,6 @@
         
         BlodTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PictureCell" forIndexPath:indexPath];
         
-        ;
-        
         [cell.picture sd_setImageWithURL:[NSURL URLWithString:dic[@"imagePath"]]];
         cell.title.text = dic[@"title"];
         

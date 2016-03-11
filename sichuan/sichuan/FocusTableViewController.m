@@ -93,8 +93,6 @@
         
         BlodTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ImageCell" forIndexPath:indexPath];
         
-        ;
-        
         [cell.picture sd_setImageWithURL:[NSURL URLWithString:dic[@"imagePath"]]];
         cell.title.text = dic[@"title"];
         
@@ -210,6 +208,7 @@
         if (!isPulldown) {
             
             NSArray *newData = responseObject[@"list"];
+            
             [_data addObjectsFromArray:newData];
             
             [weakSelf.tableView.mj_footer endRefreshing];
@@ -221,7 +220,12 @@
                 [weakSelf.tableView.mj_header endRefreshing];
                 return;
             }
-            _data = [responseObject[@"list"] mutableCopy];
+            
+            NSArray *array = responseObject[@"list"];
+            
+            
+            _data = [[SCNoteHelper filterEmpty:array] mutableCopy];
+            
             [weakSelf.tableView.mj_header endRefreshing];
         }
         

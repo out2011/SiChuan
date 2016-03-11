@@ -43,6 +43,13 @@
     [self loadDataIsPulldown:YES];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+
 #pragma mark - refresh
 - (void)refresh {
     

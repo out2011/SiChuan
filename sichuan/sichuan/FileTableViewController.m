@@ -67,9 +67,7 @@
     tableView.mj_footer.backgroundColor = [UIColor colorWithRGB:0xF0F0F0];
 }
 
-
 #pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
     return 1;
@@ -79,7 +77,6 @@
 
     return _data.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -115,7 +112,6 @@
     articlesVC.data = _data[indexPath.row];
 
     [self.navigationController pushViewController:articlesVC animated:YES];
-
 }
 
 #pragma mark - request

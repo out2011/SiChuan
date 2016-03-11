@@ -28,9 +28,16 @@
     [super viewDidLoad];
     
     self.navigationItem.backBarButtonItem = [[SCBackItem alloc] init];
-    
+    self.title = @"地图服务";
     [self refresh];
     [self initializeDataSource];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 - (void)refresh {

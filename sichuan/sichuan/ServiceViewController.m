@@ -76,11 +76,5 @@
     [_application openURL:[NSURL URLWithString:url_holl]];
 }
 
-/// 地图服务
-- (IBAction)pushMap:(id)sender {
-    
-    // still......
-}
-
 
 @end

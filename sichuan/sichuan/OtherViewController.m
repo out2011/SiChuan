@@ -129,7 +129,6 @@
                 [[UIApplication sharedApplication]
                  openURL:[NSURL URLWithString:url]];
                 break;
-                
             default:
                 break;
         }
