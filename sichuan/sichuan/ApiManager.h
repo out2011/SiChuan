@@ -17,7 +17,7 @@ extern NSString * const kBaseUrl;
 /// base request
 typedef void(^SCSessionTaskDidCompleteBlock)(NSURLSessionDataTask *task, id responseObject, NSError *error);
 
-//---------------- 聚焦四川 --------------- //
+//---------------- 今日四川 --------------- //
 static NSString *api_focusList = @"focus-sc";
 typedef void(^SCFocusListDidCompleteBlock)(NSDictionary *responseObject, NSError *error);
 

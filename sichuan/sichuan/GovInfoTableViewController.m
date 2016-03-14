@@ -150,11 +150,18 @@
     __weak typeof(self) weakSelf = self;
     [[ApiManager sharedInstance] requestNormalWithPages:@(pages) size:kPageSize api:_api completeBlock:^(NSDictionary *responseObject, NSError *error) {
         
+        if (error) {
+            
+            [weakSelf.tableView.mj_header endRefreshing];
+            [weakSelf.tableView.mj_footer endRefreshing];
+            return;
+        }
+        
+        NSArray *newData = responseObject[@"list"];
+        
         if (!isPulldown) {
-            
-            NSArray *newData = responseObject[@"list"];
-            
-            if (newData.count > 0 && [SCCompareHelper compareNIdWithData:[newData mutableCopy] withIdentifier:_api]) {
+        
+            if (newData.count > 0 && [SCCompareHelper compareNIdWithData:newData withIdentifier:_api]) {
                 
                 [weakSelf.tableView.mj_footer endRefreshing];
                 return;
@@ -165,7 +172,7 @@
         }
         else {
             
-            if (_data.count > 0 && [SCCompareHelper compareNIdWithData:_data withIdentifier:_api]) {
+            if (_data.count > 0 && [SCCompareHelper compareNIdWithData:newData withIdentifier:_api]) {
                 
                 [weakSelf.tableView.mj_header endRefreshing];
                 return;
@@ -176,7 +183,7 @@
         
         if ([responseObject[@"firstPage"] isEqualToNumber:@(1)]) {
             
-            [_defaults setObject:_data forKey:_api];
+            [_defaults setObject:newData forKey:_api];
         }
         [weakSelf.tableView reloadData];
     }];

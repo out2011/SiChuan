@@ -10,13 +10,13 @@
 
 @implementation SCCompareHelper
 
-+ (BOOL)compareNewData:(NSMutableArray *)data withIdentifier:(NSString *)identifier {
++ (BOOL)compareNewData:(NSArray *)data withIdentifier:(NSString *)identifier {
     
-    NSDictionary *dic = data[0];
+    NSDictionary *dic = data.lastObject;
     NSNumber *nId;
     
     NSArray *localData = [[NSUserDefaults standardUserDefaults] objectForKey:identifier];
-    NSDictionary *localDic = localData[0];
+    NSDictionary *localDic = localData.lastObject;
     NSNumber *localNId;
     NSString *key = @"nID";
     
@@ -26,7 +26,7 @@
     return [nId isEqualToNumber:localNId];
 }
 
-+ (BOOL)compareNIdWithData:(NSMutableArray *)data withIdentifier:(NSString *)identifier{
++ (BOOL)compareNIdWithData:(NSArray *)data withIdentifier:(NSString *)identifier{
     
     NSDictionary *dic = data[0];
     NSNumber *nId;

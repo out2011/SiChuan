@@ -93,7 +93,6 @@
 
 - (void)checkVersion {
     
-    
     __weak OtherViewController *weakSelf = self;
     [[ApiManager sharedInstance] requestVersionWithCompleteBlock:^(NSDictionary *responseObject, NSError *error) {
         

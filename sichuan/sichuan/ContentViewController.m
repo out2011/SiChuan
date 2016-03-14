@@ -44,7 +44,6 @@
 
     self.scrollView.frame = self.view.frame;
     self.scrollView.contentSize = CGSizeMake(kScreenW * 8, 0);
-    NSLog(@"width: %f\nheight: %f", self.scrollView.frame.size.width, self.scrollView.frame.size.height);
     self.scrollView.contentOffset = CGPointMake(0, 0);
     
     for (int i = 0; i < 8; i++) {

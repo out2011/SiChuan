@@ -161,6 +161,13 @@
     __weak typeof(self) weakSelf = self;
     [[ApiManager sharedInstance] requestActivityWithNId:self.nId Pages:@(pages) size:kPageSize completeBlock:^(NSDictionary *responseObject, NSError *error) {
         
+        if (error) {
+            
+            [weakSelf.tableView.mj_header endRefreshing];
+            [weakSelf.tableView.mj_footer endRefreshing];
+            return;
+        }
+        
         [weakSelf fillDatawithIdentifier:@"activity" isPulldown:isPulldown responseObject:responseObject];
     }];
 }

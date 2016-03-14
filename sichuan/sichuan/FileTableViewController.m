@@ -144,16 +144,24 @@
     __weak typeof(self) weakSelf = self;
     [[ApiManager sharedInstance] requestGovFileWithPages:@(pages) size:kPageSize completeBlock:^(NSDictionary *responseObject, NSError *error) {
         
-        if (!isPulldown) {
+        if (error) {
             
-            NSArray *newData = responseObject[@"list"];
+            [weakSelf.tableView.mj_header endRefreshing];
+            [weakSelf.tableView.mj_footer endRefreshing];
+            return;
+        }
+        
+        NSArray *newData = responseObject[@"list"];
+        
+        if (!isPulldown) {
+
             [_data addObjectsFromArray:newData];
             
             [weakSelf.tableView.mj_footer endRefreshing];
         }
         else {
             
-            if (_data.count > 0 && [SCCompareHelper compareNewData:_data withIdentifier:@"govFile"]) {
+            if (_data.count > 0 && [SCCompareHelper compareNewData:newData withIdentifier:@"govFile"]) {
                 
                 [weakSelf.tableView.mj_header endRefreshing];
                 return;
@@ -164,7 +172,7 @@
         
         if ([responseObject[@"firstPage"] isEqualToNumber:@(1)]) {
             
-            [_defaults setObject:_data forKey:@"govFile"];
+            [_defaults setObject:newData forKey:@"govFile"];
         }
 
         [weakSelf.tableView reloadData];

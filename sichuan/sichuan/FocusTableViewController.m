@@ -19,7 +19,7 @@
 #import "SCNoteHelper.h"
 #import "SCDeviceHelper.h"
 
-#define kTitle @"聚焦四川"
+#define kTitle @"今日四川"
 #define kScreenW [UIScreen mainScreen].bounds.size.width
 
 @interface FocusTableViewController ()
@@ -70,7 +70,6 @@
     tableView.mj_header.backgroundColor = [UIColor colorWithRGB:0xF0F0F0];
     tableView.mj_footer.backgroundColor = [UIColor colorWithRGB:0xF0F0F0];
 }
-
 
 #pragma mark - Table view data source
 
@@ -158,17 +157,17 @@
     if (indexPath.row == 0) {
         
         articlesVC.data = _data[0];
-        BlodTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        articlesVC.shareImage = cell.picture.image;
+//        BlodTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//        articlesVC.imagePath = dic[@"imagePath"];
     }
     else {
         
         articlesVC.data = _data[indexPath.row - 1];
-        if ([articlesVC.data[@"isPic"] isEqualToNumber:@(1)]) {
-            
-            ContentTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-            articlesVC.shareImage = cell.picture.image;
-        }
+//        if ([articlesVC.data[@"isPic"] isEqualToNumber:@(1)]) {
+//            
+//            ContentTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//            articlesVC.shareImage = cell.picture.image;
+//        }
     }
 
     [self.navigationController pushViewController:articlesVC animated:YES];
@@ -205,33 +204,37 @@
     __weak typeof(self) weakSelf = self;
     [[ApiManager sharedInstance] requestFocusListWithPages:@(pages) size:kPageSize completeBlock:^(NSDictionary *responseObject, NSError *error) {
         
+        if (error) {
+            
+            [weakSelf.tableView.mj_header endRefreshing];
+            [weakSelf.tableView.mj_footer endRefreshing];
+            return;
+        }
+        
+        NSArray *newData = [SCNoteHelper filterEmpty:responseObject[@"list"]];
+        
         if (!isPulldown) {
-            
-            NSArray *newData = responseObject[@"list"];
-            
+
             [_data addObjectsFromArray:newData];
             
             [weakSelf.tableView.mj_footer endRefreshing];
         }
         else {
             
-            if (_data.count > 0 && [SCCompareHelper compareNewData:_data withIdentifier:@"focus"]) {
+            if (_data.count > 0 && [SCCompareHelper compareNewData:newData withIdentifier:@"focus"]) {
                 
                 [weakSelf.tableView.mj_header endRefreshing];
                 return;
             }
-            
-            NSArray *array = responseObject[@"list"];
-            
-            
-            _data = [[SCNoteHelper filterEmpty:array] mutableCopy];
+
+            _data = [[SCNoteHelper filterEmpty:newData] mutableCopy];
             
             [weakSelf.tableView.mj_header endRefreshing];
         }
         
         if ([responseObject[@"firstPage"] isEqualToNumber:@(1)]) {
             
-            [_defaults setObject:_data forKey:@"focus"];
+            [_defaults setObject:newData forKey:@"focus"];
         }
         [weakSelf.tableView reloadData];
     }];

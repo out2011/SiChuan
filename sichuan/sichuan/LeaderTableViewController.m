@@ -147,6 +147,11 @@
     __weak typeof(self) weakSelf = self;
     [[ApiManager sharedInstance] requestLeaderWithCompleteBlock:^(NSArray *responseObject, NSError *error) {
         
+        if (error) {
+            
+            [weakSelf.tableView.mj_header endRefreshing];
+            return;
+        }
         
         if (_data.count > 0 && [SCCompareHelper compareNewData:_data withIdentifier:@"leader"]) {
             

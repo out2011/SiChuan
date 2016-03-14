@@ -15,5 +15,6 @@
 @property (nonatomic, strong) NSNumber *nID;
 @property (nonatomic, strong) NSString *api;
 @property (nonatomic, strong) UIImage *shareImage;
+@property (nonatomic, strong) NSString *imagePath;
 
 @end

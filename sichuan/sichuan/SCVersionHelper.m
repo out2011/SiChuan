@@ -22,8 +22,6 @@
             return YES;
         }
     }
-    
-    
     return NO;
 }
 

@@ -11,7 +11,7 @@
 @interface ApiManager (Focus)
 
 /**
- *  聚焦四川列表获取
+ *  今日四川列表获取
  *
  *  @param pno 页数 psize 容量
  *  @param completeBlock 結果

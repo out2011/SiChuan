@@ -177,19 +177,22 @@
         
         if (error) {
             
+            [weakSelf.tableView.mj_header endRefreshing];
+            [weakSelf.tableView.mj_footer endRefreshing];
             return;
         }
         
+        NSArray *newData = responseObject[@"list"];
+        
         if (!isPulldown) {
             
-            NSArray *newData = responseObject[@"list"];
             [_data addObjectsFromArray:newData];
             
             [weakSelf.tableView.mj_footer endRefreshing];
         }
         else {
             
-            if (_data.count > 0 && [SCCompareHelper compareNewData:_data withIdentifier:@"photo"]) {
+            if (_data.count > 0 && [SCCompareHelper compareNewData:newData withIdentifier:@"photo"]) {
                 
                 [weakSelf.tableView.mj_header endRefreshing];
                 return;
@@ -200,7 +203,7 @@
         
         if ([responseObject[@"firstPage"] isEqualToNumber:@(1)]) {
             
-            [_defaults setObject:_data forKey:@"photo"];
+            [_defaults setObject:newData forKey:@"photo"];
         }
 
         [weakSelf.tableView reloadData];

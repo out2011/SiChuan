@@ -10,7 +10,7 @@
 
 @interface SCCompareHelper : NSObject
 
-+ (BOOL)compareNewData:(NSMutableArray *)data withIdentifier:(NSString *)identifier;
-+ (BOOL)compareNIdWithData:(NSMutableArray *)data withIdentifier:(NSString *)identifier;
++ (BOOL)compareNewData:(NSArray *)data withIdentifier:(NSString *)identifier;
++ (BOOL)compareNIdWithData:(NSArray *)data withIdentifier:(NSString *)identifier;
 
 @end

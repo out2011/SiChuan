@@ -25,7 +25,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
     [_mapView setZoomLevel:16];
     [_mapView setShowMapScaleBar:YES];
     [self locationBegin];

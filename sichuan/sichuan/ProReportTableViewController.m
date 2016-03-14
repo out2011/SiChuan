@@ -190,6 +190,13 @@
     
     [[ApiManager sharedInstance] requestNewsWithPages:@(pages) size:kBaseSize completeBlock:^(NSDictionary *responseObject, NSError *error) {
         
+        if (error) {
+            
+            [self.tableView.mj_header endRefreshing];
+            [self.tableView.mj_footer endRefreshing];
+            return;
+        }
+        
         [self fillDatawithIdentifier:@"news" isPulldown:isPulldown responseObject:responseObject];
     }];
 }

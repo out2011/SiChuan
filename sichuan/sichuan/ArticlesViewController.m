@@ -127,8 +127,8 @@
     
     // 重置web view高度
     NSString *height_str= [webView stringByEvaluatingJavaScriptFromString: @"document.body.offsetHeight"];
-    _webViewHeight.constant = [height_str integerValue] + 16;
-
+    _webViewHeight.constant = [height_str integerValue] + 8;
+    
     _backgroundView.contentOffset = CGPointMake(0, 0);
 }
 
@@ -155,22 +155,25 @@
 
 - (void)shared {
     
-//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@""]];
+    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@""]];
     
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     [shareParams SSDKEnableUseClientShare];
     
-    UIImage *image;
-    if (self.shareImage) {
+    NSString *weiboContent = [NSString  stringWithFormat:@"%@\n%@",_data[@"title"],
+                              _data[@"webUrl"]];
+    
+    
+    id image;
+    if ([_data[@"isPic"] isEqualToNumber:@(1)]) {
         
-        image = [self.shareImage sharedImageScaled];
+        image = @[_data[@"imagePath"]];
     }
     else {
         
         image = [UIImage imageNamed:@"ic_app"];
     }
-    NSString *weiboContent = [NSString  stringWithFormat:@"%@\n%@",_data[@"title"],
-                              _data[@"webUrl"]];
+    
     
     [shareParams SSDKSetupShareParamsByText:self.title
                                      images:image
@@ -180,7 +183,7 @@
     
     [shareParams SSDKSetupSinaWeiboShareParamsByText:weiboContent
                                                title:_data[@"title"]
-                                               image:self.shareImage
+                                               image:image
                                                  url:[NSURL
                                                       URLWithString:_data[@"webUrl"]]
                                             latitude:0
@@ -188,26 +191,32 @@
                                             objectID:nil
                                                 type:SSDKContentTypeAuto];
     
-    [ShareSDK showShareActionSheet:self.view
-                             items:nil
-                       shareParams:shareParams
-               onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
-        
+    SSUIShareActionSheetController *sheet =
+            [ShareSDK showShareActionSheet:self.view
+                                     items:@[@(SSDKPlatformSubTypeQQFriend),
+                                             @(SSDKPlatformTypeSinaWeibo),
+                                             @(SSDKPlatformSubTypeWechatSession),
+                                             @(SSDKPlatformSubTypeWechatTimeline)]
+                               shareParams:shareParams
+                       onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+                   
                    switch (state) {
                        case SSDKResponseStateSuccess:
                        {
-                           NSLog(@"11111");
+                           /// 分享成功状态
                            break;
                        }
                        case SSDKResponseStateFail:
                        {
-                           NSLog(@"222222");
+                           /// 分享失败状态
                            break;
                        }
                        default:
                            break;
                    }
-    }];
+               }];
+    
+    [sheet.directSharePlatforms addObject:@(SSDKPlatformTypeSinaWeibo)];
 }
 
 

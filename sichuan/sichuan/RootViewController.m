@@ -38,6 +38,17 @@
 
 @implementation RootViewController
 
+- (NSArray *)titles {
+    
+    if (!_titles) {
+        
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"Information" ofType:@"plist"];
+        NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:path];
+        _titles = dic[@"MenuTitles"];
+    }
+    
+    return _titles;
+}
 
 - (UIView *)customNavigationBar {
     if (!_customNavigationBar) {
@@ -55,10 +66,7 @@
     // Do any additional setup after loading the view.
     
     [self notificationCenterSetting];
-    [self initializeDataSource];
     [self segmentControlInterfaceSetting];
-    
-    NSLog(@"width %f", kScreenW);
     
     self.navigationItem.backBarButtonItem = [[SCBackItem alloc] init];
     
@@ -92,13 +100,6 @@
     }
 }
 
-- (void)initializeDataSource {
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Information" ofType:@"plist"];
-    NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:path];
-    _titles = dic[@"MenuTitles"];
-}
-
 - (void)segmentControlInterfaceSetting {
     
     CGFloat height = 54;
@@ -110,11 +111,10 @@
     }
     
     _menuSegment = [[MenuSegment alloc] initWithFrame:CGRectMake(0, 0, kScreenW, height)];
-    _menuSegment.titles = _titles;
+    _menuSegment.titles = self.titles;
     _menuSegment.isLoad = NO;
     _menuSegment.menuDelegate = self;
     [self.segmentBackground addSubview:_menuSegment];
-//    [self.view addSubview:_menuSegment];
 }
 
 - (void)scrollChangeIndex:(NSInteger)index {
